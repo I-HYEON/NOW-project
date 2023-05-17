@@ -12,7 +12,7 @@ class DepositProducts(models.Model):
     spcl_cnd = models.TextField()
 
 class DepositOptions(models.Model):
-    fin_prdt_cd = models.ForeignKey(DepositProducts, on_delete=models.CASCADE)
+    fin_prdt_cd = models.ForeignKey(DepositProducts, on_delete = models.CASCADE)
     intr_rate_type_nm = models.CharField(max_length=100)
     intr_rate = models.FloatField(default=-1)
     intr_rate2 = models.FloatField(default=-1)
