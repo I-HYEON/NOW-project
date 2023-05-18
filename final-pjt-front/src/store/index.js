@@ -6,10 +6,14 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    depositData: null,
   },
   getters: {
   },
   mutations: {
+    GET_DEPOSIT_DATA(state, depositData) {
+      state.depositData = depositData
+    },
   },
   actions: {
     signUp(context, payload) {
