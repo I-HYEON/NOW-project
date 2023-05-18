@@ -21,7 +21,7 @@
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#">
-                    <router-link to="/community">Community</router-link>
+                    <router-link to="/article">Community</router-link>
                   </a>
                 </li>
                 <li class="nav-item">

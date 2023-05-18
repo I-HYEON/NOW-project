@@ -4,6 +4,9 @@ import HomeView from '../views/HomeView.vue'
 import DepositProducts from '../views/DepositProducts.vue'
 import Community from '../views/Community.vue'
 import SignUpView from '../views/SignUpView.vue'
+import ArticleView from '@/views/ArticleView'
+import CreateView from '@/views/CreateView'
+import ArticleDetailView from '../views/ArticleDetailView'
 import DepositDetail from '../views/DepositDetail.vue'
 
 Vue.use(VueRouter)
@@ -34,6 +37,22 @@ const routes = [
     name: 'signup',
     component: SignUpView
   },
+  {
+    path: '/create',
+    name: 'CreateView',
+    component: CreateView
+  },
+
+  {
+    path: '/article',
+    name: 'article',
+    component: ArticleView
+  },
+  {
+    path: '/article/:id',
+    name: 'ArticleDetailView',
+    component: ArticleDetailView
+  }
 ]
 
 const router = new VueRouter({
