@@ -147,3 +147,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:8080',
 ]
+
+import os
+import environ
+
+env = environ.Env(DEBUG=(bool, True))
+
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
+API_KEY = env('API_KEY')
