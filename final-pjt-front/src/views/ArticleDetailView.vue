@@ -6,6 +6,7 @@
     <p>내용 : {{ article?.content }}</p>
     <p>작성시간 : {{ article?.created_at }}</p>
     <p>수정시간 : {{ article?.updated_at }}</p>
+    <button @click="deleteArticle">삭제</button>
     <br><br><br>
       <h3>댓글 작성</h3>
     <form @submit.prevent="createComment">
@@ -15,9 +16,15 @@
       <input type="submit" @click="getComments">
     </form>
 <br>
-     <p v-for="(comment, idx) in comments" :key="idx" v-if="comment.article === article?.id">
-      댓글: {{ comment?.content }}
-    </p>
+      <template v-if="comments.length === 0">
+      <p>댓글이 없습니다.</p>
+    </template>
+    <template v-else>
+      <p v-for="(comment, idx) in comments" :key="idx" v-if="comment.article === article?.id">
+        댓글: {{ comment?.content }}
+        <button @click="deleteComment(comment)">삭제</button>
+      </p>
+    </template>
     
   
   </div>
@@ -69,10 +76,10 @@ export default {
       // })
       // .catch((err)=>console.log(err))
       this.$store.dispatch('getComments')
-},
+    },
     createComment(){
       const content = this.content
-
+      if (this.content)
       axios({
         method:'post',
         url: `${API_URL}/articles/${ this.$route.params.id }/comments/`,
@@ -82,7 +89,37 @@ export default {
         this.content=null
         
       })
+      else{
+        alert('댓글을 입력하세요!')
+      }
+    },
+    deleteComment(comment) {
+  axios({
+    method: 'delete',
+    url: `${API_URL}/articles/comments/${comment.id}/`,
+  })
+    .then(() => {
+      this.getComments()
+      // if (this.comments.length === 1) {
+      //   // 댓글이 마지막 하나인 경우 페이지 새로고침
+      //   location.reload();
+      // }
+    })
+    .catch((err) => {
+      console.log(err);
+      
+    });
+    },
+    deleteArticle() {
+      axios({
+        method: 'delete',
+        url: `${API_URL}/articles/${ this.$route.params.id }`
+      })
+      .then(()=>{
+        this.$router.push({ path: '/article' });
+      })
     }
+    },
   }
-}
+
 </script>
