@@ -10,8 +10,8 @@ export default new Vuex.Store({
     articles: [
     ],
     comments: [
-
-    ]
+    ],
+    depositData: null,
   },
   getters: {
     // isLogin(state){
@@ -25,7 +25,10 @@ export default new Vuex.Store({
     GET_COMMENTS(state, comments){
       state.comments = comments
       console.log(state.comments)
-    }
+    },
+    GET_DEPOSIT_DATA(state, depositData) {
+      state.depositData = depositData
+    },
   },
   actions: {
     getArticles(context){

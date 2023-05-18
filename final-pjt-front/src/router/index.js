@@ -7,6 +7,7 @@ import SignUpView from '../views/SignUpView.vue'
 import ArticleView from '@/views/ArticleView'
 import CreateView from '@/views/CreateView'
 import ArticleDetailView from '../views/ArticleDetailView'
+import DepositDetail from '../views/DepositDetail.vue'
 
 Vue.use(VueRouter)
 
@@ -20,6 +21,11 @@ const routes = [
     path: '/depositproducts',
     name: 'depositproducts',
     component: DepositProducts
+  },
+  {
+    path: '/depositproducts/:bank_info',
+    name: 'deposit_detail',
+    component: DepositDetail
   },
   {
     path: '/community',
