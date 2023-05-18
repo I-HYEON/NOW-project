@@ -57,16 +57,17 @@ def save_deposit(request):
 
 @api_view(['GET'])
 def deposit_detail(request, fin_prdt_cd):
-    pass
-    # deposit_info = DepositProducts.objects.get(fin_prdt_cd=fin_prdt_cd)
-    # deposit_info_serializer = DepositProductsSerializer(data=deposit_info)
-    # if deposit_info_serializer.is_valid():
-    #     return Response(deposit_info_serializer.data, status=status.HTTP_200_OK)
-    # if deposit_info_serializer.is_valid():
-    #     deposit_detail_info = DepositOptions.objects.filter(fin_prdt_cd_id=deposit_info.id)
-    #     deposit_detail_info_serializer = DepositOptionsSerializer(data=deposit_detail_info, many=True)
-    #     return Response(deposit_detail_info_serializer.data)
+    deposit_info = DepositProducts.objects.get(fin_prdt_cd=fin_prdt_cd)
+    deposit_info_serializer = DepositProductsSerializer(deposit_info)
 
-    # return Response(deposit_info_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    deposit_detail_info = DepositOptions.objects.filter(fin_prdt_cd_id=deposit_info.id)
+    deposit_detail_info_serializer = DepositOptionsSerializer(deposit_detail_info, many=True)
+
+    serializer_data = {
+        'deposit_detail' : deposit_info_serializer.data,
+        'deposit_detail_options' : deposit_detail_info_serializer.data
+    }
+
+    return Response(serializer_data, status=status.HTTP_200_OK)
 
 

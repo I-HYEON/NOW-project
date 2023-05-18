@@ -7,36 +7,23 @@
           <div class="container">
             <div class="row">
               <div class="col-12">
-                이름
+                <div>{{ this.deposit_detail.fin_prdt_nm }}</div>
+                <div>{{ this.deposit_detail.kor_co_nm }}</div>
+                <div>{{ this.deposit_detail.mtrt_int }}</div>
+                <div>{{ this.deposit_detail.etc_note }}</div>
+                <div>{{ this.deposit_detail.spcl_cnd }}</div>
+                <div>{{ this.deposit_detail.join_deny }}</div>
+                <div>{{ this.deposit_detail.join_member }}</div>
+                <div>{{ this.deposit_detail.join_way }}</div>                                            
               </div>
               <div class="col-12">
                 <table class="table">
-                  <thead>
-                    <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">First</th>
-                      <th scope="col">Last</th>
-                      <th scope="col">Handle</th>
-                    </tr>
-                  </thead>
                   <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td colspan="2">Larry the Bird</td>
-                      <td>@twitter</td>
-                    </tr>
+                    <Table
+                    v-for="table in this.deposit_detail_options"
+                    :table="table"
+                    :key="table.id"
+                    />
                   </tbody>
                 </table>
               </div>
@@ -70,22 +57,35 @@
 
 <script>
 import Login from '@/components/Login.vue'
+import Table from '@/components/Table.vue'
 import axios from 'axios'
 
 export default {
 name: 'DepositDetail',
+data(){
+  return{
+    deposit_detail:null,
+    deposit_detail_options:null
+  }
+},
 components: {
-    Login
+    Login,
+    Table,
 },
 methods: {
     async getDepositData() {
-    const response = await axios.get(`'http://127.0.0.1:8000/deposits/detail/${this.$route.params.bank_info}'`)
-    console.log(response)
-    // this.$store.commit('GET_DEPOSIT_DATA', response.data)
+      const response = await axios.get(`http://127.0.0.1:8000/deposits/detail/${this.$route.params.bank_info}`)
+      this.$store.commit('GET_CURRENT_DETAIL', response.data)
+      console.log(this.$store.state.currentDetail)
+      this.set_info()
     },
+    set_info() {
+      this.deposit_detail = this.$store.state.currentDetail.deposit_detail
+      this.deposit_detail_options = this.$store.state.currentDetail.deposit_detail_options
+    }
 },
 created(){
-    // this.getDepositData()
+    this.getDepositData()
 },
 }
 </script>
