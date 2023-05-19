@@ -7,8 +7,8 @@ class User(AbstractUser):
     username = models.CharField(max_length=20,unique=True)
     age = models.IntegerField(default=20)
     gender = models.IntegerField(default=1)
-    salary = models.IntegerField(default=3999)
-    wealth = models.IntegerField(default=123123)
+    salary = models.IntegerField(default=-1)
+    wealth = models.IntegerField(default=-1)
     tendency = models.IntegerField(default=1)
     deposit = models.ManyToManyField(DepositProducts)
 
