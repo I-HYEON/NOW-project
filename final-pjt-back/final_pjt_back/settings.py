@@ -71,9 +71,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# CORS_ALLOWED_ORIGINS = [
-#     'http://localhost:8080/',
-# ]
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:8080/',
+]
 
 ROOT_URLCONF = 'final_pjt_back.urls'
 
