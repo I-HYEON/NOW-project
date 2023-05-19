@@ -30,7 +30,7 @@ export default new Vuex.Store({
     },
     GET_COMMENTS(state, comments){
       state.comments = comments
-      console.log(state.comments)
+      // console.log(state.comments)
     },
     GET_DEPOSIT_DATA(state, depositData) {
       state.depositData = depositData
@@ -56,7 +56,7 @@ export default new Vuex.Store({
         url:  `${API_URL}/articles/comments/`
       })
       .then((res)=>{
-        console.log(res)
+        // console.log(res)
         context.commit('GET_COMMENTS',res.data)
       })
       .catch(err => console.log(err))
@@ -75,7 +75,7 @@ export default new Vuex.Store({
 
       axios({
         method: 'post',
-        url: 'http://127.0.0.1:8000/accounts/registration/',
+        url: 'http://127.0.0.1:8000/accounts/signup/',
         data: {
           username, password1, password2, age, gender, salary, wealth, tendency, email
         }
