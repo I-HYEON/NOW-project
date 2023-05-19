@@ -1,0 +1,1290 @@
+[
+    {
+      "model": "deposits.depositoptions",
+      "pk": 1,
+      "fields": {
+        "fin_prdt_cd": 1,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 6,
+        "intr_rate": 3.55,
+        "intr_rate2": 3.55
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 2,
+      "fields": {
+        "fin_prdt_cd": 1,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 12,
+        "intr_rate": 3.62,
+        "intr_rate2": 3.62
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 3,
+      "fields": {
+        "fin_prdt_cd": 1,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 24,
+        "intr_rate": 3.36,
+        "intr_rate2": 3.36
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 4,
+      "fields": {
+        "fin_prdt_cd": 1,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 36,
+        "intr_rate": 3.33,
+        "intr_rate2": 3.33
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 5,
+      "fields": {
+        "fin_prdt_cd": 2,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 6,
+        "intr_rate": 3.5,
+        "intr_rate2": 3.7
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 6,
+      "fields": {
+        "fin_prdt_cd": 2,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 12,
+        "intr_rate": 3.6,
+        "intr_rate2": 3.9
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 7,
+      "fields": {
+        "fin_prdt_cd": 3,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 6,
+        "intr_rate": 2.46,
+        "intr_rate2": 3.11
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 8,
+      "fields": {
+        "fin_prdt_cd": 3,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 12,
+        "intr_rate": 3.2,
+        "intr_rate2": 3.85
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 9,
+      "fields": {
+        "fin_prdt_cd": 3,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 24,
+        "intr_rate": 3.22,
+        "intr_rate2": 3.87
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 10,
+      "fields": {
+        "fin_prdt_cd": 3,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 36,
+        "intr_rate": 3.24,
+        "intr_rate2": 3.89
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 11,
+      "fields": {
+        "fin_prdt_cd": 4,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 6,
+        "intr_rate": 2.67,
+        "intr_rate2": 3.12
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 12,
+      "fields": {
+        "fin_prdt_cd": 4,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 12,
+        "intr_rate": 3.41,
+        "intr_rate2": 3.86
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 13,
+      "fields": {
+        "fin_prdt_cd": 4,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 24,
+        "intr_rate": 3.43,
+        "intr_rate2": 3.88
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 14,
+      "fields": {
+        "fin_prdt_cd": 4,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 36,
+        "intr_rate": 3.45,
+        "intr_rate2": 3.9
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 15,
+      "fields": {
+        "fin_prdt_cd": 5,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 12,
+        "intr_rate": 3.3,
+        "intr_rate2": 3.75
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 16,
+      "fields": {
+        "fin_prdt_cd": 6,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 6,
+        "intr_rate": 2.85,
+        "intr_rate2": 3.05
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 17,
+      "fields": {
+        "fin_prdt_cd": 6,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 12,
+        "intr_rate": 3.55,
+        "intr_rate2": 3.75
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 18,
+      "fields": {
+        "fin_prdt_cd": 6,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 24,
+        "intr_rate": 3.6,
+        "intr_rate2": 3.8
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 19,
+      "fields": {
+        "fin_prdt_cd": 6,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 36,
+        "intr_rate": 3.65,
+        "intr_rate2": 3.85
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 20,
+      "fields": {
+        "fin_prdt_cd": 7,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 12,
+        "intr_rate": 3.21,
+        "intr_rate2": 3.61
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 21,
+      "fields": {
+        "fin_prdt_cd": 8,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 12,
+        "intr_rate": 3.25,
+        "intr_rate2": 3.95
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 22,
+      "fields": {
+        "fin_prdt_cd": 9,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 6,
+        "intr_rate": 2.55,
+        "intr_rate2": 3.4
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 23,
+      "fields": {
+        "fin_prdt_cd": 9,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 12,
+        "intr_rate": 2.75,
+        "intr_rate2": 3.55
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 24,
+      "fields": {
+        "fin_prdt_cd": 9,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 24,
+        "intr_rate": 2.8,
+        "intr_rate2": 2.8
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 25,
+      "fields": {
+        "fin_prdt_cd": 9,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 36,
+        "intr_rate": 2.85,
+        "intr_rate2": 2.85
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 26,
+      "fields": {
+        "fin_prdt_cd": 10,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 6,
+        "intr_rate": 3.4,
+        "intr_rate2": 3.75
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 27,
+      "fields": {
+        "fin_prdt_cd": 10,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 12,
+        "intr_rate": 3.55,
+        "intr_rate2": 3.9
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 28,
+      "fields": {
+        "fin_prdt_cd": 10,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 24,
+        "intr_rate": 3.25,
+        "intr_rate2": 3.6
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 29,
+      "fields": {
+        "fin_prdt_cd": 10,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 36,
+        "intr_rate": 2.95,
+        "intr_rate2": 3.3
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 30,
+      "fields": {
+        "fin_prdt_cd": 11,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 6,
+        "intr_rate": 2.8,
+        "intr_rate2": 3.0
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 31,
+      "fields": {
+        "fin_prdt_cd": 11,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 12,
+        "intr_rate": 3.05,
+        "intr_rate2": 3.25
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 32,
+      "fields": {
+        "fin_prdt_cd": 11,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 24,
+        "intr_rate": 3.15,
+        "intr_rate2": 3.35
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 33,
+      "fields": {
+        "fin_prdt_cd": 11,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 36,
+        "intr_rate": 3.15,
+        "intr_rate2": 3.35
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 34,
+      "fields": {
+        "fin_prdt_cd": 12,
+        "intr_rate_type_nm": "복리",
+        "save_trm": 12,
+        "intr_rate": 3.33,
+        "intr_rate2": 3.53
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 35,
+      "fields": {
+        "fin_prdt_cd": 12,
+        "intr_rate_type_nm": "복리",
+        "save_trm": 24,
+        "intr_rate": 3.39,
+        "intr_rate2": 3.59
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 36,
+      "fields": {
+        "fin_prdt_cd": 12,
+        "intr_rate_type_nm": "복리",
+        "save_trm": 36,
+        "intr_rate": 3.43,
+        "intr_rate2": 3.63
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 37,
+      "fields": {
+        "fin_prdt_cd": 13,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 6,
+        "intr_rate": 3.23,
+        "intr_rate2": 3.33
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 38,
+      "fields": {
+        "fin_prdt_cd": 13,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 12,
+        "intr_rate": 3.23,
+        "intr_rate2": 3.43
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 39,
+      "fields": {
+        "fin_prdt_cd": 13,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 24,
+        "intr_rate": 3.29,
+        "intr_rate2": 3.49
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 40,
+      "fields": {
+        "fin_prdt_cd": 13,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 36,
+        "intr_rate": 3.33,
+        "intr_rate2": 3.53
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 41,
+      "fields": {
+        "fin_prdt_cd": 14,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 6,
+        "intr_rate": 3.2,
+        "intr_rate2": 3.2
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 42,
+      "fields": {
+        "fin_prdt_cd": 14,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 12,
+        "intr_rate": 3.3,
+        "intr_rate2": 3.3
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 43,
+      "fields": {
+        "fin_prdt_cd": 14,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 24,
+        "intr_rate": 3.1,
+        "intr_rate2": 3.1
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 44,
+      "fields": {
+        "fin_prdt_cd": 14,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 36,
+        "intr_rate": 3.0,
+        "intr_rate2": 3.0
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 45,
+      "fields": {
+        "fin_prdt_cd": 15,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 12,
+        "intr_rate": 3.13,
+        "intr_rate2": 3.83
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 46,
+      "fields": {
+        "fin_prdt_cd": 16,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 12,
+        "intr_rate": 3.3,
+        "intr_rate2": 3.55
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 47,
+      "fields": {
+        "fin_prdt_cd": 17,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 6,
+        "intr_rate": 2.85,
+        "intr_rate2": 2.95
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 48,
+      "fields": {
+        "fin_prdt_cd": 17,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 12,
+        "intr_rate": 3.05,
+        "intr_rate2": 3.15
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 49,
+      "fields": {
+        "fin_prdt_cd": 17,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 24,
+        "intr_rate": 3.15,
+        "intr_rate2": 3.25
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 50,
+      "fields": {
+        "fin_prdt_cd": 17,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 36,
+        "intr_rate": 3.25,
+        "intr_rate2": 3.35
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 51,
+      "fields": {
+        "fin_prdt_cd": 18,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 6,
+        "intr_rate": 3.0,
+        "intr_rate2": 3.5
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 52,
+      "fields": {
+        "fin_prdt_cd": 18,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 12,
+        "intr_rate": 3.1,
+        "intr_rate2": 3.6
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 53,
+      "fields": {
+        "fin_prdt_cd": 18,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 24,
+        "intr_rate": 3.0,
+        "intr_rate2": 3.5
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 54,
+      "fields": {
+        "fin_prdt_cd": 18,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 36,
+        "intr_rate": 3.0,
+        "intr_rate2": 3.5
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 55,
+      "fields": {
+        "fin_prdt_cd": 19,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 6,
+        "intr_rate": 3.4,
+        "intr_rate2": 3.4
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 56,
+      "fields": {
+        "fin_prdt_cd": 19,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 12,
+        "intr_rate": 3.5,
+        "intr_rate2": 3.5
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 57,
+      "fields": {
+        "fin_prdt_cd": 20,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 12,
+        "intr_rate": 3.4,
+        "intr_rate2": 3.5
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 58,
+      "fields": {
+        "fin_prdt_cd": 20,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 24,
+        "intr_rate": 3.4,
+        "intr_rate2": 3.6
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 59,
+      "fields": {
+        "fin_prdt_cd": 20,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 36,
+        "intr_rate": 3.4,
+        "intr_rate2": 3.7
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 60,
+      "fields": {
+        "fin_prdt_cd": 21,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 6,
+        "intr_rate": 2.35,
+        "intr_rate2": 2.85
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 61,
+      "fields": {
+        "fin_prdt_cd": 21,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 12,
+        "intr_rate": 2.7,
+        "intr_rate2": 3.2
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 62,
+      "fields": {
+        "fin_prdt_cd": 21,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 24,
+        "intr_rate": 3.05,
+        "intr_rate2": 3.55
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 63,
+      "fields": {
+        "fin_prdt_cd": 22,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 6,
+        "intr_rate": 3.15,
+        "intr_rate2": 3.45
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 64,
+      "fields": {
+        "fin_prdt_cd": 22,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 12,
+        "intr_rate": 3.5,
+        "intr_rate2": 3.8
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 65,
+      "fields": {
+        "fin_prdt_cd": 22,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 24,
+        "intr_rate": 3.55,
+        "intr_rate2": 3.85
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 66,
+      "fields": {
+        "fin_prdt_cd": 23,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 12,
+        "intr_rate": 3.45,
+        "intr_rate2": 3.65
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 67,
+      "fields": {
+        "fin_prdt_cd": 23,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 24,
+        "intr_rate": 3.5,
+        "intr_rate2": 3.7
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 68,
+      "fields": {
+        "fin_prdt_cd": 23,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 36,
+        "intr_rate": 3.6,
+        "intr_rate2": 3.8
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 69,
+      "fields": {
+        "fin_prdt_cd": 24,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 6,
+        "intr_rate": 3.1,
+        "intr_rate2": 3.4
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 70,
+      "fields": {
+        "fin_prdt_cd": 24,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 12,
+        "intr_rate": 3.25,
+        "intr_rate2": 3.55
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 71,
+      "fields": {
+        "fin_prdt_cd": 25,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 6,
+        "intr_rate": 3.45,
+        "intr_rate2": 3.45
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 72,
+      "fields": {
+        "fin_prdt_cd": 25,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 12,
+        "intr_rate": 3.43,
+        "intr_rate2": 3.43
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 73,
+      "fields": {
+        "fin_prdt_cd": 25,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 24,
+        "intr_rate": 3.45,
+        "intr_rate2": 3.45
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 74,
+      "fields": {
+        "fin_prdt_cd": 25,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 36,
+        "intr_rate": 3.48,
+        "intr_rate2": 3.48
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 75,
+      "fields": {
+        "fin_prdt_cd": 26,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 6,
+        "intr_rate": 2.7,
+        "intr_rate2": 2.7
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 76,
+      "fields": {
+        "fin_prdt_cd": 26,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 12,
+        "intr_rate": 2.7,
+        "intr_rate2": 2.7
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 77,
+      "fields": {
+        "fin_prdt_cd": 26,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 24,
+        "intr_rate": 2.7,
+        "intr_rate2": 2.7
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 78,
+      "fields": {
+        "fin_prdt_cd": 26,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 36,
+        "intr_rate": 2.7,
+        "intr_rate2": 2.7
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 79,
+      "fields": {
+        "fin_prdt_cd": 27,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 6,
+        "intr_rate": 3.3,
+        "intr_rate2": 3.3
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 80,
+      "fields": {
+        "fin_prdt_cd": 27,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 12,
+        "intr_rate": 3.5,
+        "intr_rate2": 3.5
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 81,
+      "fields": {
+        "fin_prdt_cd": 27,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 24,
+        "intr_rate": 3.3,
+        "intr_rate2": 3.3
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 82,
+      "fields": {
+        "fin_prdt_cd": 27,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 36,
+        "intr_rate": 3.3,
+        "intr_rate2": 3.3
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 83,
+      "fields": {
+        "fin_prdt_cd": 28,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 6,
+        "intr_rate": 0.95,
+        "intr_rate2": 3.44
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 84,
+      "fields": {
+        "fin_prdt_cd": 28,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 12,
+        "intr_rate": 0.95,
+        "intr_rate2": 3.56
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 85,
+      "fields": {
+        "fin_prdt_cd": 28,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 24,
+        "intr_rate": 1.05,
+        "intr_rate2": 3.02
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 86,
+      "fields": {
+        "fin_prdt_cd": 28,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 36,
+        "intr_rate": 1.15,
+        "intr_rate2": 2.98
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 87,
+      "fields": {
+        "fin_prdt_cd": 29,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 6,
+        "intr_rate": 2.75,
+        "intr_rate2": 3.35
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 88,
+      "fields": {
+        "fin_prdt_cd": 29,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 12,
+        "intr_rate": 2.9,
+        "intr_rate2": 3.53
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 89,
+      "fields": {
+        "fin_prdt_cd": 29,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 24,
+        "intr_rate": 2.95,
+        "intr_rate2": 3.4
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 90,
+      "fields": {
+        "fin_prdt_cd": 29,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 36,
+        "intr_rate": 3.0,
+        "intr_rate2": 3.4
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 91,
+      "fields": {
+        "fin_prdt_cd": 30,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 6,
+        "intr_rate": 3.3,
+        "intr_rate2": 3.4
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 92,
+      "fields": {
+        "fin_prdt_cd": 30,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 12,
+        "intr_rate": 3.3,
+        "intr_rate2": 3.4
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 93,
+      "fields": {
+        "fin_prdt_cd": 31,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 12,
+        "intr_rate": 3.1,
+        "intr_rate2": 3.5
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 94,
+      "fields": {
+        "fin_prdt_cd": 31,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 24,
+        "intr_rate": 3.15,
+        "intr_rate2": 3.55
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 95,
+      "fields": {
+        "fin_prdt_cd": 31,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 36,
+        "intr_rate": 3.4,
+        "intr_rate2": 3.8
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 96,
+      "fields": {
+        "fin_prdt_cd": 32,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 12,
+        "intr_rate": 3.1,
+        "intr_rate2": 3.8
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 97,
+      "fields": {
+        "fin_prdt_cd": 33,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 6,
+        "intr_rate": 2.3,
+        "intr_rate2": 3.35
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 98,
+      "fields": {
+        "fin_prdt_cd": 33,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 12,
+        "intr_rate": 2.6,
+        "intr_rate2": 3.55
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 99,
+      "fields": {
+        "fin_prdt_cd": 33,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 24,
+        "intr_rate": 2.7,
+        "intr_rate2": 3.25
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 100,
+      "fields": {
+        "fin_prdt_cd": 33,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 36,
+        "intr_rate": 2.8,
+        "intr_rate2": 3.25
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 101,
+      "fields": {
+        "fin_prdt_cd": 34,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 6,
+        "intr_rate": 3.4,
+        "intr_rate2": 3.4
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 102,
+      "fields": {
+        "fin_prdt_cd": 34,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 12,
+        "intr_rate": 3.6,
+        "intr_rate2": 3.6
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 103,
+      "fields": {
+        "fin_prdt_cd": 34,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 24,
+        "intr_rate": 3.4,
+        "intr_rate2": 3.4
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 104,
+      "fields": {
+        "fin_prdt_cd": 34,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 36,
+        "intr_rate": 3.4,
+        "intr_rate2": 3.4
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 105,
+      "fields": {
+        "fin_prdt_cd": 35,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 12,
+        "intr_rate": 3.0,
+        "intr_rate2": 3.4
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 106,
+      "fields": {
+        "fin_prdt_cd": 36,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 6,
+        "intr_rate": 2.95,
+        "intr_rate2": 3.3
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 107,
+      "fields": {
+        "fin_prdt_cd": 36,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 12,
+        "intr_rate": 3.25,
+        "intr_rate2": 3.6
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 108,
+      "fields": {
+        "fin_prdt_cd": 37,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 6,
+        "intr_rate": 3.65,
+        "intr_rate2": 3.65
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 109,
+      "fields": {
+        "fin_prdt_cd": 37,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 12,
+        "intr_rate": 3.75,
+        "intr_rate2": 3.75
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 110,
+      "fields": {
+        "fin_prdt_cd": 38,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 6,
+        "intr_rate": 3.2,
+        "intr_rate2": 3.6
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 111,
+      "fields": {
+        "fin_prdt_cd": 38,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 12,
+        "intr_rate": 3.4,
+        "intr_rate2": 3.8
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 112,
+      "fields": {
+        "fin_prdt_cd": 39,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 12,
+        "intr_rate": 2.85,
+        "intr_rate2": 3.9
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 113,
+      "fields": {
+        "fin_prdt_cd": 40,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 6,
+        "intr_rate": 3.2,
+        "intr_rate2": 3.2
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 114,
+      "fields": {
+        "fin_prdt_cd": 40,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 12,
+        "intr_rate": 3.4,
+        "intr_rate2": 3.4
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 115,
+      "fields": {
+        "fin_prdt_cd": 40,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 24,
+        "intr_rate": 3.4,
+        "intr_rate2": 3.4
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 116,
+      "fields": {
+        "fin_prdt_cd": 40,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 36,
+        "intr_rate": 3.4,
+        "intr_rate2": 3.4
+      }
+    },
+    {
+      "model": "deposits.depositoptions",
+      "pk": 117,
+      "fields": {
+        "fin_prdt_cd": 41,
+        "intr_rate_type_nm": "단리",
+        "save_trm": 6,
+        "intr_rate": 3.5,
+        "intr_rate2": 3.5
+      }
+    }
+    ]
+    

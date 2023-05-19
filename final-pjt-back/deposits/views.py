@@ -1,6 +1,7 @@
 from django.conf import settings
 from .serializers import DepositProductsSerializer, DepositOptionsSerializer
 from .models import DepositOptions, DepositProducts
+from accounts.models import User
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
@@ -74,5 +75,9 @@ def deposit_detail(request, fin_prdt_cd):
 def recomend_deposit(request):
     if request.method == 'POST':
         data = request.data
-        print(data)
+        user_data = User.objects.all()
+        # print(user_data)
+        # for i in data.items():
+        #     print(i)
+        
         return Response(data, status=status.HTTP_200_OK)
