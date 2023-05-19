@@ -75,9 +75,6 @@ def deposit_detail(request, fin_prdt_cd):
 def recomend_deposit(request):
     if request.method == 'POST':
         data = request.data
-        user_data = User.objects.all()
-        # print(user_data)
-        # for i in data.items():
-        #     print(i)
+        print(data)
         
         return Response(data, status=status.HTTP_200_OK)
