@@ -16,6 +16,7 @@ class CustomRegisterSerializer(RegisterSerializer):
 
     def get_cleaned_data(self):
         data_dict = super().get_cleaned_data()
+
         data_dict['age'] = self.validated_data.get('age', None)
         data_dict['gender'] = self.validated_data.get('gender', None)
         data_dict['salary'] = self.validated_data.get('salary', None)
@@ -33,3 +34,8 @@ class CustomRegisterSerializer(RegisterSerializer):
         user.tendency = self.validated_data.get('tendency', None)
         user.save()
         return user
+    
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = get_user_model()
+        fields = ['pk','username', 'age', 'gender','salary', 'wealth', 'tendency']

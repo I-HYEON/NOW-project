@@ -3,6 +3,10 @@
     <div v-if="isLogin">로그인된 상태
       <div>
         여기에 프로필이 들어가면 좋겠죠?
+        <div>
+          왜안뜨지
+          {{ userInfo.username }}
+        </div>
         <button @click="logOut">로그아웃</button>
       </div>
     </div>
@@ -29,6 +33,9 @@ export default {
   computed: {
     isLogin() {
       return this.$store.getters.isLogin
+    },
+    userInfo() {
+      return this.$store.state.userInfo
     }
   },
   data() {
@@ -48,8 +55,8 @@ export default {
 
       this.$store.dispatch('login', payload)
       .then(()=>{
-        //로그인이 정상적으로 되었을때
-        console.log('로그인잘됨!')
+        //로그인이 정상적으로 되었을때 getUserInfo()메서드를 실행시켜서 userInfo를 가져오
+        this.$store.dispatch('getUserInfo')
       })
       .catch((err)=>{
         console.error('로그인이실패',err)
