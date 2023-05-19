@@ -70,14 +70,13 @@ export default new Vuex.Store({
       const salary = payload.salary
       const wealth = payload.wealth
       const tendency = payload.tendency
-      const email = payload.email
-      console.log(username, password1, password2, age, gender, salary, wealth, tendency, email)
+      console.log(username, password1, password2, age, gender, salary, wealth, tendency)
 
       axios({
         method: 'post',
-        url: 'http://127.0.0.1:8000/accounts/registration/',
+        url: 'http://127.0.0.1:8000/accounts/signup/',
         data: {
-          username, password1, password2, age, gender, salary, wealth, tendency, email
+          username, password1, password2, age, gender, salary, wealth, tendency
         }
       })
       .then((res)=>{

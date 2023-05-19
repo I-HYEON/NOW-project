@@ -36,9 +36,9 @@
         <input type="radio" name="tendency" v-model="tendency" value="3">장기
         <br>
 
-        <label for="email">email:</label>
+        <!-- <label for="email">email:</label>
         <input type="text" v-model="email">
-        <br>
+        <br> -->
 
         <input type="submit">
     </form>
@@ -58,7 +58,6 @@ export default {
         salary: '',
         wealth: '',
         tendency: '',
-        email: ''
     }
   },
   methods: {
@@ -71,10 +70,9 @@ export default {
         const salary = this.salary;
         const wealth = this.wealth;
         const tendency = this.tendency;
-        const email = this.email;
 
         const payload = {
-            username, password1, password2, age, gender, salary, wealth, tendency, email
+            username, password1, password2, age, gender, salary, wealth, tendency
         }
 
         this.$store.dispatch('signUp', payload);
