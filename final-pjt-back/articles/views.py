@@ -64,6 +64,7 @@ def comment_detail(request, comment_pk):
         if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data)
+
 @api_view(['POST'])
 def comment_create(request, article_pk):
     #comment는 user정보가 포함된 article을 외래키로 삼기때문에 user를 별도로 추가할 필요가 없다.
