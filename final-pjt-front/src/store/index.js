@@ -1,11 +1,15 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import createPersistedState from 'vuex-persistedstate'
 
 Vue.use(Vuex)
 const API_URL = 'http://127.0.0.1:8000'
 
 export default new Vuex.Store({
+  plugins: [
+    createPersistedState(),
+  ],
   state: {
     token: null,
     articles: [
@@ -16,14 +20,21 @@ export default new Vuex.Store({
     currentDetail: null,
   },
   getters: {
-    // isLogin(state){
-    //   return state.token ? true : false
-    // },
+    isLogin(state){
+      return state.token ? true : false
+    },
   },
   mutations: {
-    LOGIN(state, payload){
-      this.state.token = payload
-      console.log('잘들어갔나확인',this.state.token)
+    LOGIN(state,payload){
+      state.token = payload
+      console.log('logintoken이 잘들어갔나요?',this.state.token)
+    },
+    LOGOUT(state) {
+      state.token = null
+    },
+    SIGNUP(state, payload){
+      state.token = payload
+      console.log('signuptoken 잘들어갔나요?',this.state.token)
     },
     GET_ARTICLES(state, articles){
       state.articles = articles
@@ -62,54 +73,70 @@ export default new Vuex.Store({
       .catch(err => console.log(err))
     },
     signUp(context, payload) {
-      const username = payload.username
-      const password1 = payload.password1
-      const password2 = payload.password2
-      const age = payload.age
-      const gender = payload.gender
-      const salary = payload.salary
-      const wealth = payload.wealth
-      const tendency = payload.tendency
-      console.log(username, password1, password2, age, gender, salary, wealth, tendency)
+      return new Promise((resolve, reject) => {
+        const username = payload.username
+        const password1 = payload.password1
+        const password2 = payload.password2
+        const age = payload.age
+        const gender = payload.gender
+        const salary = payload.salary
+        const wealth = payload.wealth
+        const tendency = payload.tendency
 
-      axios({
-        method: 'post',
-        url: 'http://127.0.0.1:8000/accounts/signup/',
-        data: {
-          username, password1, password2, age, gender, salary, wealth, tendency
-        }
-      })
-      .then((res)=>{
-        console.log('결과가',res)
-        console.log('토큰이!!',res.data.key)
-      })
-      .catch((err)=> {
-        console.log(err)
-      })
+        axios({
+          method: 'post',
+          url: 'http://127.0.0.1:8000/accounts/signup/',
+          data: {
+            username, password1, password2, age, gender, salary, wealth, tendency
+          }
+        })
+        .then((res)=>{
+          // console.log('토큰이actions까지는 잘옴',res.data.key)
+          const token = res.data.key
+          context.commit('SIGNUP',token)
+          // context.dispatch('saveTokenState')
+          resolve()
+        })
+        .catch((err)=> {
+          console.log(err)
+          reject(err)
+        })
+
+      }
+      )
+      
     },
     login(context, payload){
-      const username = payload.username
-      const password = payload.password
-      axios({
-        method: 'post',
-        url: 'http://127.0.0.1:8000/accounts/login/',
-        data: {
-          username, password
-        }
+      return new Promise((resolve, reject) => {
+        const username = payload.username
+        const password = payload.password
+        axios({
+          method: 'post',
+          url: 'http://127.0.0.1:8000/accounts/login/',
+          data: {
+            username, password
+          }
+        })
+        .then((res)=>{
+          console.log('왜이게안나오지?',res.data.key)
+          const token = res.data.key
+          context.commit('LOGIN', token)
+          // context.dispatch('saveTokenState')
+          resolve()
+        })
+        .catch((err)=> {
+          console.log(err)
+          reject(err)
+        })
       })
-      .then((res)=>{
-        // console.log(res.data.key)
-        const token = res.data.key
-        context.commit('LOGIN', token)
-        context.dispatch('saveTokenState')
-      })
-      .catch((err)=> {
-        console.log(err)
-      })
+      
     },
     saveTokenState(context) {
       const jsonToken = JSON.stringify(context.state.token)
       localStorage.setItem('token', jsonToken)
+    },
+    logOut(context) {
+      context.commit('LOGOUT')
     }
   },
   modules: {
