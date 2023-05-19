@@ -1,5 +1,7 @@
 from django.urls import path,include
 from .views import CustomRegisterView
+from dj_rest_auth.registration.views import RegisterView
+from .serializers import CustomRegisterSerializer
 
 urlpatterns = [
     path('', include('dj_rest_auth.urls')),

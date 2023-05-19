@@ -62,6 +62,7 @@ export default {
   },
   methods: {
     signUp() {
+        // console.log('SignUpView까지는 잘가고있음')
         const username = this.username;
         const password1 = this.password1;
         const password2 = this.password2;
@@ -75,7 +76,16 @@ export default {
             username, password1, password2, age, gender, salary, wealth, tendency
         }
 
-        this.$store.dispatch('signUp', payload);
+        this.$store.dispatch('signUp', payload)
+        .then(() => {
+          //성공적으로 회원가입이 완료된 경우
+          console.log('메인으로')
+          this.$router.push('/')
+        })
+        .catch((error)=>{
+          console.log('메인으로못감')
+          console.error(error)
+        })
         // console.log(this.gender)
     }
 }

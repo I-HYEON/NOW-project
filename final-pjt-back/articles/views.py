@@ -31,6 +31,7 @@ def article_detail(request, article_pk):
     
     elif request.method == 'DELETE':
         article.delete()
+
         return Response(status=status.HTTP_204_NO_CONTENT)
     
     elif request.method == 'PUT':
@@ -42,7 +43,7 @@ def article_detail(request, article_pk):
 @api_view(['GET'])
 def comment_list(request):
     if request.method == 'GET':
-        comments = get_list_or_404(Comment)
+        comments = Comment.objects.all()
         serializer = CommentSerializer(comments, many=True)
         return Response(serializer.data)
     
@@ -71,3 +72,17 @@ def comment_create(request, article_pk):
     if serializer.is_valid(raise_exception=True):
         serializer.save(article=article)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+@api_view(['POST'])
+#해당유저가 로그인되있는지 확인하는 데코?
+def likes(request, article_pk):
+    if request.user.is_authenticated:
+        if request.method== 'POST':
+            article = Article.objects.get(pk=article_pk)
+            if request.user in article.like_users.all():
+                article.like_users.remove(request.user)
+            else:
+                article.like_users.add(request.user)
+
+            serializer = ArticleSerializer(article)
+            return Response(serializer.data)
