@@ -71,9 +71,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:8080/',
-]
+# CORS_ALLOWED_ORIGINS = [
+#     'http://localhost:8080/',
+# ]
 
 ROOT_URLCONF = 'final_pjt_back.urls'
 
@@ -172,3 +172,9 @@ env = environ.Env(DEBUG=(bool, True))
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 API_KEY = env('API_KEY')
+
+REST_AUTH_REGISTER_SERIALIZERS = {
+    'REGISTER_SERIALIZER': 'accounts.serializers.CustomRegisterSerializer',
+}
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' 
