@@ -1,17 +1,18 @@
-from rest_framework import serializers
 from dj_rest_auth.serializers import LoginSerializer
+from django.contrib.auth import get_user_model
 from dj_rest_auth.registration.serializers import RegisterSerializer
+from rest_framework import serializers
 
 class CustomLoginSerializer(LoginSerializer):
     # email 필드 제거
     email = None
 
 class CustomRegisterSerializer(RegisterSerializer):
-    age = serializers.IntegerField()
-    gender = serializers.IntegerField()
-    salary = serializers.IntegerField()
-    wealth = serializers.IntegerField()
-    tendency = serializers.IntegerField()
+    age = serializers.IntegerField(required=False, allow_null=True)
+    gender = serializers.CharField(required=False, allow_blank=True)
+    salary = serializers.IntegerField(required=False, allow_null=True)
+    wealth = serializers.IntegerField(required=False, allow_null=True)
+    tendency = serializers.IntegerField(required=False, allow_null=True)
 
     def get_cleaned_data(self):
         data_dict = super().get_cleaned_data()

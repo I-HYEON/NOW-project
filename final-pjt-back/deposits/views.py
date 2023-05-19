@@ -70,4 +70,9 @@ def deposit_detail(request, fin_prdt_cd):
 
     return Response(serializer_data, status=status.HTTP_200_OK)
 
-
+@api_view(['POST'])
+def recomend_deposit(request):
+    if request.method == 'POST':
+        data = request.data
+        print(data)
+        return Response(data, status=status.HTTP_200_OK)
