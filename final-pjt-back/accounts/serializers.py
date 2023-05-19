@@ -21,8 +21,9 @@ class CustomRegisterSerializer(RegisterSerializer):
         data_dict['salary'] = self.validated_data.get('salary', None)
         data_dict['wealth'] = self.validated_data.get('wealth', None)
         data_dict['tendency'] = self.validated_data.get('tendency', None)
+        
         return data_dict
-
+    
     def save(self, request):
         user = super().save(request)
         user.age = self.validated_data.get('age', None)
