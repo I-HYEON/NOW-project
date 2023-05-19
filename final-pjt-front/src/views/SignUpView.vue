@@ -36,9 +36,9 @@
         <input type="radio" name="tendency" v-model="tendency" value="3">장기
         <br>
 
-        <label for="email">email:</label>
+        <!-- <label for="email">email:</label>
         <input type="text" v-model="email">
-        <br>
+        <br> -->
 
         <input type="submit">
     </form>
@@ -58,11 +58,11 @@ export default {
         salary: '',
         wealth: '',
         tendency: '',
-        email: ''
     }
   },
   methods: {
     signUp() {
+        // console.log('SignUpView까지는 잘가고있음')
         const username = this.username;
         const password1 = this.password1;
         const password2 = this.password2;
@@ -71,13 +71,21 @@ export default {
         const salary = this.salary;
         const wealth = this.wealth;
         const tendency = this.tendency;
-        const email = this.email;
 
         const payload = {
-            username, password1, password2, age, gender, salary, wealth, tendency, email
+            username, password1, password2, age, gender, salary, wealth, tendency
         }
 
-        this.$store.dispatch('signUp', payload);
+        this.$store.dispatch('signUp', payload)
+        .then(() => {
+          //성공적으로 회원가입이 완료된 경우
+          console.log('메인으로')
+          this.$router.push('/')
+        })
+        .catch((error)=>{
+          console.log('메인으로못감')
+          console.error(error)
+        })
         // console.log(this.gender)
     }
 }

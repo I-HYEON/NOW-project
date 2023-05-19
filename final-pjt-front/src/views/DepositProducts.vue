@@ -57,7 +57,7 @@ export default {
     },
   },
   created(){
-    console.log('제발')
+    // console.log('제발')
     this.getDepositData()
   },
 }

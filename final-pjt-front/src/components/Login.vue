@@ -1,13 +1,15 @@
 <template>
   <div>
-    <form @submit.prevent="login">
-      <!-- <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" v-model="email">
-        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-      </div> -->
+    <div v-if="isLogin">로그인된 상태
+      <div>
+        여기에 프로필이 들어가면 좋겠죠?
+        <button @click="logOut">로그아웃</button>
+      </div>
+    </div>
+    <div v-else>you 로그인안된 상태
+      <form @submit.prevent="login">
       <div class="mb-3">
-        <label for="username" class="form-label">Email address</label>
+        <label for="username" class="form-label">Username</label>
         <input type="text" class="form-control" id="username" v-model="username">
       </div>
       <div class="mb-3">
@@ -16,12 +18,19 @@
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+    </div>
+    
   </div>
 </template>
 
 <script>
 export default {
   name: 'Login',
+  computed: {
+    isLogin() {
+      return this.$store.getters.isLogin
+    }
+  },
   data() {
     return {
       username: '',
@@ -38,6 +47,16 @@ export default {
       }
 
       this.$store.dispatch('login', payload)
+      .then(()=>{
+        //로그인이 정상적으로 되었을때
+        console.log('로그인잘됨!')
+      })
+      .catch((err)=>{
+        console.error('로그인이실패',err)
+      })
+    },
+    logOut() {
+      this.$store.dispatch('logOut')
     }
   }
 }
@@ -46,4 +65,3 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
 </style>
-    
