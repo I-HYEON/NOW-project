@@ -13,6 +13,7 @@ export default new Vuex.Store({
     comments: [
     ],
     depositData: null,
+    currentDetail: null,
   },
   getters: {
     // isLogin(state){
@@ -33,6 +34,9 @@ export default new Vuex.Store({
     },
     GET_DEPOSIT_DATA(state, depositData) {
       state.depositData = depositData
+    },
+    GET_CURRENT_DETAIL(state, currentDetail) {
+      state.currentDetail = currentDetail
     },
   },
   actions: {
