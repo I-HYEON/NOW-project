@@ -48,7 +48,7 @@ export default {
 
       this.$store.dispatch('login', payload)
       .then(()=>{
-        //로그인이 정상적으로 되었을때
+        //로그인이 정상적으로 되었을때 getUserInfo()메서드를 실행시켜서 userInfo를 가져오
         console.log('로그인잘됨!')
       })
       .catch((err)=>{
