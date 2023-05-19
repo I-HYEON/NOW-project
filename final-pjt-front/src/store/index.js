@@ -41,7 +41,7 @@ export default new Vuex.Store({
     },
     GET_COMMENTS(state, comments){
       state.comments = comments
-      console.log(state.comments)
+      // console.log(state.comments)
     },
     GET_DEPOSIT_DATA(state, depositData) {
       state.depositData = depositData
@@ -67,7 +67,7 @@ export default new Vuex.Store({
         url:  `${API_URL}/articles/comments/`
       })
       .then((res)=>{
-        console.log(res)
+        // console.log(res)
         context.commit('GET_COMMENTS',res.data)
       })
       .catch(err => console.log(err))
@@ -104,7 +104,6 @@ export default new Vuex.Store({
 
       }
       )
-      
     },
     login(context, payload){
       return new Promise((resolve, reject) => {
