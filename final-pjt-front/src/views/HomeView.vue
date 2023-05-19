@@ -33,6 +33,7 @@
     <router-link to='/recommend'>추천</router-link>
     
     <div v-if="isLogin">현재 사용자는 {{tempToken}}</div>
+    
   </div>
 </template>
 

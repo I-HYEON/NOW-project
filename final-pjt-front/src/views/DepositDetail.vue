@@ -2,7 +2,13 @@
   <div class="container">
     <div class="row">
       <div class="col-9">
-        <h1>예적금 상세 정보</h1>
+        <div class="d-flex justify-content-between"><div>
+          <h1>예적금 상세 정보</h1></div>
+          <div class="d-flex">
+            <button type="button" class="btn btn-primary" @click="">가입 신청</button>
+            <button type="button" class="btn btn-danger" @click="">가입 취소</button>
+          </div>
+        </div>
         <div class="container align-items-center">
           <div class="container">
             <div class="row">
@@ -82,6 +88,9 @@ methods: {
     set_info() {
       this.deposit_detail = this.$store.state.currentDetail.deposit_detail
       this.deposit_detail_options = this.$store.state.currentDetail.deposit_detail_options
+    },
+    signDeposit() {
+      
     }
 },
 created(){
