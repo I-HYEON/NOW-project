@@ -34,3 +34,8 @@ class CustomRegisterSerializer(RegisterSerializer):
         user.tendency = self.validated_data.get('tendency', None)
         user.save()
         return user
+    
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = get_user_model()
+        fields = ['pk','username', 'age', 'gender','salary', 'wealth', 'tendency']

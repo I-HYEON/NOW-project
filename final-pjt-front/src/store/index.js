@@ -18,6 +18,7 @@ export default new Vuex.Store({
     ],
     depositData: null,
     currentDetail: null,
+    userInfo: null
   },
   getters: {
     isLogin(state){
@@ -49,6 +50,9 @@ export default new Vuex.Store({
     GET_CURRENT_DETAIL(state, currentDetail) {
       state.currentDetail = currentDetail
     },
+    USERINFO(state, payload) {
+      state.userInfo = payload
+    }
   },
   actions: {
     getArticles(context){
@@ -130,9 +134,25 @@ export default new Vuex.Store({
       })
       
     },
-    saveTokenState(context) {
-      const jsonToken = JSON.stringify(context.state.token)
-      localStorage.setItem('token', jsonToken)
+    getUserInfo(context) {
+      const token = context.state.token
+      
+      axios({
+        methods: 'get',
+        url: 'http://127.0.0.1:8000/accounts/user_info/',
+        headers: {
+          Authorization: `Token ${token}`
+        }
+      })
+      .then((res)=>{
+        console.log('잘받아와졌다면',res)
+        console.log(res.data)
+        const userInfo = res.data
+        context.commit('USERINFO',userInfo)
+      })
+      .then((err)=>{
+        console.log(err)
+      })
     },
     logOut(context) {
       context.commit('LOGOUT')
