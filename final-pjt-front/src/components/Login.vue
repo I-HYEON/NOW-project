@@ -7,7 +7,7 @@
         <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
       </div> -->
       <div class="mb-3">
-        <label for="username" class="form-label">Email address</label>
+        <label for="username" class="form-label">Username</label>
         <input type="text" class="form-control" id="username" v-model="username">
       </div>
       <div class="mb-3">

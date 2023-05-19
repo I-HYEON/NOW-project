@@ -8,6 +8,7 @@ import ArticleView from '@/views/ArticleView'
 import CreateView from '@/views/CreateView'
 import ArticleDetailView from '../views/ArticleDetailView'
 import DepositDetail from '../views/DepositDetail.vue'
+import Recommend from '../views/Recommend.vue'
 
 Vue.use(VueRouter)
 
@@ -52,6 +53,11 @@ const routes = [
     path: '/article/:id',
     name: 'ArticleDetailView',
     component: ArticleDetailView
+  },
+  {
+    path: '/recommend',
+    name: 'Recommend',
+    component: Recommend
   }
 ]
 
