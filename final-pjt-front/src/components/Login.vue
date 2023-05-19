@@ -2,7 +2,7 @@
   <div>
     <div v-if="isLogin">로그인된 상태
       <div>
-        여기에 프로필이 들어가면 좋겠죠?
+        여기에 프로필이 들어가면 좋겠죠
         <div>
           왜안뜨지
           {{ userInfo.username }}
