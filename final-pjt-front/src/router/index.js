@@ -9,6 +9,7 @@ import CreateView from '@/views/CreateView'
 import ArticleDetailView from '../views/ArticleDetailView'
 import DepositDetail from '../views/DepositDetail.vue'
 import Recommend from '../views/Recommend.vue'
+import MapView from '../views/MapView.vue'
 
 Vue.use(VueRouter)
 
@@ -58,6 +59,11 @@ const routes = [
     path: '/recommend',
     name: 'Recommend',
     component: Recommend
+  },
+  {
+    path: '/mapview',
+    name: 'mapview',
+    component: MapView
   }
 ]
 

@@ -17,7 +17,7 @@
             <Login/>
           </div>
           <div class="container">
-            <div class="col">바로가기1</div>
+            <router-link to="mapview/"><div class="col">바로가기1</div></router-link>
             <div class="col">바로가기1</div>
             <div class="col">바로가기1</div>
             <div class="col">바로가기1</div>
@@ -47,9 +47,6 @@ export default {
     isLogin() {
       return this.$store.getters.isLogin
     },
-    tempToken() {
-      return this.$store.state.token
-    }
   },
   components: {
     HelloWorld,

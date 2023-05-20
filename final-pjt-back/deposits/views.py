@@ -1,6 +1,6 @@
 from django.conf import settings
-from .serializers import DepositProductsSerializerD, DepositProductsSerializerC, DepositProductsSerializer, DepositOptionsSerializer
-from .models import DepositOptions, DepositProducts
+from .serializers import DepositProductsSerializerD, DepositProductsSerializerC, DepositProductsSerializer, DepositOptionsSerializer, CommentSerializer
+from .models import DepositOptions, DepositProducts, Comment
 from accounts.serializers import UserSerializer
 from accounts.models import User
 from rest_framework.decorators import api_view
@@ -8,6 +8,13 @@ from rest_framework.response import Response
 from rest_framework import status
 import requests
 from collections import defaultdict
+from django.db.models import Count, Q
+from django.shortcuts import get_object_or_404
+
+from rest_framework.response import Response
+from rest_framework import status
+import requests
+
 from django.db.models import Count, Q
 
 DEPOSIT_BASE_URL = 'http://finlife.fss.or.kr/finlifeapi/'
@@ -182,3 +189,36 @@ def deposit_sign(request, fin_prdt_cd, user_pk):
     User_info = UserSerializer(User_info)
     # 반환
     return Response(User_info.data, status=status.HTTP_200_OK)
+
+@api_view(['GET'])
+def comment_list(request):
+    if request.method == 'GET':
+        comments = Comment.objects.all()
+        serializer = CommentSerializer(comments, many=True)
+        return Response(serializer.data)
+    
+@api_view(['GET','DELETE','PUT'])
+def comment_detail(request, comment_pk):
+    comment = get_object_or_404(Comment, pk=comment_pk)
+
+    if request.method == 'GET':
+        serilaizer = CommentSerializer(comment)
+        return Response(serilaizer.data)
+    
+    elif request.method == 'DELETE':
+        comment.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    
+    elif request.method == 'PUT':
+        serializer = CommentSerializer(comment, data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(serializer.data)
+
+@api_view(['POST'])
+def comment_create(request, depositproducts_pk):
+    depositproducts = get_object_or_404(DepositProducts, pk=depositproducts_pk)
+    serializer = CommentSerializer(data = request.data)
+    if serializer.is_valid(raise_exception=True):
+        serializer.save(depositproducts=depositproducts)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
