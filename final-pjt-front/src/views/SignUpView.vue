@@ -80,6 +80,7 @@ export default {
         .then(() => {
           //성공적으로 회원가입이 완료된 경우
           console.log('메인으로')
+          this.$store.dispatch('getUserInfo')
           this.$router.push('/')
         })
         .catch((error)=>{
