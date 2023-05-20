@@ -6,7 +6,6 @@
         <div>
           왜안뜨지
           {{ userInfo.username }}
-          {{ userInfo.deposit }}
         </div>
         <button @click="logOut">로그아웃</button>
       </div>

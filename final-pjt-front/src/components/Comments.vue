@@ -2,11 +2,9 @@
   <div>
     
     <h3>댓글 작성</h3>
-    <form @submit.prevent="createComment">
-      <label for="content">내용 : </label>
-      <input type="text" id="content" v-model="content" @keyup.enter="getComments">
-      <input type="submit" value="작성">
-    </form>
+    <label for="content">내용 : </label>
+    <input type="text" id="content" v-model="content" @keyup.enter="createComment">
+    <button type="submit" id="content" @click="createComment">작성</button>
 
     <br>
     <template v-if="comments.length === 0">
@@ -69,6 +67,7 @@ export default {
     //   console.log(this.comme)
     // },
     getComments(){
+      console.log('asdf')
       axios({
         method: 'get',
         url:  `${API_URL}/articles/comments/`
@@ -92,6 +91,7 @@ export default {
         })
           .then(() => {
             this.content = null
+            this.getComments()
           })
           .catch((err) => {
             console.log(err);
