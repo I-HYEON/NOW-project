@@ -9,6 +9,8 @@
       <li class="list-group-item">{{ deposit.kor_co_nm }}</li>
       <li class="list-group-item">id에요 {{ deposit.id }}</li>
       <li class="list-group-item">좋아요 갯수 넣으면 좋을듯</li>
+      <li class="list-group-item">현재 가입자 수 : {{ deposit.user_count }}</li>
+
     </ul>
     <div class="card-body">
       <router-link

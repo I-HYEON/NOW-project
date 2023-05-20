@@ -53,18 +53,32 @@
             </td>
         </tr>
     </table>
+    <div class="container">
+        <div class="row">
+            <DepositCard
+            v-for="deposit in this.sorted_depositData"
+            :deposit="deposit"
+            :key="deposit.id"
+            />
+        </div>
+    </div>
   </div>
 
 </template>
 
 <script>
 import axios from 'axios'
+import DepositCard from '@/components/DepositCard.vue'
 const API_URL = 'http://127.0.0.1:8000'
 
 export default {
     name: 'Recommend',
+    components: {
+        DepositCard
+    },
     data(){
         return {
+            sorted_depositData : [],
             info : {
             gen_one : false, gen_two : false,
             age_one : false, age_two : false, age_thr : false, age_fou : false, age_five : false, age_six : false,
@@ -83,7 +97,7 @@ export default {
                 data: info,
             })
             .then((response) => {
-            console.log(response)
+                this.sorted_depositData = response.data
             })
             .catch((err) => {
             console.log(err)
