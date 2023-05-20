@@ -5,8 +5,8 @@
         <div class="d-flex justify-content-between"><div>
           <h1>예적금 상세 정보</h1></div>
           <div class="d-flex">
-            <button type="button" class="btn btn-primary" @click="">가입 신청</button>
-            <button type="button" class="btn btn-danger" @click="">가입 취소</button>
+            <button v-if=show type="button" class="btn btn-danger" @click="signDeposit">가입 취소</button>
+            <button v-else type="button" class="btn btn-primary" @click="signDeposit">가입 신청</button>
           </div>
         </div>
         <div class="container align-items-center">
@@ -68,10 +68,19 @@ import axios from 'axios'
 
 export default {
 name: 'DepositDetail',
+computed: {
+    isLogin() {
+      return this.$store.getters.isLogin
+    },
+    userInfo() {
+      return this.$store.state.userInfo
+    }
+},
 data(){
   return{
     deposit_detail:null,
-    deposit_detail_options:null
+    deposit_detail_options:null,
+    show:null
   }
 },
 components: {
@@ -84,13 +93,24 @@ methods: {
       this.$store.commit('GET_CURRENT_DETAIL', response.data)
       console.log(this.$store.state.currentDetail)
       this.set_info()
+      this.check()
     },
     set_info() {
       this.deposit_detail = this.$store.state.currentDetail.deposit_detail
       this.deposit_detail_options = this.$store.state.currentDetail.deposit_detail_options
     },
-    signDeposit() {
-      
+    async signDeposit() {
+      const response = await axios.post(`http://127.0.0.1:8000/deposits/detail/${this.$route.params.bank_info}/${this.userInfo.pk}/`)
+      console.log(response)
+      this.$store.commit('USERINFO',response.data)
+      this.check()
+    },
+      check() {
+      if (this.userInfo.deposit.includes(this.deposit_detail.id)){
+        this.show = true
+      }else{
+        this.show = false
+      }
     }
 },
 created(){
