@@ -1,5 +1,6 @@
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view,permission_classes
+from rest_framework.permissions import IsAuthenticated
 
 from rest_framework import status
 from django.shortcuts import get_object_or_404, get_list_or_404
@@ -8,17 +9,19 @@ from .models import Article, Comment
 
 # Create your views here.
 @api_view(['GET', 'POST'])
+@permission_classes([IsAuthenticated])
 def article_list(request):
     if request.method == 'GET':
-        articles = get_list_or_404(Article)
+        # articles = get_list_or_404(Article)
+        articles = Article.objects.all()
         serializer = ArticlesListSerializer(articles, many=True)
         return Response(serializer.data)
 
     elif request.method == 'POST':
         serializer = ArticleSerializer(data=request.data)
+        print(request.user)
         if serializer.is_valid(raise_exception=True):
-            # serializer.save(user=request.user) 유저가 있으면 아래꺼 지우고 이걸로
-            serializer.save()
+            serializer.save(user=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 @api_view(['GET', 'DELETE', 'PUT'])
@@ -75,7 +78,7 @@ def comment_create(request, article_pk):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 @api_view(['POST'])
-#해당유저가 로그인되있는지 확인하는 데코?
+#해당유저가 로그인되있는지 확인하는 데코?는 애초에 인증된 유저아니면 못들어와서 패스
 def likes(request, article_pk):
     if request.user.is_authenticated:
         if request.method== 'POST':

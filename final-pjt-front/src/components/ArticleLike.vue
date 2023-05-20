@@ -1,8 +1,8 @@
 <template>
     <div>
         좋아요 페이지
-   <!-- <button @click="like">좋아요</button>
-    {{article?.like_users.length}}
+    <button @click="like">좋아요</button>
+    <!-- {{article?.like_users.length}}
     {{article.id}} -->
     </div>
 </template>

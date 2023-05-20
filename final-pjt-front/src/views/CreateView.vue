@@ -40,7 +40,12 @@ export default {
       axios({
         method: 'post',
         url: `${API_URL}/articles/`,
+        headers:{
+          Authorization: `Token ${this.$store.state.token}`
+        },
+
         data: { title, content},
+        
       })
       .then(() => {
         // console.log(res)
