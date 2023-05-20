@@ -70,12 +70,12 @@ def comment_detail(request, comment_pk):
             return Response(serializer.data)
 
 @api_view(['POST'])
+@permission_classes([IsAuthenticated])
 def comment_create(request, article_pk):
-    #comment는 user정보가 포함된 article을 외래키로 삼기때문에 user를 별도로 추가할 필요가 없다.
     article = get_object_or_404(Article, pk=article_pk)
     serializer = CommentSerializer(data = request.data)
     if serializer.is_valid(raise_exception=True):
-        serializer.save(article=article)
+        serializer.save(article=article, user=request.user)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 @api_view(['POST'])

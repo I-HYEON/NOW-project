@@ -7,6 +7,7 @@
     <ul class="list-group list-group-flush">
       <li class="list-group-item">{{ deposit.fin_prdt_nm }}</li>
       <li class="list-group-item">{{ deposit.kor_co_nm }}</li>
+      <li class="list-group-item">id에요 {{ deposit.id }}</li>
       <li class="list-group-item">좋아요 갯수 넣으면 좋을듯</li>
     </ul>
     <div class="card-body">

@@ -1,8 +1,10 @@
 from django.conf import settings
-from .serializers import DepositProductsSerializer, DepositOptionsSerializer
-from .models import DepositOptions, DepositProducts
+from .serializers import DepositProductsSerializer, DepositOptionsSerializer, CommentSerializer
+from .models import DepositOptions, DepositProducts, Comment
 from accounts.models import User
 from rest_framework.decorators import api_view
+from django.shortcuts import get_object_or_404, get_list_or_404
+
 from rest_framework.response import Response
 from rest_framework import status
 import requests
@@ -78,3 +80,37 @@ def recomend_deposit(request):
         print(data)
         
         return Response(data, status=status.HTTP_200_OK)
+    
+
+@api_view(['GET'])
+def comment_list(request):
+    if request.method == 'GET':
+        comments = Comment.objects.all()
+        serializer = CommentSerializer(comments, many=True)
+        return Response(serializer.data)
+    
+@api_view(['GET','DELETE','PUT'])
+def comment_detail(request, comment_pk):
+    comment = get_object_or_404(Comment, pk=comment_pk)
+
+    if request.method == 'GET':
+        serilaizer = CommentSerializer(comment)
+        return Response(serilaizer.data)
+    
+    elif request.method == 'DELETE':
+        comment.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    
+    elif request.method == 'PUT':
+        serializer = CommentSerializer(comment, data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(serializer.data)
+
+@api_view(['POST'])
+def comment_create(request, depositproducts_pk):
+    depositproducts = get_object_or_404(DepositProducts, pk=depositproducts_pk)
+    serializer = CommentSerializer(data = request.data)
+    if serializer.is_valid(raise_exception=True):
+        serializer.save(depositproducts=depositproducts)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
