@@ -25,13 +25,13 @@ export default {
   },
   methods: {
     getArticles() {
-    //   if (this.isLogin) {
-    //     this.$store.dispatch('getArticles')
-    //   } else {
-    //     alert('로그인이 필요한 페이지입니다...')
-    //     this.$router.push({ name: 'LogInView' })
-    //   } 작업을 위해 잠시 주석 처리
-      this.$store.dispatch('getArticles')
+      if (this.isLogin) {
+        this.$store.dispatch('getArticles')
+      } else {
+        alert('로그인이 필요한 페이지입니다...')
+        this.$router.push({ name: 'LogInView' })
+      } 
+      // this.$store.dispatch('getArticles')
 
     }
   }

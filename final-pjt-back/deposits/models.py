@@ -20,3 +20,9 @@ class DepositOptions(models.Model):
     save_trm = models.IntegerField(default=-1)
     intr_rate = models.FloatField(default=-1)
     intr_rate2 = models.FloatField(default=-1)
+    
+class Comment(models.Model):
+    depositproducts = models.ForeignKey(DepositProducts, on_delete=models.CASCADE)
+    content = models.CharField(max_length=200)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
