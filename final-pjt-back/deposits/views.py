@@ -1,14 +1,13 @@
 from django.conf import settings
-from .serializers import DepositProductsSerializer, DepositOptionsSerializer, CommentSerializer
-from .models import DepositOptions, DepositProducts, Comment
+from .serializers import DepositProductsSerializerD, DepositProductsSerializerC, DepositProductsSerializer, DepositOptionsSerializer
+from .models import DepositOptions, DepositProducts
+from accounts.serializers import UserSerializer
 from accounts.models import User
 from rest_framework.decorators import api_view
-from django.shortcuts import get_object_or_404, get_list_or_404
-
 from rest_framework.response import Response
 from rest_framework import status
 import requests
-
+from collections import defaultdict
 from django.db.models import Count, Q
 
 DEPOSIT_BASE_URL = 'http://finlife.fss.or.kr/finlifeapi/'
@@ -28,7 +27,7 @@ def save_deposit(request):
     base_list = results['result']['baseList']
     option_list = results['result']['optionList']
     
-    base_serializer = DepositProductsSerializer(data=base_list, many=True)
+    base_serializer = DepositProductsSerializerC(data=base_list, many=True)
     if base_serializer.is_valid():
         base_serializer.save()
     else:
@@ -77,40 +76,109 @@ def deposit_detail(request, fin_prdt_cd):
 def recomend_deposit(request):
     if request.method == 'POST':
         data = request.data
-        print(data)
+        # 받은 데이터 파싱
+        conversion = {
+            'gen' : 'gender', 'age' : 'age', 'sal' : 'salary', 'whl' : 'wealth', 'ten' : 'tendency',
+            'one' : '1', 'two' : '2', 'thr' : '3', 'fou' : '4', 'fiv' : '5', 'six' : '6',
+        }
+        filter_conditions = {}
+        filter_conditions['gender'] = []
+        filter_conditions['age'] = []
+        filter_conditions['salary'] = []
+        filter_conditions['wealth'] = []
+        filter_conditions['tendency'] = []
+
+        # 추가시킬 조건문들
+        q_gen = Q()
+        q_age = Q()
+        q_sal = Q()
+        q_whl = Q()
+        q_ten = Q()
+
+        for item in data.items():
+            # print(item)
+            if item[1]:
+                data_key = conversion[item[0][:3]]
+                data_val = conversion[item[0][4:]]
+                if data_key == 'gender':
+                    q_gen |= Q(gender=data_val)
+                elif data_key == 'tendency':
+                    q_ten |= Q(tendency=data_val)
+                elif data_key == 'age':
+                    if data_val == '1':
+                        q_age |= Q(age__lte=20)
+                    elif data_val == '2':
+                        q_age |= Q(age__gt=20,age__lte=30)
+                    elif data_val == '3':
+                        q_age |= Q(age__gt=30,age__lte=40)
+                    elif data_val == '4':
+                        q_age |= Q(age__gt=40,age__lte=50)
+                    elif data_val == '5':
+                        q_age |= Q(age__gt=50,age__lte=60)
+                    elif data_val == '6':
+                        q_age |= Q(age__gt=60)
+                elif data_key =='salary':
+                    if data_val == '1':
+                        q_sal |= Q(salary__lte=20000000)
+                    elif data_val == '2':
+                        q_sal |= Q(salary__gt=20000000,salary__lte=40000000)
+                    elif data_val == '3':
+                        q_sal |= Q(salary__gt=40000000,salary__lte=60000000)
+                    elif data_val == '4':
+                        q_sal |= Q(salary__gt=60000000,salary__lte=100000000)
+                    elif data_val == '5':
+                        q_sal |= Q(salary__gt=100000000)
+                elif data_key == 'wealth':
+                    if data_val == '1':
+                        q_whl |= Q(wealth__lte=20000000)
+                    elif data_val == '2':
+                        q_whl |= Q(wealth__gt=20000000,wealth__lte=60000000)
+                    elif data_val == '3':
+                        q_whl |= Q(wealth__gt=60000000,wealth__lte=100000000)
+                    elif data_val == '4':
+                        q_whl |= Q(wealth__gt=100000000,wealth__lte=200000000)
+                    elif data_val == '5':
+                        q_whl |= Q(wealth__gt=200000000,wealth__lte=400000000)
+                    elif data_val == '6':
+                        q_whl |= Q(wealth__gt=400000000)
+        q = q_gen & q_age & q_sal & q_whl & q_ten
+        # 조건에 해당되는 User 쿼리
+        user_filtered = User.objects.filter(q)
+        # pprint(user_filtered)
         
-        return Response(data, status=status.HTTP_200_OK)
-    
+        deposit_count = defaultdict(int)
 
-@api_view(['GET'])
-def comment_list(request):
-    if request.method == 'GET':
-        comments = Comment.objects.all()
-        serializer = CommentSerializer(comments, many=True)
-        return Response(serializer.data)
-    
-@api_view(['GET','DELETE','PUT'])
-def comment_detail(request, comment_pk):
-    comment = get_object_or_404(Comment, pk=comment_pk)
+        # 해당되는 User들을 돌면서 적금들 갯수 카운트
+        for user_fil in user_filtered:
+            for user in user_fil.deposit.all():
+                deposit_count[user] += 1
 
-    if request.method == 'GET':
-        serilaizer = CommentSerializer(comment)
-        return Response(serilaizer.data)
+        # 가장 많은 유저가 든 적금순으로 정렬
+        result = sorted(deposit_count.items(), key=lambda x: x[1], reverse=True)
+        # 결과를 Json으로 변환하는 과정
+        result_data = {}
+        i = 1
+        for temp in result:
+            print(temp[0])
+            temp_data = DepositProductsSerializerD(temp[0])
+            result_data[i]=(temp_data.data)
+            i+=1
+        return Response(result_data, status=status.HTTP_200_OK)
     
-    elif request.method == 'DELETE':
-        comment.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-    
-    elif request.method == 'PUT':
-        serializer = CommentSerializer(comment, data=request.data)
-        if serializer.is_valid(raise_exception=True):
-            serializer.save()
-            return Response(serializer.data)
-
 @api_view(['POST'])
-def comment_create(request, depositproducts_pk):
-    depositproducts = get_object_or_404(DepositProducts, pk=depositproducts_pk)
-    serializer = CommentSerializer(data = request.data)
-    if serializer.is_valid(raise_exception=True):
-        serializer.save(depositproducts=depositproducts)
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+def deposit_sign(request, fin_prdt_cd, user_pk):
+    # cd에 맞는 적금 정보를 가지고옴
+    deposit_info = DepositProducts.objects.get(fin_prdt_cd=fin_prdt_cd)
+    # user_pk에 맞는 유저 정보를 가지고옴
+    User_info = User.objects.get(pk=user_pk)
+    # 만약 유저의 deposit(Manytomanyfield)에서 이미 존재한다면?
+    if deposit_info in User_info.deposit.all():
+        # 삭제
+        User_info.deposit.remove(deposit_info)
+    else:
+        # 없으면 추가
+        User_info.deposit.add(deposit_info)
+    # 최신화 된 유저정보를 Response로 반환하기 위해 직렬화
+    User_info = UserSerializer(User_info)
+    # 반환
+    return Response(User_info.data, status=status.HTTP_200_OK)
