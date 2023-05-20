@@ -6,6 +6,7 @@ from rest_framework import status
 from django.shortcuts import get_object_or_404, get_list_or_404
 from .serializer import ArticlesListSerializer, CommentSerializer, ArticleSerializer
 from .models import Article, Comment
+from accounts.models import User
 
 # Create your views here.
 @api_view(['GET', 'POST'])
@@ -78,15 +79,20 @@ def comment_create(request, article_pk):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 @api_view(['POST'])
-#해당유저가 로그인되있는지 확인하는 데코?는 애초에 인증된 유저아니면 못들어와서 패스
+#해당유저가 로그인되있는지 확인하는 데코?s,
 def likes(request, article_pk):
-    if request.user.is_authenticated:
-        if request.method== 'POST':
-            article = Article.objects.get(pk=article_pk)
-            if request.user in article.like_users.all():
-                article.like_users.remove(request.user)
-            else:
-                article.like_users.add(request.user)
+    if request.method == 'POST':
+        article = Article.objects.get(pk=article_pk)
+        user= User.objects.get(username=request.user)
 
+        if request.user.is_authenticated:
+            if user in article.like_users.all():
+                print('삭제')
+                article.like_users.remove(user)
+            else:
+                print('추가')
+                article.like_users.add(user)
+            print(article.like_users)
             serializer = ArticleSerializer(article)
             return Response(serializer.data)
+
