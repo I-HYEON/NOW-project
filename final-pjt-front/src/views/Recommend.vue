@@ -112,6 +112,9 @@ export default {
         deep:true,
       }
     },
+    created() {
+        this.get_deposit_sorted()
+    }
 }
 
 </script>
