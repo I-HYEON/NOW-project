@@ -26,7 +26,11 @@ export default {
     getArticles(){
       axios({
         method: 'get',
-        url : `${API_URL}/articles/`
+        url : `${API_URL}/articles/`,
+        headers:{
+          Authorization: `Token ${this.$store.state.token}`
+        },
+        
       })
       .then((res)=> {
         this.articles = res.data

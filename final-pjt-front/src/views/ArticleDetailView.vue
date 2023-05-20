@@ -3,6 +3,7 @@
     
     <h1>Detail</h1>
     <p>글 번호 : {{ article?.id }}</p>
+    <p>작성자 : {{article?.username}}</p>
     <p>제목 : {{ article?.title }}</p>
     <p>내용 : {{ article?.content }}</p>
     <p>작성시간 : {{ article?.created_at }}</p>

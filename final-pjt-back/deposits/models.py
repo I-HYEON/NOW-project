@@ -1,5 +1,5 @@
 from django.db import models
-from accounts.models import User
+# from accounts.models import User
 # Create your models here.
 
 class DepositProducts(models.Model):
@@ -12,7 +12,7 @@ class DepositProducts(models.Model):
     join_deny = models.IntegerField()           # 가입 한도?
     join_member = models.TextField()            # 가입 인원?
     join_way = models.TextField()               # 가입 방법
-    joined_user = models.ManyToManyField(User, blank=True, related_name="joined") # 가입한 User
+    # joined_user = models.ManyToManyField(User, blank=True, related_name="joined") # 가입한 User
 
 class DepositOptions(models.Model):
     fin_prdt_cd = models.ForeignKey(DepositProducts, on_delete = models.CASCADE)
@@ -20,3 +20,9 @@ class DepositOptions(models.Model):
     save_trm = models.IntegerField(default=-1)
     intr_rate = models.FloatField(default=-1)
     intr_rate2 = models.FloatField(default=-1)
+    
+class Comment(models.Model):
+    depositproducts = models.ForeignKey(DepositProducts, on_delete=models.CASCADE)
+    content = models.CharField(max_length=200)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
