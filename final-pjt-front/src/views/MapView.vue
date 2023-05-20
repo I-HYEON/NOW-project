@@ -12,7 +12,7 @@ export default {
 name: 'MapView',
 components: {
     BankSearch
-}
+},
 }
 </script>
 
