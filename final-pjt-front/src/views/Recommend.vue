@@ -54,12 +54,15 @@
         </tr>
     </table>
     <div class="container">
-        <div class="row">
+        <div v-if=show class="row">
             <DepositCard
             v-for="deposit in this.sorted_depositData"
             :deposit="deposit"
             :key="deposit.id"
             />
+        </div>
+        <div v-else>
+            <img src="@/photo/loading.gif" alt="로딩중...">
         </div>
     </div>
   </div>
@@ -78,6 +81,7 @@ export default {
     },
     data(){
         return {
+            show : false,
             sorted_depositData : [],
             info : {
             gen_one : false, gen_two : false,
@@ -98,6 +102,7 @@ export default {
             })
             .then((response) => {
                 this.sorted_depositData = response.data
+                this.show = true
             })
             .catch((err) => {
             console.log(err)
@@ -107,6 +112,7 @@ export default {
     watch : {
       info : {
         handler(val,oldval) {
+            this.show = false
             this.get_deposit_sorted()
         },
         deep:true,

@@ -5,12 +5,15 @@
         <h1>예적금 조회</h1>
         <div class="container align-items-center">
           <div class="container">
-            <div class="row">
+            <div v-if=show class="row">
               <DepositCard
               v-for="deposit in $store.state.depositData"
               :deposit="deposit"
               :key="deposit.id"
               />
+            </div>
+            <div v-else>
+              <img src="@/photo/loading.gif" alt="로딩중...">
             </div>
           </div>
         </div>
@@ -46,6 +49,11 @@ import axios from 'axios'
 
 export default {
   name: 'DepositProducts',
+  data() {
+    return {
+      show:false,
+    }
+  },
   components: {
     Login,
     DepositCard
@@ -54,6 +62,7 @@ export default {
     async getDepositData() {
       const response = await axios.get('http://127.0.0.1:8000/deposits/save/')
       this.$store.commit('GET_DEPOSIT_DATA', response.data)
+      this.show = true
     },
   },
   created(){

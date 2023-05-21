@@ -12,6 +12,8 @@ export default {
   data() {
     return {
       map:null,
+      cur_lat:null,
+      cur_lon:null,
     }
   },
   mounted() {
@@ -32,7 +34,30 @@ export default {
     }
   },
   methods: {
+    temp(){
+      const optionss = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0,
+      };
+
+      function success(pos) {
+        const crd = pos.coords;
+        // this.cur_lat = crd.latitude;
+        // this.cur_lon = crd.longitude;
+        console.log(`Latitude : ${crd.latitude}`);
+        console.log(`Longitude: ${crd.longitude}`);
+        console.log(`More or less ${crd.accuracy} meters.`);
+      }
+
+      function error(err) {
+        console.warn(`ERROR(${err.code}): ${err.message}`);
+      }
+
+      console.log(navigator.geolocation.getCurrentPosition(success, error, optionss));
+    },
     initMap() {
+      this.temp()
       const container = document.getElementById('map');
       const options = {
         center: new kakao.maps.LatLng(33.450701, 126.570667),
