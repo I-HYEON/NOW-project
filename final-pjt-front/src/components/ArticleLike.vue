@@ -2,6 +2,7 @@
     <div>
         좋아요 페이지
     <button @click="like">좋아요</button>
+    <!-- <button @click="check">좋아요확인용</button> -->
     {{article?.like_users.length}}
     {{article.id}}
     </div>
@@ -15,7 +16,21 @@ export default {
     props:{
         article:Object
     },
-
+    data(){
+        return{
+            article:this.article,
+        }
+    },
+    computed: {
+        isLogin() {
+            return this.$store.getters.isLogin
+        }
+        ,
+        userInfo() {
+            return this.$store.state.userInfo
+        }
+    }
+    ,
     methods:{
         like(){
             axios({
@@ -31,10 +46,21 @@ export default {
                 this.article = res.data
             })
             .catch(err => console.log(err))
-        }
-    }
+        },
+    //     check() {
+    //         console.log(this.article.like_users.includes(this.userInfo.pk))
+    //         if (this.article.like_users.includes(this.userInfo.pk)) {
+    //             this.$store.dispatch('getArticle')
+    //             return true
+    //         }
+    //         else {
+    //             this.$store.dispatch('getArticle')
+    //             return false
+    //         }
 
-}
+    // }
+
+}}
 </script>
 
 <style>

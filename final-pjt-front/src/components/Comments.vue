@@ -103,6 +103,8 @@ export default {
         alert('댓글을 입력하세요!')
       }
     },
+    
+    
   },
 }
 </script>

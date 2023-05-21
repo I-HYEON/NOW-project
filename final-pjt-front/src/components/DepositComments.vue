@@ -19,14 +19,7 @@
                 {{deposit_detail.fin_prdt_cd}}
                 <button @click="deleteComment(comment)">삭제</button>
             </p>
-            <!-- <p
-                v-for="(comment, idx) in comments"
-                :key="idx"
->
-                댓글: {{ comment?.content }}
-                {{deposit_detail.id}}
-                <button @click="deleteComment(comment)">삭제</button>
-            </p> -->
+
         </template>
     </div>
 </template>
