@@ -6,7 +6,7 @@
     <button type="submit" id="content" @click="createComment">작성</button>
 
     <br>
-        <template v-if="comments.length === 0">
+        <template v-if="comments.filter(comment => comment.depositproducts === deposit_detail.id).length === 0">
             <p>댓글이 없습니다.</p>
         </template>
         <template v-else="v-else">
@@ -15,6 +15,7 @@
                 :key="idx"
                 v-if="comment.depositproducts === deposit_detail.id">
                 댓글: {{ comment?.content }}
+                {{ comment?.username }}
                 {{deposit_detail.fin_prdt_cd}}
                 <button @click="deleteComment(comment)">삭제</button>
             </p>

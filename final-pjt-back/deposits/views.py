@@ -10,6 +10,8 @@ import requests
 from collections import defaultdict
 from django.db.models import Count, Q
 from django.shortcuts import get_object_or_404
+from rest_framework.decorators import api_view,permission_classes
+from rest_framework.permissions import IsAuthenticated
 
 from rest_framework.response import Response
 from rest_framework import status
@@ -216,9 +218,10 @@ def comment_detail(request, comment_pk):
             return Response(serializer.data)
 
 @api_view(['POST'])
+@permission_classes([IsAuthenticated])
 def comment_create(request, fin_prdt_cd):
     depositproducts = get_object_or_404(DepositProducts, fin_prdt_cd=fin_prdt_cd)
     serializer = CommentSerializer(data = request.data)
     if serializer.is_valid(raise_exception=True):
-        serializer.save(depositproducts=depositproducts)
+        serializer.save(depositproducts=depositproducts,user=request.user)
         return Response(serializer.data, status=status.HTTP_201_CREATED)

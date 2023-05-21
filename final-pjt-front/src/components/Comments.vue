@@ -7,7 +7,7 @@
     <button type="submit" id="content" @click="createComment">작성</button>
 
     <br>
-    <template v-if="comments.length === 0">
+    <template v-if="comments.filter(comment => comment.article === article.id).length === 0">
       <p>댓글이 없습니다.</p>
     </template>
     <template v-else>

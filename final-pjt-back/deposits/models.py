@@ -1,4 +1,6 @@
 from django.db import models
+from django.conf import settings
+
 # from accounts.models import User
 # Create your models here.
 
@@ -22,6 +24,7 @@ class DepositOptions(models.Model):
     intr_rate2 = models.FloatField(default=-1)
     
 class Comment(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='depositcomments')
     depositproducts = models.ForeignKey(DepositProducts, on_delete=models.CASCADE)
     content = models.CharField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
