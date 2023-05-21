@@ -2,7 +2,6 @@
     <div>
         좋아요 페이지
     <button @click="like">좋아요</button>
-    <!-- <button @click="check">좋아요확인용</button> -->
     {{article?.like_users.length}}
     {{article.id}}
     </div>
@@ -28,6 +27,23 @@ export default {
         ,
         userInfo() {
             return this.$store.state.userInfo
+            }
+    },
+    methods:{
+        like(){
+            axios({
+                method: 'post',
+                url: `${API_URL}/articles/${this.$route.params.id}/likes/`,
+                headers:{
+                    Authorization: `Token ${this.$store.state.token}`
+        },
+
+            })
+            .then((res)=>{
+                console.log(res)
+                this.article = res.data
+            })
+            .catch(err => console.log(err))
         }
     }
     ,

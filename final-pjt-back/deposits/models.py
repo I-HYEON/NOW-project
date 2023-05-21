@@ -1,9 +1,6 @@
 from django.db import models
 from django.conf import settings
 
-# from accounts.models import User
-# Create your models here.
-
 class DepositProducts(models.Model):
     fin_prdt_cd = models.TextField(unique=True) # 고유 코드
     fin_prdt_nm = models.TextField()            # 상품 명

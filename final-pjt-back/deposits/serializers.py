@@ -15,8 +15,6 @@ class DepositProductsSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class CommentSerializer(serializers.ModelSerializer):
-    
-#user속성 주의해서 article꺼 확인해봐
     username = serializers.CharField(source='user.username', read_only=True)
 
     class Meta:

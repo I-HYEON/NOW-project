@@ -39,7 +39,6 @@ export default {
     },
     props: {
     deposit_detail: Object,
-    article: Object,
 }  ,
 
   created() {
@@ -63,7 +62,6 @@ export default {
     },
 
     getComments(){
-      // console.log('asdf')
       axios({
         method: 'get',
         url:  `${API_URL}/deposits/comments/`
@@ -73,7 +71,6 @@ export default {
             console.log('fdkfd')
         }
         this.comments=res.data
-        console.log(this.comments)
       })
       .catch(err => this.comments=null)
     },
@@ -93,7 +90,6 @@ export default {
           .then(() => {
             this.content = null
             this.getComments()
-            
           })
           .catch((err) => {
             console.log(err);
