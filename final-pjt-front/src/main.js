@@ -16,5 +16,10 @@ Vue.config.productionTip = false
 new Vue({
   router,
   store,
+  data() {
+    return {
+      apiKey: process.env.VUE_APP_API_KEY
+    }
+  },
   render: h => h(App)
 }).$mount('#app')

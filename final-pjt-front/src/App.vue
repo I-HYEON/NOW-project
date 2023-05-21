@@ -24,6 +24,16 @@
                     <router-link to="/article">Community</router-link>
                   </a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">
+                    <router-link to="/signup">SignUp</router-link>
+                  </a>
+                </li>
+                <li v-if="isLogin" class="nav-item">
+                  <a class="nav-link" href="#">
+                    <router-link to="/profile">Profile</router-link>
+                  </a>
+                </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Dropdown
@@ -49,6 +59,19 @@
   </div>
 </template>
 
+<script>
+export default {
+    name : 'APP',
+    computed: {
+    isLogin() {
+        return this.$store.getters.isLogin
+    },
+    userInfo() {
+        return this.$store.state.userInfo
+    }
+},
+}
+</script>
 <style>
   .main_nav {
     background-color: #F1BFC9;

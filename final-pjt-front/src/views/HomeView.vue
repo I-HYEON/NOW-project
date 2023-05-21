@@ -18,6 +18,13 @@
           </div>
           <div>
             <QuickBar/>
+          <div class="container">
+            <router-link to="mapview/"><div class="col">바로가기1</div></router-link>
+            <div class="col">바로가기1</div>
+            <div class="col">바로가기1</div>
+            <div class="col">바로가기1</div>
+            <div class="col">바로가기1</div>
+            <div class="col">바로가기1</div>
           </div>
         </div>
       </div>

@@ -8,5 +8,5 @@ urlpatterns = [
     path('recomend_deposit/', views.recomend_deposit, name='recomend_deposit'),
     path('comments/', views.comment_list),
     path('comments/<int:comment_pk>/', views.comment_detail),
-    path('<int:depositproducts_pk>/comments/', views.comment_create),
+    path('<str:fin_prdt_cd>/comments/', views.comment_create),
 ]

@@ -11,6 +11,7 @@ import DepositDetail from '../views/DepositDetail.vue'
 import Recommend from '../views/Recommend.vue'
 import MapView from '../views/MapView.vue'
 import WordSearch from '../views/WordSearch.vue'
+import ProfileView from '../views/ProfileView.vue'
 
 Vue.use(VueRouter)
 
@@ -71,6 +72,10 @@ const routes = [
     name: 'WordSearch',
     component: WordSearch
   }
+    path: '/profile',
+    name: 'ProfileView',
+    component: ProfileView
+  },
 ]
 
 const router = new VueRouter({

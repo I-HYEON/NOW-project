@@ -15,12 +15,12 @@ class DepositProductsSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class CommentSerializer(serializers.ModelSerializer):
-#user속성 주의해서 article꺼 확인해봐
+    username = serializers.CharField(source='user.username', read_only=True)
 
     class Meta:
         model = Comment
         fields = '__all__'
-        read_only_fields = ('depositproducts',)
+        read_only_fields = ('depositproducts','user')
 
 class DepositProductsSerializerC(serializers.ModelSerializer):
     DepositOptions.fin_prdt_cd_set = DepositOptionsSerializer(many=True)
