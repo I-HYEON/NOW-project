@@ -16,14 +16,8 @@
           <div>
             <Login/>
           </div>
-          <div class="container">
-            <router-link to="mapview/"><div class="col">바로가기1</div></router-link>
-            <div class="col">바로가기1</div>
-            <div class="col">바로가기1</div>
-            <div class="col">바로가기1</div>
-            <div class="col">바로가기1</div>
-            <div class="col">바로가기1</div>
-          </div>
+          <div>
+            <QuickBar/>
         </div>
       </div>
     </div>
@@ -33,6 +27,7 @@
     <router-link to='/recommend'>추천</router-link>
     
   </div>
+</div>
 </template>
 
 <script>
@@ -40,7 +35,7 @@
 import HelloWorld from '@/components/HelloWorld.vue'
 import Carousel from '@/components/Carousel.vue'
 import Login from '@/components/Login.vue'
-
+import QuickBar from '@/components/QuickBar.vue'
 export default {
   name: 'HomeView',
   computed: {
@@ -51,7 +46,8 @@ export default {
   components: {
     HelloWorld,
     Carousel,
-    Login
+    Login,
+    QuickBar,
   }
 }
 </script>

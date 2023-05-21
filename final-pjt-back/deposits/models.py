@@ -1,6 +1,5 @@
 from django.db import models
-# from accounts.models import User
-# Create your models here.
+from django.conf import settings
 
 class DepositProducts(models.Model):
     fin_prdt_cd = models.TextField(unique=True) # 고유 코드
@@ -22,6 +21,7 @@ class DepositOptions(models.Model):
     intr_rate2 = models.FloatField(default=-1)
     
 class Comment(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='depositcomments')
     depositproducts = models.ForeignKey(DepositProducts, on_delete=models.CASCADE)
     content = models.CharField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)

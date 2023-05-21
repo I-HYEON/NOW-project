@@ -28,14 +28,14 @@ export default new Vuex.Store({
   mutations: {
     LOGIN(state,payload){
       state.token = payload
-      console.log('logintoken이 잘들어갔나요?',this.state.token)
+      console.log('logintoken :',this.state.token)
     },
     LOGOUT(state) {
       state.token = null
     },
     SIGNUP(state, payload){
       state.token = payload
-      console.log('signuptoken 잘들어갔나요?',this.state.token)
+      console.log('signuptoken :',this.state.token)
     },
     GET_ARTICLES(state, articles){
       state.articles = articles
@@ -80,6 +80,7 @@ export default new Vuex.Store({
       .catch(err => console.log(err))
     },
     signUp(context, payload) {
+      console.log('actions')
       return new Promise((resolve, reject) => {
         const username = payload.username
         const password1 = payload.password1
@@ -98,7 +99,7 @@ export default new Vuex.Store({
           }
         })
         .then((res)=>{
-          // console.log('토큰이actions까지는 잘옴',res.data.key)
+          console.log('토큰이actions까지는 잘옴',res.data.key)
           const token = res.data.key
           context.commit('SIGNUP',token)
           // context.dispatch('saveTokenState')
@@ -124,10 +125,9 @@ export default new Vuex.Store({
           }
         })
         .then((res)=>{
-          console.log('왜이게안나오지?',res.data.key)
           const token = res.data.key
           context.commit('LOGIN', token)
-          // context.dispatch('saveTokenState')
+          console.log('actions의 login함수 axios호출에서 에러 발생')
           resolve()
         })
         .catch((err)=> {
@@ -148,13 +148,13 @@ export default new Vuex.Store({
         }
       })
       .then((res)=>{
-        console.log('잘받아와졌다면',res)
-        console.log(res.data)
+        // console.log('사용자 정보를 잘 받아왔다',res)
+        console.log('userInfo :',res.data)
         const userInfo = res.data
         context.commit('USERINFO',userInfo)
       })
       .then((err)=>{
-        console.log(err)
+        console.log('사용자정보를 받아오는데 실패',err)
       })
     },
     logOut(context) {
