@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class="d-flex flex-column align-items-center">
     맞춤형 상품 추천
 
-    <table border="1">
+    <table class="w-100" border="1">
         <th>선택</th>
         <tr>
             <td>성별</td>
@@ -56,13 +56,16 @@
     <div class="container">
         <div v-if=show class="row">
             <DepositCard
+            class = "mx-auto my-1 col-12 col-md-6 col-lg-4 col-xl-3"
             v-for="deposit in this.sorted_depositData"
             :deposit="deposit"
             :key="deposit.id"
             />
         </div>
         <div v-else>
-            <img src="@/photo/loading.gif" alt="로딩중...">
+            <div class="loading">
+                <img src="@/photo/loading.gif" alt="로딩중...">
+            </div>
         </div>
     </div>
   </div>
@@ -126,5 +129,11 @@ export default {
 </script>
 
 <style>
-
+.loading{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 </style>

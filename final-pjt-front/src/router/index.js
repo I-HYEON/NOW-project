@@ -10,6 +10,7 @@ import ArticleDetailView from '../views/ArticleDetailView'
 import DepositDetail from '../views/DepositDetail.vue'
 import Recommend from '../views/Recommend.vue'
 import MapView from '../views/MapView.vue'
+import WordSearch from '../views/WordSearch.vue'
 
 Vue.use(VueRouter)
 
@@ -64,6 +65,11 @@ const routes = [
     path: '/mapview',
     name: 'mapview',
     component: MapView
+  },
+  {
+    path: '/wordsearch',
+    name: 'WordSearch',
+    component: WordSearch
   }
 ]
 

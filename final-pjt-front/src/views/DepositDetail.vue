@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="row">
-      <div class="col-9">
+      <div class="col-12">
         <div class="d-flex justify-content-between"><div>
           <h1>예적금 상세 정보</h1></div>
           <div class="d-flex">
@@ -37,21 +37,6 @@
           </div>
         </div>
       </div>
-      <div class="col-3">
-        <div class="container align-items-center">
-          <div>
-            <Login/>
-          </div>
-          <div class="container">
-            <div class="col">바로가기1</div>
-            <div class="col">바로가기1</div>
-            <div class="col">바로가기1</div>
-            <div class="col">바로가기1</div>
-            <div class="col">바로가기1</div>
-            <div class="col">바로가기1</div>
-          </div>
-        </div>
-      </div>
     </div>
     <div>
     로고+번호+제작자
@@ -64,6 +49,7 @@
 <script>
 import Login from '@/components/Login.vue'
 import Table from '@/components/Table.vue'
+import QuickBar from '@/components/QuickBar.vue'
 import axios from 'axios'
 
 export default {
@@ -86,6 +72,7 @@ data(){
 components: {
     Login,
     Table,
+    QuickBar
 },
 methods: {
     async getDepositData() {

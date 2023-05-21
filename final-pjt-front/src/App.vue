@@ -1,9 +1,9 @@
 <template>
   <div class="container">
     <div>
-      <nav class="navbar navbar-expand-lg bg-light">
+      <nav class="main_nav navbar navbar-expand-lg">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Navbar</a>
+          <a class="navbar-brand" href="#">냥냥냥냥</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -22,11 +22,6 @@
                 <li class="nav-item">
                   <a class="nav-link" href="#">
                     <router-link to="/article">Community</router-link>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    <router-link to="/signup">SignUp</router-link>
                   </a>
                 </li>
                 <li class="nav-item dropdown">
@@ -55,4 +50,7 @@
 </template>
 
 <style>
+  .main_nav {
+    background-color: #F1BFC9;
+  };
 </style>

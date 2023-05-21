@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="login">
     <div v-if="isLogin">로그인된 상태
       <div>
         여기에 프로필이 들어가면 좋겠죠
@@ -11,17 +11,22 @@
       </div>
     </div>
     <div v-else>you 로그인안된 상태
-      <form @submit.prevent="login">
-      <div class="mb-3">
-        <label for="username" class="form-label">Username</label>
-        <input type="text" class="form-control" id="username" v-model="username">
+      <div>
+        <form @submit.prevent="login">
+          <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" v-model="username">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" v-model="password">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
       </div>
-      <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" v-model="password">
+      <div>
+        <router-link to="/signup"><button type="button" class="btn btn-primary">SignUp</button></router-link>
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
     </div>
     
   </div>
@@ -71,4 +76,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
+  .login {
+    background-color: #F1BFC9;
+  }
 </style>

@@ -5,8 +5,9 @@
         <h1>예적금 조회</h1>
         <div class="container align-items-center">
           <div class="container">
-            <div v-if=show class="row">
+            <div v-if=show class="row justify-content">
               <DepositCard
+              class = "mx-auto my-1 col-12 col-md-6 col-lg-4 col-xl-3"
               v-for="deposit in $store.state.depositData"
               :deposit="deposit"
               :key="deposit.id"
@@ -23,13 +24,8 @@
           <div>
             <Login/>
           </div>
-          <div class="container">
-            <div class="col">바로가기1</div>
-            <div class="col">바로가기1</div>
-            <div class="col">바로가기1</div>
-            <div class="col">바로가기1</div>
-            <div class="col">바로가기1</div>
-            <div class="col">바로가기1</div>
+          <div>
+            <QuickBar/>
           </div>
         </div>
       </div>
@@ -45,6 +41,7 @@
 <script>
 import Login from '@/components/Login.vue'
 import DepositCard from '@/components/DepositCard.vue'
+import QuickBar from '@/components/QuickBar.vue'
 import axios from 'axios'
 
 export default {
@@ -56,7 +53,8 @@ export default {
   },
   components: {
     Login,
-    DepositCard
+    DepositCard,
+    QuickBar,
   },
   methods: {
     async getDepositData() {
