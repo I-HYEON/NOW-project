@@ -167,7 +167,6 @@ def recomend_deposit(request):
         result_data = {}
         i = 1
         for temp in result:
-            print(temp[0])
             temp_data = DepositProductsSerializerD(temp[0])
             result_data[i]=(temp_data.data)
             i+=1

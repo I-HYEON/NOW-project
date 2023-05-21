@@ -19,7 +19,6 @@
                 {{deposit_detail.fin_prdt_cd}}
                 <button @click="deleteComment(comment)">삭제</button>
             </p>
-
         </template>
     </div>
 </template>

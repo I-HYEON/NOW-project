@@ -47,7 +47,6 @@ class Migration(migrations.Migration):
                 ('updated_at', models.DateTimeField(auto_now=True)),
                 ('depositproducts', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='deposits.depositproducts')),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='depositcomments', to=settings.AUTH_USER_MODEL)),
-
             ],
         ),
     ]
