@@ -10,6 +10,7 @@ import ArticleDetailView from '../views/ArticleDetailView'
 import DepositDetail from '../views/DepositDetail.vue'
 import Recommend from '../views/Recommend.vue'
 import MapView from '../views/MapView.vue'
+import ProfileView from '../views/ProfileView.vue'
 
 Vue.use(VueRouter)
 
@@ -64,7 +65,12 @@ const routes = [
     path: '/mapview',
     name: 'mapview',
     component: MapView
-  }
+  },
+  {
+    path: '/profile',
+    name: 'ProfileView',
+    component: ProfileView
+  },
 ]
 
 const router = new VueRouter({
