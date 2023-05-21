@@ -6,7 +6,7 @@
       <input type="submit" value="검색">
     </form>
     <div id="map"></div>
-    <div v-if="bankList">
+    <div v-if="bankList.length">
       근처에 총 {{ bankList.length }} 개의 은행이 있습니다.
       <hr>
       <div v-for="(bank,index) in bankList" :key="bank.id">
@@ -32,6 +32,7 @@ export default {
   name: 'BankSearch',
   data() {
     return {
+      apiKey: this.$root.$data.apiKey,
       map:null,
       latitude:null,
       longitude:null,
@@ -48,9 +49,9 @@ export default {
     // const API_KEY = process.env.VUE_APP_KAKAO_API_KEY;
 
     const script = document.createElement('script');
-    script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=7c19c4178f65a36158ee1fad675c95c2&autoload=false`
+    script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${this.apiKey}&autoload=false`
     const scriptForLib = document.createElement('script');
-    scriptForLib.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=7c19c4178f65a36158ee1fad675c95c2&libraries=services,clusterer,drawing&autoload=false`
+    scriptForLib.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${this.apiKey}&libraries=services,clusterer,drawing&autoload=false`
     /* global kakao */
     script.onload = () => {
       kakao.maps.load(this.fetchLocation)
@@ -96,8 +97,8 @@ export default {
 
       this.map = new kakao.maps.Map(container, options);
       this.bs = new kakao.maps.services.Places(this.map);
-      this.basicControl = new kakao.maps.MapTypeControl()
-      this.zoomControl = new kakao.maps.ZoomControl()
+      this.basicControl = new kakao.maps.MapTypeControl();
+      this.zoomControl = new kakao.maps.ZoomControl();
 
       this.map.addControl(this.basicControl, kakao.maps.ControlPosition.TOPRIGHT);
       this.map.addControl(this.zoomControl, kakao.maps.ControlPosition.RIGHT);
@@ -146,7 +147,7 @@ export default {
 
     },
     displayMarker(place) {
-      console.log('displayMarker는 온다고')
+      // console.log('왜 일로 안오지?')
       const compo = this
       this.infowindow = new kakao.maps.InfoWindow({zIndex:1});
       const marker = new kakao.maps.Marker({
