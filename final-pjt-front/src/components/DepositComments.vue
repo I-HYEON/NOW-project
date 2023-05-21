@@ -13,10 +13,19 @@
             <p
                 v-for="(comment, idx) in comments"
                 :key="idx"
-                v-if="comment.article === article?.id">
+                v-if="comment.depositproducts === deposit_detail.id">
                 댓글: {{ comment?.content }}
+                {{deposit_detail.fin_prdt_cd}}
                 <button @click="deleteComment(comment)">삭제</button>
             </p>
+            <!-- <p
+                v-for="(comment, idx) in comments"
+                :key="idx"
+>
+                댓글: {{ comment?.content }}
+                {{deposit_detail.id}}
+                <button @click="deleteComment(comment)">삭제</button>
+            </p> -->
         </template>
     </div>
 </template>
@@ -26,7 +35,7 @@
 const API_URL = 'http://127.0.0.1:8000'
 
 export default {
-    name: 'Comments',
+    name: 'DepositComments',
     data() {
     return {
     content: null,
@@ -35,6 +44,7 @@ export default {
     }
     },
     props: {
+    deposit_detail: Object,
     article: Object,
 }  ,
 
@@ -59,7 +69,7 @@ export default {
     },
 
     getComments(){
-      console.log('asdf')
+      // console.log('asdf')
       axios({
         method: 'get',
         url:  `${API_URL}/deposits/comments/`
@@ -69,20 +79,27 @@ export default {
             console.log('fdkfd')
         }
         this.comments=res.data
+        console.log(this.comments)
       })
       .catch(err => this.comments=null)
     },
     createComment() {
+      //보낼때는 해당 deposit_detail의 fin_prdt_cd가 unique라서 구분자로 쓸 수 있고, 
+      //위에서 해당 deposit_detail의 id를 통해 해당 상품의 댓글인지 필터링할 수 있었다. 
+      //deposit_detail에 id넣어줘서 고맙다 성환아 ㅠㅠ
       const content = this.content
       if (this.content) {
         axios({
           method: 'post',
-          url: `${API_URL}/deposits/${this.$route.params.id}/comments/`,
+          url: `${API_URL}/deposits/${this.deposit_detail.fin_prdt_cd}/comments/`,
           data: { content },
+          headers:{
+            Authorization: `Token ${this.$store.state.token}`}
         })
           .then(() => {
             this.content = null
             this.getComments()
+            
           })
           .catch((err) => {
             console.log(err);

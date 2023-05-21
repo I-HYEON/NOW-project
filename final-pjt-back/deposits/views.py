@@ -216,8 +216,8 @@ def comment_detail(request, comment_pk):
             return Response(serializer.data)
 
 @api_view(['POST'])
-def comment_create(request, depositproducts_pk):
-    depositproducts = get_object_or_404(DepositProducts, pk=depositproducts_pk)
+def comment_create(request, fin_prdt_cd):
+    depositproducts = get_object_or_404(DepositProducts, fin_prdt_cd=fin_prdt_cd)
     serializer = CommentSerializer(data = request.data)
     if serializer.is_valid(raise_exception=True):
         serializer.save(depositproducts=depositproducts)

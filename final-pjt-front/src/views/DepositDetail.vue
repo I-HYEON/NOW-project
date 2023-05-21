@@ -56,6 +56,8 @@
     <div>
     로고+번호+제작자
     </div>
+    <br>
+    <DepositComments :deposit_detail="deposit_detail" />
   </div>
 </template>
   
@@ -64,6 +66,7 @@
 <script>
 import Login from '@/components/Login.vue'
 import Table from '@/components/Table.vue'
+import DepositComments from '@/components/DepositComments.vue'
 import axios from 'axios'
 
 export default {
@@ -86,6 +89,7 @@ data(){
 components: {
     Login,
     Table,
+    DepositComments,
 },
 methods: {
     async getDepositData() {
