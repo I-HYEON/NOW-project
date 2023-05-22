@@ -70,7 +70,9 @@ export default {
         .then(() => {
           this.$router.push({ path: '/article' });
         });
-    }
+      
+    },
+    
   }
 };
 </script>

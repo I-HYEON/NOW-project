@@ -17,22 +17,83 @@
 <p> 재산 : {{userInfo.wealth}}만원</p>
 <p> 유저pk : {{userInfo.pk}}</p>
 
+<!-- {{deposits}} -->
+<div class="card" v-for="(deposit,idx) in deposits" :key='idx' style="width: 14rem;">
+    <img :src="getBankImage(deposit.kor_co_nm)" class="card-img-top" :alt="`Image not found: ${deposit.kor_co_nm}`">
+    <div class="card-body">
+      <h5 class="card-title"></h5>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item explain">{{ deposit.fin_prdt_nm }}</li>
+      <li class="list-group-item explain">{{ deposit.kor_co_nm }}</li>
+      <li class="list-group-item explain">현재 가입자 수 : {{ deposit.user_count }}</li>
+      <li class="list-group-item explain">
+        <router-link
+        class="link"
+        :to="{
+          name: 'deposit_detail',
+          params: {
+            bank_info : deposit.fin_prdt_cd
+          }
+        }">상세 보기</router-link>
+      </li>
+    </ul>
+    <div class="card-body">
+    </div>
+  </div>
+
+<router-link to="/withdrawl">회원탈퇴</router-link>
 </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
     name : 'ProfileView',
+    data(){
+        return{
+            deposits:null
+        }
+    },
+
     computed: {
     isLogin() {
         return this.$store.getters.isLogin
     },
     userInfo() {
-        console.log(this.$store.state.userInfo)
+        // console.log(this.$store.state.userInfo)
         return this.$store.state.userInfo
-        
     }
 },
+      methods: {
+    async getDepositData() {
+      const response = await axios.get('http://127.0.0.1:8000/deposits/save/')
+      this.$store.commit('GET_DEPOSIT_DATA', response.data)
+      this.deposits = response.data
+      // console.log(response.data)
+      console.log(this.deposits)
+    },
+
+  
+      getArticles() {
+        this.$store.dispatch('getArticles')
+      },
+      getBankImage(korCoNm) {
+      try {
+        return require(`@/bank_photo/${korCoNm}.png`);
+      } catch (error) {
+        console.error(error);
+        return dummycat;
+      }
+    }, 
+},
+    created(){
+    console.log('제발')
+    
+    this.getArticles()
+    this.getDepositData()
+    }
+  
 }
 </script>
 

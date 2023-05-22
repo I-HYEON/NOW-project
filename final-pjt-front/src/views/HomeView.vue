@@ -25,8 +25,8 @@
       로고+번호+제작자
     </div>
     <router-link to='/recommend'>추천</router-link>
-    
   </div>
+
 </div>
 </template>
 
@@ -36,18 +36,26 @@ import HelloWorld from '@/components/HelloWorld.vue'
 import Carousel from '@/components/Carousel.vue'
 import Login from '@/components/Login.vue'
 import QuickBar from '@/components/QuickBar.vue'
+
 export default {
   name: 'HomeView',
   computed: {
     isLogin() {
       return this.$store.getters.isLogin
     },
+    userInfo() {
+      return this.$store.state.userInfo
+    },
   },
+  
   components: {
     HelloWorld,
     Carousel,
     Login,
     QuickBar,
+  },
+
+  
   }
-}
+
 </script>

@@ -108,6 +108,9 @@ export default {
     },
 
     createComment() {
+      //보낼때는 해당 deposit_detail의 fin_prdt_cd가 unique라서 구분자로 쓸 수 있고, 
+      //위에서 해당 deposit_detail의 id를 통해 해당 상품의 댓글인지 필터링할 수 있었다. 
+      //deposit_detail에 id넣어줘서 고맙다 성환아 ㅠㅠ
       const content = this.content
       if (this.content) {
         axios({
