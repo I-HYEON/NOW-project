@@ -80,6 +80,7 @@ export default new Vuex.Store({
       .catch(err => console.log(err))
     },
     signUp(context, payload) {
+      console.log('actions')
       return new Promise((resolve, reject) => {
         const username = payload.username
         const password1 = payload.password1
@@ -98,7 +99,7 @@ export default new Vuex.Store({
           }
         })
         .then((res)=>{
-          // console.log('토큰이actions까지는 잘옴',res.data.key)
+          console.log('토큰이actions까지는 잘옴',res.data.key)
           const token = res.data.key
           context.commit('SIGNUP',token)
           // context.dispatch('saveTokenState')
@@ -141,7 +142,7 @@ export default new Vuex.Store({
       
       axios({
         methods: 'get',
-        url: 'http://127.0.0.1:8000/accounts/user_info/',
+        url: 'http://127.0.0.1:8000/accounts/user/',
         headers: {
           Authorization: `Token ${token}`
         }

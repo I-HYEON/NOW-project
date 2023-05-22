@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class="d-flex flex-column align-items-center">
     맞춤형 상품 추천
 
-    <table border="1">
+    <table class="w-100" border="1">
         <th>선택</th>
         <tr>
             <td>성별</td>
@@ -54,12 +54,18 @@
         </tr>
     </table>
     <div class="container">
-        <div class="row">
+        <div v-if=show class="row">
             <DepositCard
+            class = "mx-auto my-1 col-12 col-md-6 col-lg-4 col-xl-3"
             v-for="deposit in this.sorted_depositData"
             :deposit="deposit"
             :key="deposit.id"
             />
+        </div>
+        <div v-else>
+            <div class="loading">
+                <img src="@/photo/loading.gif" alt="로딩중...">
+            </div>
         </div>
     </div>
   </div>
@@ -78,6 +84,7 @@ export default {
     },
     data(){
         return {
+            show : false,
             sorted_depositData : [],
             info : {
             gen_one : false, gen_two : false,
@@ -98,6 +105,7 @@ export default {
             })
             .then((response) => {
                 this.sorted_depositData = response.data
+                this.show = true
             })
             .catch((err) => {
             console.log(err)
@@ -107,6 +115,7 @@ export default {
     watch : {
       info : {
         handler(val,oldval) {
+            this.show = false
             this.get_deposit_sorted()
         },
         deep:true,
@@ -120,5 +129,11 @@ export default {
 </script>
 
 <style>
-
+.loading{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 </style>

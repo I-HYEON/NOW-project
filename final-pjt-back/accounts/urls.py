@@ -1,10 +1,8 @@
 from django.urls import path,include
-from .views import CustomRegisterView, user_info
-from dj_rest_auth.registration.views import RegisterView
-from .serializers import CustomRegisterSerializer
+from .views import CustomRegisterView, CustomUserDetailsView
 
 urlpatterns = [
+    path('signup/', CustomRegisterView.as_view(), name='account_signup'),
+    path('user/', CustomUserDetailsView.as_view(), name='account_userinfo'),
     path('', include('dj_rest_auth.urls')),
-    path('signup/', CustomRegisterView.as_view(),name="rest_register"),
-    path('user_info/',user_info,name="user_info")
 ]
