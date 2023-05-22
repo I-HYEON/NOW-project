@@ -62,10 +62,6 @@ class CustomUserDetailsSerializer(UserDetailsSerializer):
         return data_dict
     
     def update(self, instance, validated_data):
-        # username = validated_data.get('username', None)
-        # if username is not None and username != instance.username:
-        #     # Username has changed, update the instance's username
-        #     validated_data.pop('username', None)
             
         instance = super().update(instance, validated_data)
         instance.username = validated_data.get('username', None)

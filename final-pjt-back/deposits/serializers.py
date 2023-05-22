@@ -27,8 +27,8 @@ class DepositProductsSerializerC(serializers.ModelSerializer):
     user_count = serializers.SerializerMethodField()
 
     def get_user_count(self, obj):
-        temp = DepositProducts.objects.get(fin_prdt_cd=obj['fin_prdt_cd'])
-        return temp.joined.count()
+        # temp = DepositProducts.objects.get(fin_prdt_cd=obj.get('fin_prdt_cd'))
+        return obj.joined.count()
     
     class Meta:
         model = DepositProducts

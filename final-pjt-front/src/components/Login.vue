@@ -77,6 +77,10 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
   .login {
-    background-color: #F1BFC9;
+    background-color: #ff7743;
+    margin: 10px 10px;
+    width: 15rem;
+    height: 25rem;
+    padding: 10px 10px;
   }
 </style>
