@@ -12,6 +12,7 @@ import Recommend from '../views/Recommend.vue'
 import MapView from '../views/MapView.vue'
 import WordSearch from '../views/WordSearch.vue'
 import ProfileView from '../views/ProfileView.vue'
+import UpdateView from '../views/UpdateView.vue'
 
 Vue.use(VueRouter)
 
@@ -76,6 +77,11 @@ const routes = [
     path: '/profile',
     name: 'ProfileView',
     component: ProfileView
+  },
+  {
+    path: '/update/:id',
+    name: 'UpdateView',
+    component: UpdateView
   },
 ]
 
