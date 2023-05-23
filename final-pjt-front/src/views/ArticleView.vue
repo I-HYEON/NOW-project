@@ -1,9 +1,8 @@
 <template>
   <div>
-    <h1>Article Page</h1>
-    <router-link :to="{ name: 'CreateView' }">[CREATE]</router-link>
+    <h1 class="article-list">자유게시판</h1>
+    <br>
     <ArticleList />
-    <hr>
   </div>
 </template>
 
@@ -39,5 +38,8 @@ export default {
 </script>
 
 <style>
+.article-list {
+  text-align: center;
+}
 
 </style>

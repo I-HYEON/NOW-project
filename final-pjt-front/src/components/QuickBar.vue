@@ -10,13 +10,13 @@
         </div>
     </div>
 </template>
-  
+
 <script>
 export default {
 name: 'QuickBar.vue',
 }
 </script>
-  
+
 <style>
     .box {
     font-size: 15px;
@@ -29,4 +29,3 @@ name: 'QuickBar.vue',
     color: black;
     }
 </style>
-  

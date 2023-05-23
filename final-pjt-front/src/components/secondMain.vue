@@ -4,8 +4,47 @@
     <br>
     <br>
     <div class="info-container">
-      <div class="odd-info" ref="firstInfo">First Info</div>
-      <div class="even-info" ref="secondInfo">Second Info</div>
+      <div class="odd-info" ref="firstInfo">
+        
+      </div>
+      <div class="even-info" ref="secondInfo">
+        <div class="container">
+    <div class="col-12">
+      <div class="row">
+        <div class="col-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">Articles</h5>
+              <div v-for="(article, index) in articles" :key="index">
+                <h6>{{ article.title }} 작성자 :{{ article.username }} </h6>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="card h-100">
+            <div class="card-body">
+              이게 무슨내용
+
+              <!-- Customize the content for the second and third cards here -->
+              <!-- You can add any HTML elements or Vue directives -->
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="card h-100">
+            <div class="card-body">
+              여기에 내용을 추가해
+
+              <!-- Customize the content for the second and third cards here -->
+              <!-- You can add any HTML elements or Vue directives -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+      </div>
       <div class="odd-info" ref="thirdInfo">Third Info</div>
       <div class="even-info" ref="forthInfo">forth Info</div>
     </div>
@@ -17,6 +56,11 @@ export default {
   name: 'secondMain',
   mounted() {
     this.createIntersectionObserver();
+  },
+    data(){
+    return {
+    articles:this.$store.state.articles
+    }
   },
   methods: {
     createIntersectionObserver() {
@@ -39,6 +83,9 @@ export default {
       Object.keys(infoElements).forEach(key => {
         observer.observe(infoElements[key]);
       });
+    },
+    getArticles(){
+      this.$store.dispatch('getArticles')
     }
   }
 };

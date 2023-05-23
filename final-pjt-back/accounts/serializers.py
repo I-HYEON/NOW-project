@@ -64,7 +64,7 @@ class CustomUserDetailsSerializer(UserDetailsSerializer):
     def update(self, instance, validated_data):
             
         instance = super().update(instance, validated_data)
-        instance.username = validated_data.get('username', None)
+        # instance.username = validated_data.get('username', None)
         instance.age = validated_data.get('age', None)
         instance.gender = validated_data.get('gender', None)
         instance.salary = validated_data.get('salary', None)

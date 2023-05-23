@@ -56,17 +56,18 @@ export default {
       const tendency = this.updatedFormData.tendency
       console.log(this.$store.state.token)
       axios({
-        method: 'put',
+        method: 'patch',
         url: `${API_URL}/accounts/user/`,
         headers:{
           Authorization: `Token ${this.$store.state.token}`
         },
         data: {
-          username, age, gender, salary, wealth, tendency
+          age, gender, salary, wealth, tendency
         },
       })
       .then((res)=>{
         console.log(res)
+        this.$router.push({name: 'ProfileView'})
       })
       .catch((err)=>{
         console.log(err)
