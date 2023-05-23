@@ -1,4 +1,5 @@
 <template>
+
   <div class="appvue-container">
     
     <nav class="main_nav navbar navbar-expand-lg">
@@ -45,6 +46,7 @@
                 <a class="nav-link disabled">Disabled</a>
               </li>
             </ul>
+
         </div>
       </div>
     </nav>
