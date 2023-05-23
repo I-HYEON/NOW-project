@@ -9,6 +9,7 @@
             <router-link class="col-12 link" to="mapview/"><div class="quick-bar-item">음...음</div></router-link><br>
         </div>
     </div>
+
   </template>
   
   <script>

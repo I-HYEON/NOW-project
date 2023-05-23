@@ -1,13 +1,15 @@
 <!-- views/CreateView.vue -->
 
 <template>
-  <div>
+  <div class="create-container">
     <h1>게시글 작성</h1>
+    <br>
     <form @submit.prevent="createArticle">
       <label for="title">제목 : </label>
       <input type="text" id="title" v-model.trim="title"><br>
+      <br>
       <label for="content">내용 : </label>
-      <textarea id="content" cols="30" rows="10" v-model="content"></textarea><br>
+      <textarea id="content" cols="100" rows="10" v-model="content"></textarea><br>
       <input type="submit" id="submit">
     </form>
   </div>
@@ -60,5 +62,8 @@ export default {
 </script>
 
 <style>
+.create-container {
+  text-align:center;
 
+}
 </style>
