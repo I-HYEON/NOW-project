@@ -1,15 +1,12 @@
 <template>
-  <div class="hello">
-    여기는 메인페이지
+  <div class="firstInfo">
+    <img src='@/photo/base_img/white.jpg' alt="white_img" style="max-width:100%; height:auto;">
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  }
+  name: 'firstInfo',
 }
 </script>
 
@@ -29,4 +26,8 @@ li {
 a {
   color: #42b983;
 }
+
+/* .hello {
+  display: flex;
+} */
 </style>
