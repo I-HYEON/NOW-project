@@ -55,6 +55,26 @@ def user_delete(request):
         return Response(status=status.HTTP_401_UNAUTHORIZED)
     
 @api_view(['POST'])
+def change_password(request):
+    user = request.user
+    old_password = request.data.get('old_password', None)  # 이전 비밀번호
+    new_password = request.data.get('new_password', None)  # 새로운 비밀번호
+
+    if user.is_authenticated:
+        # 이전 비밀번호와 현재 비밀번호가 일치하는지 확인
+        if old_password and check_password(old_password, user.password):
+            if new_password:
+                user.set_password(new_password)
+                user.save()
+                return Response(status=status.HTTP_200_OK)
+            else:
+                return Response({'error': 'New password is required'}, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            return Response({'error': 'Invalid old password'}, status=status.HTTP_400_BAD_REQUEST)
+    else:
+        return Response(status=status.HTTP_401_UNAUTHORIZED)
+    
+@api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def user_check(request):
     user = request.user

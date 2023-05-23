@@ -34,7 +34,7 @@
 
 <script>
 export default {
-  name: 'Login',
+  name: 'loginView',
   computed: {
     isLogin() {
       return this.$store.getters.isLogin
@@ -76,8 +76,12 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
+  .body {
+    background-image: url('@/photo/base_img/onlypig.jpg');
+  }
+
   .login {
-    background-color: #ff7743;
+    /* background-color: #ff7743; */
     margin: 10px 10px;
     width: 15rem;
     height: 25rem;

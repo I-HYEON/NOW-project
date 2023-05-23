@@ -21,12 +21,6 @@
       </div>
       <div class="col-3">
         <div class="container align-items-center">
-          <div>
-            <Login/>
-          </div>
-          <div>
-            <QuickBar/>
-          </div>
         </div>
       </div>
     </div>
@@ -39,7 +33,7 @@
 
 
 <script>
-import Login from '@/components/Login.vue'
+// import Login from '@/components/Login.vue'
 import DepositCard from '@/components/DepositCard.vue'
 import QuickBar from '@/components/QuickBar.vue'
 import axios from 'axios'
@@ -52,7 +46,6 @@ export default {
     }
   },
   components: {
-    Login,
     DepositCard,
     QuickBar,
   },

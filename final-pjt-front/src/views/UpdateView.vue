@@ -1,13 +1,15 @@
 <!-- views/UpdateView.vue -->
 
 <template>
-  <div>
+  <div class="update-container">
     <h1>게시글 수정</h1>
+    <br>
     <form @submit.prevent="updateArticle">
       <label for="title">제목 : </label>
       <input type="text" id="title" v-model.trim="title"><br>
+      <br>
       <label for="content">내용 : </label>
-      <textarea id="content" cols="30" rows="10" v-model="content"></textarea><br>
+      <textarea id="content" cols="100" rows="10" v-model="content"></textarea><br>
       <input type="submit" id="submit" value="수정">
     </form>
   </div>
@@ -72,5 +74,9 @@ export default {
 </script>
 
 <style>
+.update-container {
+  text-align:center;
+
+}
 /* 스타일을 필요에 따라 추가 */
 </style>
