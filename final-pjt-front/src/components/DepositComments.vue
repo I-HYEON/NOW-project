@@ -6,7 +6,6 @@
     <button type="submit" id="content" @click="createComment">작성</button>
 
     <br>
-
     <template v-if="comments.filter(comment => comment.depositproducts === deposit_detail.id).length === 0">
       <p>댓글이 없습니다.</p>
     </template>
@@ -63,6 +62,7 @@ export default {
           console.log(err);
         });
     },
+
 
     editComment(comment) {
       this.editingCommentId = comment.id

@@ -43,6 +43,7 @@
   </div>
 
 <router-link to="/withdrawl">회원탈퇴</router-link>
+
 </div>
 </template>
 
@@ -55,7 +56,6 @@ export default {
             deposits:null
         }
     },
-
     computed: {
     isLogin() {
         return this.$store.getters.isLogin
@@ -88,7 +88,6 @@ export default {
     }, 
 },
     created(){
-    console.log('제발')
     
     this.getArticles()
     this.getDepositData()

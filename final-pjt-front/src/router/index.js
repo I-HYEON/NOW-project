@@ -14,6 +14,7 @@ import WordSearch from '../views/WordSearch.vue'
 import ProfileView from '../views/ProfileView.vue'
 import UpdateView from '../views/UpdateView.vue'
 import Withdrawl from '../views/Withdrawl'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -88,7 +89,6 @@ const routes = [
     name: 'Withdrawl',
     component: Withdrawl
   },
-  
 ]
 
 const router = new VueRouter({
