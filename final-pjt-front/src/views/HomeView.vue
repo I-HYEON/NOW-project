@@ -26,7 +26,6 @@
     </div>
     <router-link to='/recommend'>추천</router-link>
   </div>
-
 </div>
 </template>
 
@@ -53,10 +52,6 @@ export default {
     Carousel,
     Login,
     QuickBar,
-  },
-
-  
-
   }
 
 </script>

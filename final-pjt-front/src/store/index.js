@@ -154,7 +154,7 @@ export default new Vuex.Store({
       
       axios({
         methods: 'get',
-        url: 'http://127.0.0.1:8000/accounts/user_info/',
+        url: 'http://127.0.0.1:8000/accounts/user/',
         headers: {
           Authorization: `Token ${token}`
         }

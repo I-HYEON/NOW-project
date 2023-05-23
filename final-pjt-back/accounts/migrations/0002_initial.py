@@ -6,9 +6,9 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
+        ('deposits', '0001_initial'),
         ('auth', '0012_alter_user_first_name_max_length'),
         ('accounts', '0001_initial'),
-        ('deposits', '0001_initial'),
     ]
 
     operations = [

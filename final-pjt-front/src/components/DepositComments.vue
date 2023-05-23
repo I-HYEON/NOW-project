@@ -62,8 +62,6 @@ export default {
           console.log(err);
         });
     },
-
-
     editComment(comment) {
       this.editingCommentId = comment.id
       this.editedContent = comment.content

@@ -48,6 +48,7 @@
 </template>
 
 <script>
+
 import axios from 'axios'
 export default {
     name : 'ProfileView',
@@ -56,6 +57,7 @@ export default {
             deposits:null
         }
     },
+
     computed: {
     isLogin() {
         return this.$store.getters.isLogin
@@ -92,7 +94,6 @@ export default {
     this.getArticles()
     this.getDepositData()
     }
-  
 }
 </script>
 
