@@ -3,7 +3,7 @@
 <h1> 프로필 페이지 입니다.</h1>
 <!-- <p> 이름 : {{userInfo.username}}</p> -->
 <p> 나이 : {{userInfo.age}}</p>
-<!-- <p> 가입한 상품 : {{userInfo.deposit}}</p> -->
+
 
 <p v-if="userInfo.gender === 1">성별 : 남자</p>
 <p v-else>성별 : 여자</p>
@@ -49,6 +49,33 @@
 <router-link to="/changepassword">비번변경</router-link>
 <br>
 <router-link to="/profileupdate">프로필변경</router-link>
+
+<!-- {{deposits}} -->
+<div class="card" v-for="(deposit,idx) in deposits" :key='idx' style="width: 14rem;">
+    <img :src="getBankImage(deposit.kor_co_nm)" class="card-img-top" :alt="`Image not found: ${deposit.kor_co_nm}`">
+    <div class="card-body">
+      <h5 class="card-title"></h5>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item explain">{{ deposit.fin_prdt_nm }}</li>
+      <li class="list-group-item explain">{{ deposit.kor_co_nm }}</li>
+      <li class="list-group-item explain">현재 가입자 수 : {{ deposit.user_count }}</li>
+      <li class="list-group-item explain">
+        <router-link
+        class="link"
+        :to="{
+          name: 'deposit_detail',
+          params: {
+            bank_info : deposit.fin_prdt_cd
+          }
+        }">상세 보기</router-link>
+      </li>
+    </ul>
+    <div class="card-body">
+    </div>
+  </div>
+
+<router-link to="/withdrawl">회원탈퇴</router-link>
 
 </div>
 </template>

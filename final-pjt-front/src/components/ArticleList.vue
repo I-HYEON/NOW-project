@@ -48,9 +48,9 @@ export default {
       const token = this.$store.state.token
       axios
         .get(`${API_URL}/articles/`, {
-          headers: {
-            Authorization: `Token ${token}`
-          }
+          // headers:{
+         //Authorization: `Token ${this.$store.state.token}`
+        // },
         })
         .then((response) => {
           this.articles = response.data
