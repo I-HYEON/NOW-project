@@ -15,6 +15,7 @@ import ProfileView from '../views/ProfileView.vue'
 import ProfileUpdateView from '../views/ProfileUpdateView.vue'
 import UpdateView from '../views/UpdateView.vue'
 import Withdrawl from '../views/Withdrawl'
+import loginView from '../views/loginView.vue'
 
 Vue.use(VueRouter)
 
@@ -43,6 +44,11 @@ const routes = [
     path: '/signup',
     name: 'signup',
     component: SignUpView
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: loginView
   },
   {
     path: '/create',

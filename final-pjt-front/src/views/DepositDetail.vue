@@ -49,7 +49,6 @@
   
 
 <script>
-import Login from '@/components/Login.vue'
 import Table from '@/components/Table.vue'
 import QuickBar from '@/components/QuickBar.vue'
 import DepositComments from '@/components/DepositComments.vue'
@@ -73,7 +72,6 @@ data(){
   }
 },
 components: {
-    Login,
     Table,
     QuickBar,
     DepositComments,
