@@ -1,4 +1,4 @@
-<template>
+<template class="template">
 
   <div class="appvue-container">
     
@@ -6,7 +6,7 @@
       <div class="container-fluid">
         
         <spans class="navbar-brand">
-          <router-link to="/">
+          <router-link to="/" class="link">
             ●●●
           </router-link>
         </spans>
@@ -18,17 +18,32 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
                 <a class="nav-link" href="#">
-                  <router-link to="/depositproducts">DepositProducts</router-link>
+                  <router-link to="/depositproducts" class="link">예적금상품조회</router-link>
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">
-                  <router-link to="/article">Community</router-link>
+                  <router-link to="/article" class="link">커뮤니티</router-link>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <router-link to="/profile" class="link">마이페이지</router-link>
+                </a>
+              </li>
+              <li v-if="!isLogin" class="nav-item">
+                <a class="nav-link" href="#">
+                  <router-link to="/signup" class="link">회원가입</router-link>
+                </a>
+              </li>
+              <li v-if="!isLogin" class="nav-item">
+                <a class="nav-link" href="#">
+                  <router-link to="/login" class="link">로그인</router-link>
                 </a>
               </li>
               <li v-if="isLogin" class="nav-item">
                 <a class="nav-link" href="#">
-                  <router-link to="/profile">Profile</router-link>
+                  <span class="link" @click="logOut">로그아웃</span>
                 </a>
               </li>
               <li class="nav-item dropdown">
@@ -52,14 +67,23 @@
     </nav>
     
     <div class="main_page">
-      <router-view/>
+      <transition name="slide" mode="out-in">
+        <router-view/>
+      </transition>
     </div>
   </div>
 </template>
 
 <script>
+
+
 export default {
     name : 'APP',
+    methods : {
+      logOut() {
+      this.$store.dispatch('logOut')
+    }
+    },
     computed: {
     isLogin() {
         return this.$store.getters.isLogin
@@ -71,7 +95,7 @@ export default {
 }
 </script>
 <style>
-
+    
   .appvue-cotainer {
     background-color: #ffd788;
     display: flex;
@@ -79,12 +103,39 @@ export default {
   }
 
   .main_nav {
-    background-color: #ff7743;
-    margin: 20px 0px 20px 0px;
+    height: 50px;
+        /* background-color: rgb(255, 144, 144); */
+    color: #601986; /*왜적용안되는지모르겠음*/
+    margin: 20px 0px 20px 60px;
   };
+
+  .link {
+    text-decoration: none;
+    color: inherit;
+  }
 
   #navbarSupportedContent {
     color: white
   }
+
+  .fade-enter-active,
+  .fade-leave-active {
+     transition: opacity 0.5s;
+  }
+
+  .fade-enter,
+  .fade-leave-to {
+     opacity: 0;
+  }
+
+  .slide-enter-active,
+  .slide-leave-active {
+  transition: transform 0.5s;
+}
+
+  .slide-enter,
+  .slide-leave-to {
+  transform: translateX(100%);
+}
 
 </style>
