@@ -24,12 +24,6 @@ DEPOSIT_BASE_URL = 'http://finlife.fss.or.kr/finlifeapi/'
 
 @api_view(['GET'])
 def save_deposit(request):
-    if DepositProducts.objects.exists():
-        # 이미 객체가 존재하는 경우, 원래 있던 객체들을 직렬화하여 반환
-        products = DepositProducts.objects.all()
-        serializer = DepositProductsSerializerC(products, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
-    
     URL = DEPOSIT_BASE_URL + 'depositProductsSearch.json'
     params = {
         'auth': settings.API_KEY,
@@ -45,20 +39,15 @@ def save_deposit(request):
     if base_serializer.is_valid():
         base_serializer.save()
     else:
-        return Response(base_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        Response(base_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
     for option in option_list:
         option_serializer = DepositOptionsSerializer(data=option)
         if option_serializer.is_valid():
-            fin_prdt_cd = option.get('fin_prdt_cd')
-            if DepositOptions.objects.filter(fin_prdt_cd=fin_prdt_cd).exists():
-                error_message = {'fin_prdt_cd':f"deposit product with fin prdt cd '{fin_prdt_cd}' already exists."}
-                return Response(error_message, status=status.HTTP_400_BAD_REQUEST)
-            deposit_product = DepositProducts.objects.get(fin_prdt_cd=fin_prdt_cd)
+            deposit_product = DepositProducts.objects.get(fin_prdt_cd=option['fin_prdt_cd'])
             option_serializer.save(fin_prdt_cd=deposit_product)
-            
         else:
-            return Response(option_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            Response(option_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
     # option list 중복 제거
     duplicate_options = (
@@ -67,7 +56,7 @@ def save_deposit(request):
         .annotate(count=Count('id'))
         .filter(count__gt=1)
     )
-    
+
     for duplicate in duplicate_options:
         fin_prdt_cd = duplicate['fin_prdt_cd']
         save_trm = duplicate['save_trm']
