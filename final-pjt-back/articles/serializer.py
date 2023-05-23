@@ -9,6 +9,8 @@ class ArticlesListSerializer(serializers.ModelSerializer):
         fields = ('id','title','content','user','username')
 
 class CommentSerializer(serializers.ModelSerializer):
+    username = serializers.CharField(source='user.username', read_only=True)
+
 
     class Meta:
         model = Comment

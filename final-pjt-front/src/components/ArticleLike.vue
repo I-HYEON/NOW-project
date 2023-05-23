@@ -1,6 +1,5 @@
 <template>
     <div>
-        좋아요 페이지
     <button @click="like">좋아요</button>
     {{article?.like_users.length}}
     {{article.id}}
@@ -15,11 +14,11 @@ export default {
     props:{
         article:Object
     },
-    data(){
-        return{
-            article:this.article,
-        }
-    },
+    // data(){
+    //     return{
+    //         article:this.article,
+    //     }
+    // },
     computed: {
         isLogin() {
             return this.$store.getters.isLogin

@@ -1,0 +1,76 @@
+<template>
+  <div>
+
+    <div>
+    <label for="password1">비밀번호 : </label>
+    <input type="text" id="password1" v-model="password1" >
+    </div>
+    <div>
+    <label for="password2">비밀번호 확인 : </label>
+    <input type="text" id="password2" v-model="password2" >
+    </div>
+    <button type='submit' @click='deleteAccount'>진짜로 할거야?</button>
+  </div>
+</template>
+
+<script>
+import axios from 'axios'
+const API_URL = 'http://127.0.0.1:8000'
+export default {
+    name: 'Withdrawl',
+    computed: {
+    isLogin() {
+      return this.$store.getters.isLogin
+    },
+    userInfo() {
+      return this.$store.state.userInfo
+    },
+    },
+    data(){
+        return{
+            password1:null,
+            password2:null,
+        }
+    },
+    methods:{
+    deleteAccount() {
+      const password1 = this.password1
+      const password2 = this.password2
+      if (password1===password2){
+      
+      axios({
+        method: 'post',
+        url: `${API_URL}/accounts/delete/`,
+        data: {password1},
+        headers: {
+            Authorization: `Token ${this.$store.state.token}`
+          }
+      })
+        .then(() => {
+          // Account deletion successful
+          // Perform any additional actions, such as logging out the user or redirecting
+          // to a different page
+          console.log('Account deleted successfully')
+          this.$store.dispatch('logOut')
+          this.$router.push({ name: 'home' })
+        })
+        .catch((error) => {
+          // Account deletion failed
+          // Handle the error accordingly
+          console.error('Account deletion failed:', error)
+        })}
+      else{
+        alert('비밀번호가 일치하지 않습니다')
+      }
+
+    },
+    check(){
+        console.log(this.password1,this.password2)
+    }
+    }
+}
+</script>
+
+<style>
+
+</style>

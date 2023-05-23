@@ -5,10 +5,22 @@ import createPersistedState from 'vuex-persistedstate'
 
 Vue.use(Vuex)
 const API_URL = 'http://127.0.0.1:8000'
+const createSessionStorageState = (options) => {
+  const persistedState = createPersistedState({
+    storage: {
+      getItem: (key) => sessionStorage.getItem(key),
+      setItem: (key, value) => sessionStorage.setItem(key, value),
+      removeItem: (key) => sessionStorage.removeItem(key),
+    },
+    ...options,
+  });
+
+  return persistedState;
+};
 
 export default new Vuex.Store({
   plugins: [
-    createPersistedState(),
+    createSessionStorageState(),
   ],
   state: {
     token: null,
@@ -142,7 +154,7 @@ export default new Vuex.Store({
       
       axios({
         methods: 'get',
-        url: 'http://127.0.0.1:8000/accounts/user_info/',
+        url: 'http://127.0.0.1:8000/accounts/user/',
         headers: {
           Authorization: `Token ${token}`
         }

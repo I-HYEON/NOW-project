@@ -12,6 +12,9 @@ import Recommend from '../views/Recommend.vue'
 import MapView from '../views/MapView.vue'
 import WordSearch from '../views/WordSearch.vue'
 import ProfileView from '../views/ProfileView.vue'
+import ProfileUpdateView from '../views/ProfileUpdateView.vue'
+import UpdateView from '../views/UpdateView.vue'
+import Withdrawl from '../views/Withdrawl'
 
 Vue.use(VueRouter)
 
@@ -76,6 +79,21 @@ const routes = [
     path: '/profile',
     name: 'ProfileView',
     component: ProfileView
+  },
+  {
+    path: '/profileupdate',
+    name: 'ProfileUpdateView',
+    component: ProfileUpdateView
+  },
+  {
+    path: '/update/:id',
+    name: 'UpdateView',
+    component: UpdateView
+  },
+  {
+    path: '/withdrawl',
+    name: 'Withdrawl',
+    component: Withdrawl
   },
 ]
 
