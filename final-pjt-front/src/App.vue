@@ -28,6 +28,11 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">
+                  <router-link to="/recommend" class="link">맞춤상품추천</router-link>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
                   <router-link to="/article" class="link">커뮤니티</router-link>
                 </a>
               </li>
@@ -76,14 +81,18 @@
         <router-view/>
       </transition>
     </div>
+    <QuickBar/>
   </div>
 </template>
 
 <script>
-
+import QuickBar from '@/components/QuickBar.vue'
 
 export default {
     name : 'APP',
+    components: {
+      QuickBar
+    },
     methods : {
       logOut() {
       this.$store.dispatch('logOut')
