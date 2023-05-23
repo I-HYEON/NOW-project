@@ -24,9 +24,9 @@
                     <router-link to="/article">Community</router-link>
                   </a>
                 </li>
-                <li class="nav-item">
+                <li v-if="isLogin" class="nav-item">
                   <a class="nav-link" href="#">
-                    <router-link to="/signup">SignUp</router-link>
+                    <router-link to="/profile">Profile</router-link>
                   </a>
                 </li>
                 <li v-if="isLogin" class="nav-item">
