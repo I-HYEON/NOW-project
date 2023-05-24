@@ -4,7 +4,7 @@
     <h3>글목록</h3>
     
     <br>
-    <router-link :to="{ name: 'CreateView' }">[CREATE]</router-link>
+    <router-link v-if="isLogin" class="toright" :to="{ name: 'CreateView' }">글쓰기</router-link>
 
     <br>
     <div class="table-container">
@@ -41,6 +41,11 @@ export default {
     return {
       articles: null
     }
+  },
+  computed:{
+    isLogin() {
+      return this.$store.getters.isLogin
+    },
   },
   methods: {
     getArticles() {
@@ -91,5 +96,8 @@ export default {
   overflow: hidden; /* 너비를 초과하는 내용은 숨김 처리 */
   text-overflow: ellipsis; /* 너비를 초과하는 경우 말줄임표(...)로 표시 */
   white-space: nowrap; /* 줄바꿈 없이 한 줄로 표시 */
+}
+.toright{
+  margin-left: 50%;
 }
 </style>

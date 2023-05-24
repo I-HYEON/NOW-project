@@ -1,47 +1,44 @@
 <template>
   <div>
-    <form @submit.prevent="signUp">
-        <label for="username">ID:</label>
-        <input type="text" id="username" v-model="username">
-        <br>
-
-        <label for="password1">password:</label>
-        <input type="text" id="password1" v-model="password1">
-        <br>
-
-        <label for="password2">password confirmation:</label>
-        <input type="text" id="password2" v-model="password2">
-        <br>
-
-        <label for="age">나이:</label>
-        <input type="text" id="" v-model="age">
-        <br>
-
-        <label for="gender">성별:</label>
-        <input type="radio" name="gender" v-model="gender" value="1">남자
-        <input type="radio" name="gender" v-model="gender" value="2">여자
-        <br>
-
-        <label for="salary">연봉:</label>
-        <input type="text" id="salary" v-model="salary">
-        <br>
-
-        <label for="wealth">자산:</label>
-        <input type="text" id="wealth" v-model="wealth">
-        <br>
-
-        <label for="tendency">저축성향:</label>
-        <input type="radio" name="tendency" v-model="tendency" value="1">단기
-        <input type="radio" name="tendency" v-model="tendency" value="2">중기
-        <input type="radio" name="tendency" v-model="tendency" value="3">장기
-        <br>
-
-        <!-- <label for="email">email:</label>
-        <input type="text" v-model="email">
-        <br> -->
-
-        <input type="submit">
-    </form>
+    <div class="signup-container">
+      <h1>회원가입</h1>
+      <br>
+      <div class="signup-form">
+        <form  @submit.prevent="signUp">
+            <label for="username">아이디</label><br>
+            <input type="text" id="username" v-model="username"><br>
+            <br>
+            <label for="password1">비밀번호</label><br>
+            <input type="text" id="password1" v-model="password1"><br>
+            <br>
+            <label for="password2">비밀번호확인</label><br>
+            <input type="text" id="password2" v-model="password2"><br>
+            <br>
+            <label for="age">나이</label><br>
+            <input type="text" id="" v-model="age"><br>
+            <br>
+            <label for="gender">성별</label><br>
+            <input type="radio" name="gender" v-model="gender" value="1">남자
+            <input type="radio" name="gender" v-model="gender" value="2">여자<br>
+            <br>
+            <label for="salary">연봉 (만원)</label><br>
+            <input type="text" id="salary" v-model="salary"><br>
+            <br>
+            <label for="wealth">자산 (만원)</label><br>
+            <input type="text" id="wealth" v-model="wealth"><br>
+            <br>
+            <label for="tendency">저축성향</label>
+            <input type="radio" name="tendency" v-model="tendency" value="1">단기
+            <input type="radio" name="tendency" v-model="tendency" value="2">중기
+            <input type="radio" name="tendency" v-model="tendency" value="3">장기<br>
+            <br>
+            <!-- <label for="email">email:</label>
+            <input type="text" v-model="email">
+            <br> -->
+            <input type="submit">
+        </form>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -94,5 +91,20 @@ export default {
 </script>
 
 <style>
+label{
+  margin-right: 10px;
+}
 
+.signup-container{
+  text-align: center;
+}
+.signup-form {
+  display: inline-block;
+  padding: 20px;
+  width: 300px;
+  height: 600px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
 </style>

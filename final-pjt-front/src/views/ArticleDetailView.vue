@@ -11,14 +11,19 @@
         </div>
         <p>작성시간: {{ article.created_at }}</p>
         <!-- <p>수정시간: {{ article.updated_at }}</p> -->
-        <button @click="deleteArticle">삭제</button>
-        <router-link v-if="article.username === userInfo.username" :to="{ name: 'UpdateView', params: { id: article.id } }">
-          <button>수정하기</button>
-        </router-link>
+        <div v-if="article.username === userInfo.username" class="button-wrapper">
+          <button type="button" @click="deleteArticle" class="btn btn-outline-danger">삭제하기</button>
+          <router-link  :to="{ name: 'UpdateView', params: { id: article.id } }">
+            <button type="button" class="btn btn-outline-primary">수정하기</button>
+          
+          </router-link>
+        </div>
+        <ArticleLike v-if="article.id" :article="article" />
         <br><br><br>
+        <hr>
 
         <Comments v-if="article.id" :article="article" />
-        <ArticleLike v-if="article.id" :article="article" />
+        
       </div>
     </template>
   </div>
@@ -81,7 +86,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .detail-wrapper {
   text-align: center; /* 내용을 가운데로 정렬 */
 }
@@ -89,6 +94,9 @@ export default {
 .article-wrapper {
   width: 50%;
   margin: 0 auto;
+}
+.button-wrapper {
+  text-align: right;
 }
 
 .content-wrapper {

@@ -1,10 +1,11 @@
 <template>
   <div>
     <h3>댓글 작성</h3>
-    <label for="content">내용 : </label>
-    <input type="text" id="content" v-model="content" @keyup.enter="createComment">
+    <!-- <input type="textarea" id="content" v-model="content" @keyup.enter="createComment"> -->
+    <textarea id="content" placeholder="댓글을 입력하세요" style="width: 600px;" rows="5" v-model="content" @keyup.enter="createComment"></textarea>
+    <br>
     <button type="submit" id="content" @click="createComment">작성</button>
-
+    <br>
     <br>
     <template v-if="comments.filter(comment => comment.article === article.id).length === 0">
       <p>댓글이 없습니다.</p>
@@ -24,6 +25,7 @@
         </span>
       </p>
     </template>
+    
   </div>
 </template>
 
@@ -131,6 +133,9 @@ export default {
     cancelEdit() {
       this.editingCommentId = null;
       this.editedContent = '';
+    },
+    getArticles(){
+      this.$store.state
     }
   }
 };
