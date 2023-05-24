@@ -1,9 +1,8 @@
 <template>
   <div>
-    <h1>Article Page</h1>
-    <router-link :to="{ name: 'CreateView' }">[CREATE]</router-link>
+    <h1 class="article-list">자유게시판</h1>
+    <br>
     <ArticleList />
-    <hr>
   </div>
 </template>
 
@@ -25,13 +24,13 @@ export default {
   },
   methods: {
     getArticles() {
-      if (this.isLogin) {
-        this.$store.dispatch('getArticles')
-      } else {
-        alert('로그인이 필요한 페이지입니다...')
-        this.$router.push({ name: 'LogInView' })
-      } 
-      // this.$store.dispatch('getArticles')
+      // if (this.isLogin) {
+      //   this.$store.dispatch('getArticles')
+      // } else {
+      //   alert('로그인이 필요한 페이지입니다...')
+      //   this.$router.push({ name: 'loginView' })
+      // } 
+      this.$store.dispatch('getArticles')
 
     }
   }
@@ -39,5 +38,8 @@ export default {
 </script>
 
 <style>
+.article-list {
+  text-align: center;
+}
 
 </style>

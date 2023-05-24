@@ -1,21 +1,25 @@
 <template>
   <div>
-    <h1>Detail</h1>
-    <template v-if="article"> 
-      <p>글 번호: {{ article.id }}</p>
-      <p>작성자: {{ article.username }}</p>
-      <p>제목: {{ article.title }}</p>
-      <p>내용: {{ article.content }}</p>
-      <p>작성시간: {{ article.created_at }}</p>
-      <p>수정시간: {{ article.updated_at }}</p>
-      <button @click="deleteArticle">삭제</button>
-      <router-link v-if="article.username===userInfo.username" :to="{ name: 'UpdateView', params: { id: article.id } }">
-        <button>수정하기</button>
-      </router-link>
-      <br><br><br>
+    <h1 class="detail-wrapper">자유게시판</h1>
+    <template v-if="article">
+      <div class="article-wrapper">
+        <!-- <p>글 번호: {{ article.id }}</p> -->
+        <!-- <p>작성자: {{ article.username }}</p> -->
+        <p>제목: {{ article.title }}</p>
+        <div class="content-wrapper">
+          <p>내용: {{ article.content }}</p>
+        </div>
+        <p>작성시간: {{ article.created_at }}</p>
+        <!-- <p>수정시간: {{ article.updated_at }}</p> -->
+        <button @click="deleteArticle">삭제</button>
+        <router-link v-if="article.username === userInfo.username" :to="{ name: 'UpdateView', params: { id: article.id } }">
+          <button>수정하기</button>
+        </router-link>
+        <br><br><br>
 
-      <Comments v-if="article.id" :article="article" />
-      <ArticleLike v-if="article.id" :article="article" />
+        <Comments v-if="article.id" :article="article" />
+        <ArticleLike v-if="article.id" :article="article" />
+      </div>
     </template>
   </div>
 </template>
@@ -76,3 +80,20 @@ export default {
   }
 };
 </script>
+
+<style>
+.detail-wrapper {
+  text-align: center; /* 내용을 가운데로 정렬 */
+}
+
+.article-wrapper {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.content-wrapper {
+  max-height: 300px; /* 최대 높이 설정 */
+  overflow: auto; /* 내용이 넘칠 경우 스크롤 표시 */
+  word-break: break-all; /* 내용이 넘칠 경우 줄바꿈 */
+}
+</style>
