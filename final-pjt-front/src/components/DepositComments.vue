@@ -1,29 +1,34 @@
 <template>
   <div>
     <h3>댓글 작성</h3>
-    <label for="content">내용 :</label>
-    <input type="text" id="content" v-model="content" @keyup.enter="createComment">
-    <button type="submit" id="content" @click="createComment">작성</button>
+    <textarea id="content" placeholder="댓글을 입력하세요" style="width: 600px;" rows="5" v-model="content" @keyup.enter="createComment"></textarea><br>
+    <button type="button" id="content" @click="createComment" class="btn btn-outline-success">작성</button>
+    <br>
 
     <br>
     <template v-if="comments.filter(comment => comment.depositproducts === deposit_detail.id).length === 0">
       <p>댓글이 없습니다.</p>
     </template>
     <template v-else="v-else">
-      <p v-for="(comment, idx) in comments" :key="idx" v-if="comment.depositproducts === deposit_detail.id">
-        <template v-if="editingCommentId !== comment.id">
-          댓글: {{ comment?.content }}
-          {{ comment?.username }}
-          {{ deposit_detail.fin_prdt_cd }}
-          <button @click="editComment(comment)">수정</button>
-          <button @click="deleteComment(comment)">삭제</button>
-        </template>
-        <template v-else>
-          <input type="text" v-model="editedContent" @keyup.enter="updateComment(comment)">
-          <button @click="updateComment(comment)">저장</button>
-          <button @click="cancelEdit">취소</button>
-        </template>
-      </p>
+      <div v-for="(comment, idx) in comments" :key="idx" v-if="comment.depositproducts === deposit_detail.id">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+          <div>
+            {{comment?.username}} : {{ comment?.content }}
+            <hr>
+          </div>
+          <div>
+            <template v-if="editingCommentId !== comment.id">
+              <span @click="editComment(comment)">수정</span> |
+              <span @click="deleteComment(comment)">삭제</span>
+            </template>
+            <template v-else>
+              <input type="text" v-model="editedContent" @keyup.enter="updateComment(comment)">
+              <button @click="updateComment(comment)">저장</button>
+              <button @click="cancelEdit">취소</button>
+            </template>
+          </div>
+        </div>
+      </div>
     </template>
   </div>
 </template>
@@ -130,10 +135,13 @@ export default {
         alert('댓글을 입력하세요!')
       }
     },
+    
   },
 }
 </script>
 
 <style>
-
+.button-wrapper {
+  margin-right: 30px;
+}
 </style>

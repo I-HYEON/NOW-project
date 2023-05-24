@@ -4,7 +4,8 @@
     <h3>글목록</h3>
     
     <br>
-    <router-link v-if="isLogin" class="toright" :to="{ name: 'CreateView' }">글쓰기</router-link>
+    <button type="button" v-if="isLogin" @click='createArticle' class="btn btn-outline-success toright">글쓰기</button>
+
 
     <br>
     <div class="table-container">
@@ -70,6 +71,9 @@ export default {
         name: 'ArticleDetailView',
         params: { id: article.id }
       });
+    },
+    createArticle(){
+      this.$router.push({name: 'CreateView'})
     }
   },
   created() {
@@ -78,7 +82,7 @@ export default {
 }
 </script>
 
-<style>
+<style >
 .article-list {
   text-align: center;
 }

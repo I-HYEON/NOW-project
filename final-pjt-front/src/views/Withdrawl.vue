@@ -14,7 +14,8 @@
         <input type="text" id="password2" v-model="password2" >
         </div>
         <br>
-        <button type='submit' @click='deleteAccount'>진짜로 할거야?</button>
+        <!-- <button type='submit' '>진짜로 할거야?</button> -->
+        <button type="button" style="width: 200px;" @click='deleteAccount' class="btn btn-warning">확인</button>
       </div>
     </div>
   </div>
