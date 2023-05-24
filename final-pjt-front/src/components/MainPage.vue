@@ -1,5 +1,5 @@
 <template>
-  <div class="main-second">
+  <div class="back-ground">
     <br>
     <br>
     <br>
@@ -24,7 +24,6 @@
         <div class="col-4">
           <div class="card h-100">
             <div class="card-body">
-              이게 무슨내용
 
               <!-- Customize the content for the second and third cards here -->
               <!-- You can add any HTML elements or Vue directives -->
@@ -53,7 +52,7 @@
 
 <script>
 export default {
-  name: 'secondMain',
+  name: 'MainPage',
   mounted() {
     this.createIntersectionObserver();
   },
@@ -92,10 +91,11 @@ export default {
 </script>
 
 <style>
-.main-second {
+
+.back-ground {
   max-width: 100%;
   height: auto;
-  background: linear-gradient(#f19319, white, #f19319);
+  background: linear-gradient( #601986, white, #601986);
 }
 
 .info-container {
@@ -111,10 +111,10 @@ export default {
   opacity: 0;
   transition: opacity 0.5s;
   max-width: 100%;
-  height: 800px;
+  height: 1000px;
   padding: 20px;
   /* margin: 5px 5px 5px 5px; */
-  background-color: white;
+  /* background-color: white; */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -122,9 +122,9 @@ export default {
   opacity: 0;
   transition: opacity 0.5s;
   margin: 0px;
-  height: 800px;
+  height: 1000px;
   padding: 20px;
-  background-color: black;
+  /* background-color: black; */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 

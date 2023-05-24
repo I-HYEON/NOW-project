@@ -1,26 +1,14 @@
 <template>
-  <div class="card" style="width: 14rem;">
+  <div class="DepositCard" :class="{ 'hovered': isHovered }" @click="navigateToDetail">
     <img :src="getBankImage(deposit.kor_co_nm)" class="card-img-top" :alt="`Image not found: ${deposit.kor_co_nm}`">
     <div class="card-body">
-      <h5 class="card-title"></h5>
+      <h5 class="card-title">{{ deposit.fin_prdt_nm }}</h5>
     </div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item explain">{{ deposit.fin_prdt_nm }}</li>
       <li class="list-group-item explain">{{ deposit.kor_co_nm }}</li>
-      <li class="list-group-item explain">현재 가입자 수 : {{ deposit.user_count }}</li>
-      <li class="list-group-item explain">
-        <router-link
-        class="link"
-        :to="{
-          name: 'deposit_detail',
-          params: {
-            bank_info : deposit.fin_prdt_cd
-          }
-        }">상세 보기</router-link>
-      </li>
+      <li class="list-group-item explain">현재 가입자 수: {{ deposit.user_count }}</li>
     </ul>
-    <div class="card-body">
-    </div>
+    <div class="card-body"></div>
   </div>
 </template>
 
@@ -32,6 +20,11 @@ export default {
   props: {
     deposit: Object
   },
+  data() {
+    return {
+      isHovered: false
+    }
+  },
   methods: {
     getBankImage(korCoNm) {
       try {
@@ -40,18 +33,37 @@ export default {
         console.error(error);
         return dummycat;
       }
+    },
+    navigateToDetail() {
+      this.$router.push({
+        name: 'deposit_detail',
+        params: {
+          bank_info: this.deposit.fin_prdt_cd
+        }
+      });
     }
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
-  .explain {
-    font-size: 10px;
-  }
-  .link {
-    text-decoration-line: none;
-    color: black;
-  }
+<style scoped>
+.DepositCard {
+  background-color: white;
+  color:black;
+  width: calc(20% - 40px);
+  height: calc(12% - 20px);
+  /* margin: 20px; */
+  padding: 20px;
+  /* border: 1px solid #000; */
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.DepositCard:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
 </style>

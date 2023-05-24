@@ -1,7 +1,7 @@
 <template>
 <div>
 <h1> 프로필 페이지 입니다.</h1>
-<!-- <p> 이름 : {{userInfo.username}}</p> -->
+<p> 이름 : {{userInfo.username}}</p>
 <p> 나이 : {{userInfo.age}}</p>
 
 
