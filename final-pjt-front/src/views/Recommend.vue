@@ -13,9 +13,9 @@
         <tr>
             <td>나이</td>
             <td>
-                <input type="checkbox" name="tendency" v-model="info.age_one">20세 이하       
+                <input type="checkbox" name="tendency" v-model="info.age_one">20세 미만       
                 <input type="checkbox" name="tendency" v-model="info.age_two">20세 ~ 29세
-                <input type="checkbox" name="tendency" v-model="info.age_thr">30세 ~ 40세
+                <input type="checkbox" name="tendency" v-model="info.age_thr">30세 ~ 39세
                 <input type="checkbox" name="tendency" v-model="info.age_fou">40세 ~ 49세
                 <input type="checkbox" name="tendency" v-model="info.age_fiv">50세 ~ 59세
                 <input type="checkbox" name="tendency" v-model="info.age_six">60세 이상
@@ -24,7 +24,7 @@
         <tr>
             <td>연봉</td>
             <td>
-                <input type="checkbox" name="tendency" v-model="info.sal_one">2000만원 이하
+                <input type="checkbox" name="tendency" v-model="info.sal_one">2000만원 미만
                 <input type="checkbox" name="tendency" v-model="info.sal_two">2000만원 ~ 4000만원
                 <input type="checkbox" name="tendency" v-model="info.sal_thr">4000만원 ~ 6000만원
                 <input type="checkbox" name="tendency" v-model="info.sal_fou">6000만원 ~ 8000만원
@@ -35,7 +35,7 @@
         <tr>
             <td>자산</td>
             <td>
-                <input type="checkbox" name="tendency" v-model="info.whl_one">2000만원 이하
+                <input type="checkbox" name="tendency" v-model="info.whl_one">2000만원 미만
                 <input type="checkbox" name="tendency" v-model="info.whl_two">2000만원 ~ 6000만원
                 <input type="checkbox" name="tendency" v-model="info.whl_thr">6000만원 ~ 10000만원
                 <input type="checkbox" name="tendency" v-model="info.whl_fou">10000만원 ~ 20000만원
@@ -104,6 +104,7 @@ export default {
             })
             .then((response) => {
                 this.sorted_depositData = response.data
+                console.log(this.sorted_depositData.length)
                 this.show = true
             })
             .catch((err) => {

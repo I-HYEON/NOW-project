@@ -9,7 +9,7 @@
         <div class="content-wrapper">
           <p>내용: {{ article.content }}</p>
         </div>
-        <p>작성시간: {{ article.created_at }}</p>
+        <p>작성시간: {{ formatDate(article.created_at) }}</p>
         <!-- <p>수정시간: {{ article.updated_at }}</p> -->
         <div v-if="article.username === userInfo.username" class="button-wrapper">
           <button type="button" @click="deleteArticle" class="btn btn-outline-danger">삭제하기</button>
@@ -80,6 +80,16 @@ export default {
           this.$router.push({ path: '/article' });
         });
       
+    },
+    formatDate(datetime) {
+      const dateObj = new Date(datetime);
+      const year = dateObj.getFullYear();
+      const month = ("0" + (dateObj.getMonth() + 1)).slice(-2);
+      const day = ("0" + dateObj.getDate()).slice(-2);
+      const hours = ("0" + dateObj.getHours()).slice(-2);
+      const minutes = ("0" + dateObj.getMinutes()).slice(-2);
+
+      return `${year}년-${month}월-${day}일 ${hours}:${minutes}`;
     },
     
   }
