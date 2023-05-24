@@ -42,6 +42,7 @@ export default {
 <style>
 
     .container-fluid {
+      padding: 0;
       display: flex;
       flex-direction: column;
       margin-right: 0;

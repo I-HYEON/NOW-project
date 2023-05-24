@@ -48,11 +48,13 @@ export default {
 
 <style scoped>
 .DepositCard {
-  background-color: white;
+  font-size: 0.5rem;
+  /* background-color: white; */
   color:black;
   width: calc(20% - 40px);
   height: calc(12% - 20px);
-  /* margin: 20px; */
+  height:fit-content;
+  margin: 20px;
   padding: 20px;
   /* border: 1px solid #000; */
   border-radius: 10px;
