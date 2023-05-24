@@ -1,19 +1,23 @@
 <template>
   <div>
-
-    <div>
-    <label for="old_password">전 비밀번호 : </label>
-    <input type="text" id="old_password" v-model="old_password" >
+    <div class="change-pw-container">
+      <h1>비밀번호 변경</h1>
+      <div class="change-pw-form">
+        <div>
+        <label for="old_password">전 비밀번호 : </label>
+        <input type="text" id="old_password" v-model="old_password" >
+        </div>
+        <div>
+        <label for="new_password1">새 비밀번호 : </label>
+        <input type="text" id="new_password1" v-model="new_password1" >
+        </div>
+        <div>
+        <label for="new_password2">새 비밀번호 확인 : </label>
+        <input type="text" id="new_password2" v-model="new_password2" >
+        </div>
+        <button type='submit' @click='changePassword'>진짜로 할거야?</button>
+      </div>
     </div>
-    <div>
-    <label for="new_password1">새 비밀번호 : </label>
-    <input type="text" id="new_password1" v-model="new_password1" >
-    </div>
-    <div>
-    <label for="new_password2">새 비밀번호 확인 : </label>
-    <input type="text" id="new_password2" v-model="new_password2" >
-    </div>
-    <button type='submit' @click='changePassword'>진짜로 할거야?</button>
   </div>
 </template>
 
@@ -86,5 +90,20 @@ export default {
 </script>
 
 <style>
+label{
+  margin-right: 10px;
+}
 
+.change-pw-container{
+  text-align: center;
+}
+.change-pw-form {
+  display: inline-block;
+  padding: 20px;
+  width: 300px;
+  height: 300px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
 </style>

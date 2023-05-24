@@ -23,16 +23,18 @@ export default {
       return this.$store.getters.isLogin
     },
     userInfo() {
+      console.log(this.$store.state.userInfo)
       return this.$store.state.userInfo
     },
   },
   
   components: {
-    // firstMain,
     MainPage,
     Carousel,
-    // Login,
     QuickBar,
+  },
+  created(){
+    console.log(this.$store.state.userInfo)
   }
 }
 </script>

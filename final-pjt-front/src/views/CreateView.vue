@@ -5,12 +5,15 @@
     <h1>게시글 작성</h1>
     <br>
     <form @submit.prevent="createArticle">
-      <label for="title">제목 : </label>
-      <input type="text" id="title" v-model.trim="title"><br>
+      <label for="title">제목</label>
       <br>
-      <label for="content">내용 : </label>
-      <textarea id="content" cols="100" rows="10" v-model="content"></textarea><br>
-      <input type="submit" id="submit">
+      
+      <input type="text" placeholder="제목을 입력하세요" style="width: 600px;" id="title" v-model.trim="title"><br>
+      <br>
+      <label for="content">내용 </label>
+      <br>
+      <textarea id="content" placeholder="내용을 입력하세요" style="width: 600px;" rows="10" v-model="content"></textarea><br>
+      <input type="submit"  style="width: 100px;" id="submit">
     </form>
   </div>
 </template>
@@ -64,6 +67,12 @@ export default {
 <style>
 .create-container {
   text-align:center;
+}
+.create-container {
+  text-align:center;
 
+}
+.half-width-form {
+  width: 50%;
 }
 </style>

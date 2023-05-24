@@ -1,16 +1,19 @@
 <!-- views/UpdateView.vue -->
 
 <template>
-  <div class="update-container">
-    <h1>게시글 수정</h1>
+<div class="update-container">
+    <h1>게시글 작성</h1>
     <br>
     <form @submit.prevent="updateArticle">
-      <label for="title">제목 : </label>
+      <label for="title">제목</label>
+      <br>
+      
       <input type="text" id="title" v-model.trim="title"><br>
       <br>
-      <label for="content">내용 : </label>
-      <textarea id="content" cols="100" rows="10" v-model="content"></textarea><br>
-      <input type="submit" id="submit" value="수정">
+      <label for="content">내용 </label>
+      <br>
+      <textarea id="content"  style="width: 600px;" rows="10" v-model="content"></textarea><br>
+      <input type="submit" style="width: 100px;" id="submit">
     </form>
   </div>
 </template>

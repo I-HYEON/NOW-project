@@ -67,11 +67,9 @@
             </div>
         </div>
     </div>
-  </div>
+  </template>
 
-</template>
-
-<script>
+  <script>
 import axios from 'axios'
 import DepositCard from '@/components/DepositCard.vue'
 const API_URL = 'http://127.0.0.1:8000'
