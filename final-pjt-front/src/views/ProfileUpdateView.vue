@@ -1,35 +1,39 @@
 <template>
   <div>
-    <h1>Edit User Information</h1>
-    <!-- <h2>{{userInfo}}</h2> -->
-    <form @submit.prevent="updateProfile">
-      <div>
-        <label for="username">Username:</label>
-        <input type="text" id="username" v-model="updatedFormData.username">
+    
+    <div class="profile-change-container">
+      <h1>프로필 변경</h1>
+      <div class="profile-change-form">
+        <form  @submit.prevent="signUp">
+            <label for="username">아이디</label><br>
+            <input type="text" id="username" v-model="updatedFormData.username" disabled><br>
+            <br>
+            <label for="age">나이</label><br>
+            <input type="text" id="" v-model="updatedFormData.age"><br>
+            <br>
+            <label for="gender">성별</label><br>
+            <input type="radio" name="gender" v-model="updatedFormData.gender" value="1">남자
+            <input type="radio" name="gender" v-model="updatedFormData.gender" value="2">여자<br>
+            <br>
+            <label for="salary">연봉 (만원)</label><br>
+            <input type="text" id="salary" v-model="updatedFormData.salary"><br>
+            <br>
+            <label for="wealth">자산 (만원)</label><br>
+            <input type="text" id="wealth" v-model="updatedFormData.wealth"><br>
+            <br>
+            <label for="tendency">저축성향</label>
+            <input type="radio" name="tendency" v-model="updatedFormData.tendency" value="1">단기
+            <input type="radio" name="tendency" v-model="updatedFormData.tendency" value="2">중기
+            <input type="radio" name="tendency" v-model="updatedFormData.tendency" value="3">장기<br>
+            <br>
+            <!-- <label for="email">email:</label>
+            <input type="text" v-model="email">
+            <br> -->
+            <input type="submit">
+        </form>
       </div>
-      <div>
-        <label for="age">Age:</label>
-        <input type="number" id="age" v-model="updatedFormData.age">
-      </div>
-      <div>
-        <label for="gender">Gender:</label>
-        <input type="text" id="gender" v-model="updatedFormData.gender">
-      </div>
-      <div>
-        <label for="salary">Salary:</label>
-        <input type="number" id="salary" v-model="updatedFormData.salary">
-      </div>
-      <div>
-        <label for="wealth">Wealth:</label>
-        <input type="number" id="wealth" v-model="updatedFormData.wealth">
-      </div>
-      <div>
-        <label for="tendency">Tendency:</label>
-        <input type="number" id="tendency" v-model="updatedFormData.tendency">
-      </div>
-      <button type="submit">Save</button>
-    </form>
-    {{updatedFormData}}
+    </div>
+    <!-- {{updatedFormData}} -->
   </div>
 </template>
 
@@ -76,3 +80,21 @@ export default {
   }
 };
 </script>
+<style>
+label{
+  margin-right: 10px;
+}
+
+.profile-change-container{
+  text-align: center;
+}
+.profile-change-form {
+  display: inline-block;
+  padding: 20px;
+  width: 300px;
+  height: 600px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+</style>
