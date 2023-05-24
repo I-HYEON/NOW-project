@@ -99,6 +99,7 @@ export default {
 }
 
 .info-container {
+  padding: 0;
   height: auto; /* 스크롤을 위한 임시 높이 */
   /* display: flex; */
   flex-direction: column;

@@ -13,7 +13,9 @@
             />
           </div>
           <div v-else>
-            <img src="@/photo/loading.gif" alt="로딩중..." />
+            <div class="loading-container">
+              <div class="loader"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -56,11 +58,9 @@ export default {
   min-height: 100vh;
 }
 
-.d-flex {
-  margin-top: 20px;
-}
+/* .d-flex {} */
 
-.row.mx-0 {
+/* .row.mx-0 {
   margin-left: -20px;
   margin-right: -20px;
 }
@@ -70,19 +70,9 @@ export default {
 .col-lg-4,
 .col-xl-3 {
   margin: 20px;
-}
+} */
 
-.DepositCard {
-  position: relative;
-  overflow: hidden;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s, box-shadow 0.3s;
-  /* margin-bottom: 20px; */
-}
-
-.DepositCard:hover {
+/* .DepositCard:hover {
   transform: scale(1.1);
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
 }
@@ -119,6 +109,6 @@ export default {
 .DepositCard .link {
   text-decoration-line: none;
   color: #333;
-}
+} */
 
 </style>
