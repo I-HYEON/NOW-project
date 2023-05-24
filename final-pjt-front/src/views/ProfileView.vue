@@ -10,7 +10,7 @@
                     <br>
                         <p>
                             나이 :
-                            {{userInfo.age}}</p>
+                            {{userInfo.age}}세</p>
 
                         <p v-if="userInfo.gender === 1">성별 : 남자</p>
                         <p v-else>성별 : 여자</p>
@@ -26,87 +26,62 @@
 
 <p> 재산 : {{userInfo.wealth}}만원</p>
 
-<!-- {{deposits}} -->
-<div class="d-flex">
-<div class="card" v-for="(deposit,idx) in deposits" :key='idx' style="width: 14rem;" v-if="userInfo.deposit.includes(idx+1)">
-    <img :src="getBankImage(deposit.kor_co_nm)" class="card-img-top" :alt="`Image not found: ${deposit.kor_co_nm}`">
-    <div class="card-body">
-      <h5 class="card-title"></h5>
-    </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item explain">{{ deposit.fin_prdt_nm }}</li>
-      <li class="list-group-item explain">{{ idx }}</li>
-      <li class="list-group-item explain">{{ deposit.kor_co_nm }}</li>
-      <li class="list-group-item explain">현재 가입자 수 : {{ deposit.user_count }}</li>
-      <li class="list-group-item explain">
-        <router-link
-        class="link"
-        :to="{
-          name: 'deposit_detail',
-          params: {
-            bank_info : deposit.fin_prdt_cd
-          }
-        }">상세 보기</router-link>
-      </li>
-    </ul>
-    <div class="card-body">
-    </div>
+<p>내가 쓴 글</p>
+<div>
+  <div class="table-container">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <!-- <th scope="col">#</th> -->
+          <th scope="col">제목</th>
+          <th scope="col">내용</th>
+          <th scope="col">작성일</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="article in $store.state.articles" v-if='article.username===userInfo.username' :key="article.id" @click="check(article)">
+          <th scope="row">{{ article.title }}</th>
+          <th scope="row">{{ article.content }}</th>
+          <th scope="row">{{article.created_at.substring(0, 10)}}</th>
+          
+        </tr>
+      </tbody>
+    </table>
   </div>
-  </div>
+</div>
 
-<router-link to="/withdrawl">회원탈퇴</router-link>
 <br>
-<router-link to="/changepassword">비번변경</router-link>
 <br>
-<router-link to="/profileupdate">프로필변경</router-link>
 
-                        <p>가입 상품 목록</p>
-                        <div class="d-flex">
-                            <div
-                                class="card"
-                                v-for="(deposit,idx) in deposits"
-                                :key='idx'
-                                style="width: 14rem;"
-                                v-if="userInfo.deposit.includes(idx+1)">
-                                <img
-                                    :src="getBankImage(deposit.kor_co_nm)"
-                                    class="card-img-top"
-                                    :alt="`Image not found: ${deposit.kor_co_nm}`">
-                                    <div class="card-body">
-                                        <h5 class="card-title"></h5>
-                                    </div>
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item explain">{{ deposit.fin_prdt_nm }}</li>
-                                        <li class="list-group-item explain">{{ deposit.kor_co_nm }}</li>
-                                        <li class="list-group-item explain">현재 가입자 수 :
-                                            {{ deposit.user_count }}</li>
-                                        <li class="list-group-item explain">
-                                            <router-link
-                                                class="link"
-                                                :to="{
-                                                name: 'deposit_detail',
-                                                params: {
-                                                  bank_info : deposit.fin_prdt_cd
-                                                }
-                                              }">상세 보기</router-link>
-                                        </li>
-                                    </ul>
-                                    <div class="card-body"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <br>
-                            <p><button type="button" @click="changePassword" class="btn btn-outline-info">비밀번호 변경</button></p>
-                            <p><button type="button" @click="changeProfile" class="btn btn-outline-info">프로필 변경</button></p>
-                            <p><button type="button" @click="withdrawl" class="btn btn-outline-info">회원탈퇴</button></p>
+<p>가입 상품 목록</p>
+<div class="d-flex justify-content-center flex-wrap">
+  <!-- <div v-for="(deposit,idx) in deposits" :key='idx' style="width: 14rem;" v-if="userInfo.deposit.includes(idx+1)"> -->
+    <div class="DepositCard" :class="{ 'hovered': isHovered }" @click="navigateToDetail(deposit)" v-for="(deposit,idx) in deposits" :key='idx' style="width: 14rem;" v-if="userInfo.deposit.includes(idx+1)">
+      <img :src="getBankImage(deposit.kor_co_nm)" class="card-img-top" :alt="`Image not found: ${deposit.kor_co_nm}`">
+      <div class="card-body">
+        <h5 class="card-title">{{ deposit.fin_prdt_nm }}</h5>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item explain">{{ deposit.kor_co_nm }}</li>
+        <li class="list-group-item explain">현재 가입자 수: {{ deposit.user_count }}</li>
+      </ul>
+      <div class="card-body"></div>
+    </div>
+  <!-- </div> -->
+</div>
+</div>
+<div class="col-3">
+  <br>
+  <p><button type="button" @click="changePassword" class="btn btn-outline-info">비밀번호 변경</button></p>
+  <p><button type="button" @click="changeProfile" class="btn btn-outline-info">프로필 변경</button></p>
+  <p><button type="button" @click="withdrawl" class="btn btn-outline-info">회원탈퇴</button></p>
 
-                                
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </template>
+      
+                  </div>
+              </div>
+          </div>
+      </div>
+  </template>
 <script>
 
 import axios from 'axios'
@@ -114,7 +89,8 @@ export default {
     name : 'ProfileView',
     data(){
         return{
-            deposits:null
+            deposits:null,
+            isHovered: false
         }
     },
 
@@ -157,6 +133,29 @@ export default {
       withdrawl(){
         this.$router.push({name: 'Withdrawl'})
       },
+      getBankImage(korCoNm) {
+      try {
+        return require(`@/bank_photo/${korCoNm}.png`);
+      } catch (error) {
+        console.error(error);
+        return dummycat;
+      }
+    },
+    navigateToDetail(deposit) {
+      this.$router.push({
+        name: 'deposit_detail',
+        params: {
+          bank_info: deposit.fin_prdt_cd
+        }
+      });
+    },
+    check(article){
+      this.$router.push({
+        name: 'ArticleDetailView',
+        params: { id: article.id }
+      });
+    },
+    
 
 },
     created(){
@@ -167,11 +166,29 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 .profile-container {
   text-align:center;
 
+}
+.DepositCard {
+  background-color: white;
+  color:black;
+  width: calc(20% - 40px);
+  height: calc(12% - 20px);
+  /* margin: 20px; */
+  padding: 20px;
+  /* border: 1px solid #000; */
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.DepositCard:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 </style>

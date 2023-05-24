@@ -4,15 +4,15 @@
       <h1>회원가입</h1>
       <br>
       <div class="signup-form">
-        <form  @submit.prevent="signUp">
+        <form >
             <label for="username">아이디</label><br>
             <input type="text" id="username" v-model="username"><br>
             <br>
             <label for="password1">비밀번호</label><br>
-            <input type="text" id="password1" v-model="password1"><br>
+            <input type="password" id="password1"  v-model="password1" ><br>
             <br>
             <label for="password2">비밀번호확인</label><br>
-            <input type="text" id="password2" v-model="password2"><br>
+            <input type="password" id="password2" v-model="password2"><br>
             <br>
             <label for="age">나이</label><br>
             <input type="text" id="" v-model="age"><br>
@@ -35,7 +35,7 @@
             <!-- <label for="email">email:</label>
             <input type="text" v-model="email">
             <br> -->
-            <input type="submit">
+            <button type="button" @click="signUp" style="width: 200px;" class="btn btn-success">확인</button>
         </form>
       </div>
     </div>
@@ -85,7 +85,11 @@ export default {
           console.error(error)
         })
         // console.log(this.gender)
-    }
+    },
+    maskText(text) {
+      const maskedText = '*'.repeat(text.length);
+      return maskedText;
+}
 }
 }
 </script>
@@ -102,7 +106,7 @@ label{
   display: inline-block;
   padding: 20px;
   width: 300px;
-  height: 600px;
+  height: 670px;
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #f9f9f9;

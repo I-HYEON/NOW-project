@@ -12,14 +12,15 @@
     </div> -->
     <div class="login-form">
       <div >
-        <form @submit.prevent="login">
-            <label for="username" class="form-label">Username</label><br>
+        <form>
+            <label for="username" class="form-label">아이디</label><br>
             <input type="text"  style="width: 200px;" id="username" v-model="username">
             <br><br>
-            <label for="exampleInputPassword1" class="form-label">Password</label><br>
+            <label for="exampleInputPassword1" class="form-label">비밀번호</label><br>
             <input type="password" style="width: 200px;" id="exampleInputPassword1" v-model="password">
             <br><br>
-          <button type="submit" class="btn btn-primary" style="width: 200px;">Submit</button>
+          <button type="button" @click="login" style="width: 200px;" class="btn btn-success">로그인</button>
+
         </form>
       </div>
       <div>

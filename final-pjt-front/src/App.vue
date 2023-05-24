@@ -36,7 +36,7 @@
                   <router-link to="/article" class="link">커뮤니티</router-link>
                 </a>
               </li>
-              <li class="nav-item">
+              <li v-if="isLogin" class="nav-item">
                 <a class="nav-link" href="#">
                   <router-link to="/profile" class="link">마이페이지</router-link>
                 </a>
