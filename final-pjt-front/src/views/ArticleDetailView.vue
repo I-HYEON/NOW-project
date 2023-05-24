@@ -23,7 +23,7 @@
         <hr>
 
         <Comments v-if="article.id" :article="article" />
-        
+  
       </div>
     </template>
   </div>
@@ -95,6 +95,7 @@ export default {
   width: 50%;
   margin: 0 auto;
 }
+
 .button-wrapper {
   text-align: right;
 }

@@ -65,7 +65,9 @@ export default {
 </script>
 
 <style>
-
+.create-container {
+  text-align:center;
+}
 .create-container {
   text-align:center;
 

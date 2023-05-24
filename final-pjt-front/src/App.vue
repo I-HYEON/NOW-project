@@ -5,11 +5,11 @@
     <nav class="main_nav navbar navbar-expand-lg">
       <div class="container-fluid">
         
-        <spans class="navbar-brand">
+        <!-- <spans class="navbar-brand">
           <router-link to="/" class="link">
-            ●●●
+            지금
           </router-link>
-        </spans>
+        </spans> -->
         
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -108,7 +108,8 @@ export default {
 },
 }
 </script>
-<style>
+
+<style scope>
     
   .appvue-cotainer {
     background-color: #ffd788;
@@ -117,8 +118,6 @@ export default {
   }
 
   .main_nav {
-    height: 50px;
-        /* background-color: rgb(255, 144, 144); */
     color: #601986; /*왜적용안되는지모르겠음*/
     margin: 20px 0px 20px 60px;
   };

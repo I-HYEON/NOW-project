@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <div class="change-pw-container">
       <h1>비밀번호 변경</h1>
       <div class="change-pw-form">

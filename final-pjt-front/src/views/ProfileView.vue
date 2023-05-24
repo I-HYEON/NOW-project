@@ -13,20 +13,52 @@
                             {{userInfo.age}}</p>
 
                         <p v-if="userInfo.gender === 1">성별 : 남자</p>
-                        <p v-else="v-else">성별 : 여자</p>
+                        <p v-else>성별 : 여자</p>
 
                         <p>
                             연봉 :
                             {{userInfo.salary}}만원</p>
 
-                        <p v-if="userInfo.tendency === 1">투자성향 : 단기형</p>
-                        <p v-else-if="userInfo.tendency === 2">투자성향 : 중기형</p>
-                        <p v-else-if="userInfo.tendency === 3">투자성향 : 장기형</p>
 
-                        <p>
-                            재산 :
-                            {{userInfo.wealth}}만원</p>
-                        <p>내가 쓴글</p>
+<p v-if="userInfo.tendency === 1">투자성향 : 단기형</p>
+<p v-else-if="userInfo.tendency === 2">투자성향 : 중기형</p>
+<p v-else-if="userInfo.tendency === 3">투자성향 : 장기형</p>
+
+<p> 재산 : {{userInfo.wealth}}만원</p>
+
+<!-- {{deposits}} -->
+<div class="d-flex">
+<div class="card" v-for="(deposit,idx) in deposits" :key='idx' style="width: 14rem;" v-if="userInfo.deposit.includes(idx+1)">
+    <img :src="getBankImage(deposit.kor_co_nm)" class="card-img-top" :alt="`Image not found: ${deposit.kor_co_nm}`">
+    <div class="card-body">
+      <h5 class="card-title"></h5>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item explain">{{ deposit.fin_prdt_nm }}</li>
+      <li class="list-group-item explain">{{ idx }}</li>
+      <li class="list-group-item explain">{{ deposit.kor_co_nm }}</li>
+      <li class="list-group-item explain">현재 가입자 수 : {{ deposit.user_count }}</li>
+      <li class="list-group-item explain">
+        <router-link
+        class="link"
+        :to="{
+          name: 'deposit_detail',
+          params: {
+            bank_info : deposit.fin_prdt_cd
+          }
+        }">상세 보기</router-link>
+      </li>
+    </ul>
+    <div class="card-body">
+    </div>
+  </div>
+  </div>
+
+<router-link to="/withdrawl">회원탈퇴</router-link>
+<br>
+<router-link to="/changepassword">비번변경</router-link>
+<br>
+<router-link to="/profileupdate">프로필변경</router-link>
 
                         <p>가입 상품 목록</p>
                         <div class="d-flex">

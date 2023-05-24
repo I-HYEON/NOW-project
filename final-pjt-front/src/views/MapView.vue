@@ -1,7 +1,9 @@
 <template>
-    <div>
-        <h1>가까운 은행검색</h1>
-        <BankSearch/>
+    <div class="box-container">
+        <div class="box">
+            <BankSearch/>
+        </div>
+
     </div>
 </template>
 
@@ -18,5 +20,13 @@ components: {
 
 
 <style>
-
+  .box-container {
+    display: flex;
+    justify-content: center;
+  }
+  .box {
+    width: 800px;
+    width:800px;
+    border: 1px solid black;
+  }
 </style>

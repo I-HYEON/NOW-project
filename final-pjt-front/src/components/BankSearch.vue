@@ -1,24 +1,34 @@
 <template>
-  <div>
-    <h4>가까운 은행을 검색해보세요</h4>
-    <form @submit.prevent="search">
-      <input type="text" placeholder="찾고싶은 은행을 입력하세요"  v-model="searchKeyword">
-      <input type="submit" value="검색">
-    </form>
-    <div id="map"></div>
-    <div v-if="bankList.length">
-      근처에 총 {{ bankList.length }} 개의 은행이 있습니다.
-      <hr>
-      <div v-for="(bank,index) in bankList" :key="bank.id">
-        <ul>
-          <li style="list-style-type: none;">{{ index +1 }}번째 은행</li>
-          <li>{{ bank.place_name }}</li>
-          <li>{{ bank.category_name }}</li>
-          <li>{{ bank.phone }}</li>
-          <li>{{ bank.road_address_name }}</li>
-          <li>{{ bank.place_url }}</li>
-        </ul>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <h4>가까운 은행을 검색해보세요</h4>
+        <form @submit.prevent="search">
+          <input type="text" placeholder="찾고싶은 은행을 입력하세요" v-model="searchKeyword">
+          <input type="submit" value="검색">
+        </form>
+      </div>
+    </div>
+    <div class="row justify-content-center mt-4">
+      <div class="col-md-6">
+        <div id="map"></div>
+      </div>
+    </div>
+    <div class="row justify-content-center mt-4" v-if="bankList.length">
+      <div class="col-md-6">
+        <p>근처에 총 {{ bankList.length }} 개의 은행이 있습니다.</p>
         <hr>
+        <div v-for="(bank, index) in bankList" :key="bank.id">
+          <ul>
+            <li style="list-style-type: none;">{{ index + 1 }}번째 은행</li>
+            <li>{{ bank.place_name }}</li>
+            <li>{{ bank.category_name }}</li>
+            <li>{{ bank.phone }}</li>
+            <li>{{ bank.road_address_name }}</li>
+            <li>{{ bank.place_url }}</li>
+          </ul>
+          <hr>
+        </div>
       </div>
     </div>
   </div>

@@ -4,7 +4,7 @@
       <div class="col-12">
         <div class="d-flex justify-content-between"><div>
           <h1>예적금 상세 정보</h1></div>
-          <div class="d-flex">
+          <div class="d-flex" v-if="isLogin">
             <button v-if=show type="button" class="btn btn-danger" @click="signDeposit">가입 취소</button>
             <button v-else type="button" class="btn btn-primary" @click="signDeposit">가입 신청</button>
           </div>
@@ -95,11 +95,14 @@ methods: {
       this.check()
     },
       check() {
-      if (this.userInfo.deposit.includes(this.deposit_detail.id)){
+        if(this.isLogin){
+          if (this.userInfo.deposit.includes(this.deposit_detail.id)){
         this.show = true
-      }else{
-        this.show = false
-      }
+          }else{
+            this.show = false
+          }
+        }
+      
     }
 },
 created(){
