@@ -39,7 +39,7 @@
                 <input type="checkbox" name="tendency" v-model="info.whl_two">2000만원 ~ 6000만원
                 <input type="checkbox" name="tendency" v-model="info.whl_thr">6000만원 ~ 10000만원
                 <input type="checkbox" name="tendency" v-model="info.whl_fou">10000만원 ~ 20000만원
-                <input type="checkbox" name="tendency" v-model="info.whl_fiv">20000만원 ~ 40000만원
+                <input type="checkbox" name="tendency" v-model="info.whl_five">20000만원 ~ 40000만원
                 <input type="checkbox" name="tendency" v-model="info.whl_six">40000만원 이상
             </td>
         </tr>
@@ -54,6 +54,7 @@
     </table>
     <div class="container">
         <div v-if=show class="row">
+            <div>선택하신 조건과 일치하는 회원들이 가장 선호하는 상품 {{ dataLength }}건을 둘러보세요!</div>
             <DepositCard
             class = "mx-auto my-1 col-12 col-md-6 col-lg-4 col-xl-3"
             v-for="deposit in this.sorted_depositData"
@@ -62,8 +63,8 @@
             />
         </div>
         <div v-else>
-            <div class="loading">
-                <img src="@/photo/loading.gif" alt="로딩중...">
+            <div class="loading-container">
+              <div class="loader"></div>
             </div>
         </div>
     </div>
@@ -122,6 +123,12 @@ export default {
     },
     created() {
         this.get_deposit_sorted()
+    },
+    computed: {
+    dataLength() {
+        const length = Object.keys(this.sorted_depositData).length
+        return length
+        }
     }
 }
 
@@ -147,4 +154,30 @@ th,
 td {
     text-align: center;
 }
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.loader {
+  width: 100px;
+  height: 100px;
+  border: 10px solid rgba(0, 0, 0, 0.2);
+  border-top-color: #000;
+  border-radius: 50%;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 </style>
