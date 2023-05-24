@@ -1,15 +1,22 @@
 <template>
   <div>
 
-    <div>
-    <label for="password1">비밀번호 : </label>
-    <input type="text" id="password1" v-model="password1" >
+    <div class="withdrawl-container">
+      <h1>회원탈퇴</h1>
+      <div class="withdrawl-form">
+        <div>
+        <label for="password1">현재 비밀번호  </label>
+        <input type="text" id="password1" v-model="password1" >
+        </div>
+        <br>
+        <div>
+        <label for="password2">현재 비밀번호 확인 </label>
+        <input type="text" id="password2" v-model="password2" >
+        </div>
+        <br>
+        <button type='submit' @click='deleteAccount'>진짜로 할거야?</button>
+      </div>
     </div>
-    <div>
-    <label for="password2">비밀번호 확인 : </label>
-    <input type="text" id="password2" v-model="password2" >
-    </div>
-    <button type='submit' @click='deleteAccount'>진짜로 할거야?</button>
   </div>
 </template>
 
@@ -72,5 +79,20 @@ export default {
 </script>
 
 <style>
+label{
+  margin-right: 10px;
+}
 
+.withdrawl-container{
+  text-align: center;
+}
+.withdrawl-form {
+  display: inline-block;
+  padding: 20px;
+  width: 300px;
+  height: 230px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
 </style>

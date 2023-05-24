@@ -3,6 +3,8 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import VueRouter from 'vue-router'
+import 'normalize.css'
+//css초기화
 
 //Bootstrap-start
 import BootstrapVue from 'bootstrap-vue'

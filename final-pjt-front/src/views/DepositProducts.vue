@@ -1,53 +1,39 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <div class="col-9">
-        <h1>예적금 조회</h1>
-        <div class="container align-items-center">
-          <div class="container">
-            <div v-if=show class="row justify-content">
-              <DepositCard
-              class = "mx-auto my-1 col-12 col-md-6 col-lg-4 col-xl-3"
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <div class="d-flex justify-content-center flex-wrap">
+          <div v-if="show" class="row mx-0">
+          <img src='@/photo/png/pig_and_dog.png' alt="main_img" style="max-width:100%; height:auto;">
+            <DepositCard
+              class="mx-auto my-1 col-12 col-md-6 col-lg-4 col-xl-3"
               v-for="deposit in $store.state.depositData"
               :deposit="deposit"
               :key="deposit.id"
-              />
-            </div>
-            <div v-else>
-              <img src="@/photo/loading.gif" alt="로딩중...">
-            </div>
+            />
+          </div>
+          <div v-else>
+            <img src="@/photo/loading.gif" alt="로딩중..." />
           </div>
         </div>
       </div>
-      <div class="col-3">
-        <div class="container align-items-center">
-        </div>
-      </div>
-    </div>
-    <div>
-      로고+번호+제작자
     </div>
   </div>
 </template>
 
-
-
 <script>
-// import Login from '@/components/Login.vue'
 import DepositCard from '@/components/DepositCard.vue'
-import QuickBar from '@/components/QuickBar.vue'
 import axios from 'axios'
 
 export default {
   name: 'DepositProducts',
   data() {
     return {
-      show:false,
+      show: false,
     }
   },
   components: {
     DepositCard,
-    QuickBar,
   },
   methods: {
     async getDepositData() {
@@ -56,13 +42,83 @@ export default {
       this.show = true
     },
   },
-  created(){
-    // console.log('제발')
+  created() {
     this.getDepositData()
   },
 }
 </script>
 
-<style>
+<style scoped>
+.container-fluid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.d-flex {
+  margin-top: 20px;
+}
+
+.row.mx-0 {
+  margin-left: -20px;
+  margin-right: -20px;
+}
+
+.col-12,
+.col-md-6,
+.col-lg-4,
+.col-xl-3 {
+  margin: 20px;
+}
+
+.DepositCard {
+  position: relative;
+  overflow: hidden;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+  /* margin-bottom: 20px; */
+}
+
+.DepositCard:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.DepositCard .card-img-top {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.DepositCard .card-body {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+}
+
+.DepositCard .card-title {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.DepositCard .list-group-item {
+  text-align: center;
+}
+
+.DepositCard .explain {
+  font-size: 0.8rem;
+  color: #333;
+}
+
+.DepositCard .link {
+  text-decoration-line: none;
+  color: #333;
+}
 
 </style>
