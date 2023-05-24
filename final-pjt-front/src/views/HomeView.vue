@@ -1,8 +1,6 @@
 <template>
   <div class="container-fluid">
-    <div class="main">
-      <firstMain/>
-    </div>
+    <img src='@/photo/base_img/onlypig.jpg' alt="main_img" style="max-width:100%; height:auto;">
 
     <div class="info-container">
         <secondMain/>
@@ -13,10 +11,9 @@
 
 <script>
 // @ is an alias to /src
-import firstMain from '@/components/firstMain.vue'
+// import firstMain from '@/components/firstMain.vue'
 import secondMain from '@/components/secondMain.vue'
 import Carousel from '@/components/Carousel.vue'
-// import login from '@/components/Login.vue'
 import QuickBar from '@/components/QuickBar.vue'
 
 export default {
@@ -31,7 +28,7 @@ export default {
   },
   
   components: {
-    firstMain,
+    // firstMain,
     secondMain,
     Carousel,
     // Login,
@@ -41,6 +38,7 @@ export default {
 </script>
 
 <style>
+
     .container-fluid {
       display: flex;
       flex-direction: column;

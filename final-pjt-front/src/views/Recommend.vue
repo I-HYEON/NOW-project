@@ -1,78 +1,32 @@
 <template>
-  <div class="d-flex flex-column align-items-center">
-    맞춤형 상품 추천
-
-    <table class="w-100" border="1">
+    <div class="d-flex flex-column align-items-center">
+      맞춤형 상품 추천
+  
+      <table class="w-100" border="1">
         <th>선택</th>
         <tr>
-            <td>성별</td>
-            <td>
-                <input type="checkbox" name="tendency" v-model="info.gen_two">여자
-                <input type="checkbox" name="tendency" v-model="info.gen_one">남자
-            </td>
+          <td>성별</td>
+          <td>
+            <label class="checkbox-label">
+              <input type="checkbox" name="tendency" v-model="info.gen_two">
+              <div class="checkbox-button"></div>
+              <span class="checkbox-label-text">여자</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="tendency" v-model="info.gen_one">
+              <div class="checkbox-button"></div>
+              <span class="checkbox-label-text">남자</span>
+            </label>
+          </td>
         </tr>
-        <tr>
-            <td>나이</td>
-            <td>
-                <input type="checkbox" name="tendency" v-model="info.age_one">20세 이하
-                <input type="checkbox" name="tendency" v-model="info.age_two">20세 ~ 29세
-                <input type="checkbox" name="tendency" v-model="info.age_thr">30세 ~ 40세
-                <input type="checkbox" name="tendency" v-model="info.age_fou">40세 ~ 49세
-                <input type="checkbox" name="tendency" v-model="info.age_fiv">50세 ~ 59세
-                <input type="checkbox" name="tendency" v-model="info.age_six">60세 이상
-            </td>
-        </tr>
-        <tr>
-            <td>연봉</td>
-            <td>
-                <input type="checkbox" name="tendency" v-model="info.sal_one">2000만원 이하
-                <input type="checkbox" name="tendency" v-model="info.sal_two">2000만원 ~ 4000만원
-                <input type="checkbox" name="tendency" v-model="info.sal_thr">4000만원 ~ 6000만원
-                <input type="checkbox" name="tendency" v-model="info.sal_fou">6000만원 ~ 8000만원
-                <input type="checkbox" name="tendency" v-model="info.sal_fiv">8000만원 ~ 10000만원
-                <input type="checkbox" name="tendency" v-model="info.sal_six">10000만원 이상
-            </td>
-        </tr>
-        <tr>
-            <td>자산</td>
-            <td>
-                <input type="checkbox" name="tendency" v-model="info.whl_one">2000만원 이하
-                <input type="checkbox" name="tendency" v-model="info.whl_two">2000만원 ~ 6000만원
-                <input type="checkbox" name="tendency" v-model="info.whl_thr">6000만원 ~ 10000만원
-                <input type="checkbox" name="tendency" v-model="info.whl_fou">10000만원 ~ 20000만원
-                <input type="checkbox" name="tendency" v-model="info.whl_fiv">20000만원 ~ 40000만원
-                <input type="checkbox" name="tendency" v-model="info.whl_six">40000만원 이상
-            </td>
-        </tr>
-        <tr>
-            <td>저축성향</td>
-            <td>
-                <input type="checkbox" name="tendency" v-model="info.ten_one">단기
-                <input type="checkbox" name="tendency" v-model="info.ten_two">중기
-                <input type="checkbox" name="tendency" v-model="info.ten_thr">장기
-            </td>
-        </tr>
-    </table>
-    <div class="container">
-        <div v-if=show class="row">
-            <DepositCard
-            class = "mx-auto my-1 col-12 col-md-6 col-lg-4 col-xl-3"
-            v-for="deposit in this.sorted_depositData"
-            :deposit="deposit"
-            :key="deposit.id"
-            />
-        </div>
-        <div v-else>
-            <div class="loading">
-                <img src="@/photo/loading.gif" alt="로딩중...">
-            </div>
-        </div>
+        <!-- 나머지 코드 생략 -->
+      </table>
+      
+      <!-- 나머지 코드 생략 -->
     </div>
-  </div>
+  </template>
 
-</template>
-
-<script>
+  <script>
 import axios from 'axios'
 import DepositCard from '@/components/DepositCard.vue'
 const API_URL = 'http://127.0.0.1:8000'
@@ -127,13 +81,39 @@ export default {
 }
 
 </script>
-
-<style>
-.loading{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-</style>
+  
+  <style>
+  .checkbox-label {
+    display: inline-block;
+    margin-right: 10px;
+    position: relative;
+  }
+  
+  .checkbox-label input[type="checkbox"] {
+    opacity: 0; /* 체크박스 숨기기 */
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  .checkbox-button {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #000;
+    background-color: #fff;
+    cursor: pointer;
+    vertical-align: middle;
+  }
+  
+  .checkbox-label-text {
+    display: inline-block;
+    margin-left: 5px;
+    vertical-align: middle;
+  }
+  
+  .checkbox-label input[type="checkbox"]:checked + .checkbox-button {
+    background-color: #000;
+  }
+  </style>
+  

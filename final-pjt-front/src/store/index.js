@@ -71,9 +71,9 @@ export default new Vuex.Store({
       axios({
         method: 'get',
         url : `${API_URL}/articles/`,
-        headers : {
-              Authorization: `Token ${context.state.token}`
-        }
+        // headers : {
+        //       Authorization: `Token ${context.state.token}`
+        // }
       })
       .then((res)=> {
         context.commit('GET_ARTICLES',res.data)

@@ -16,6 +16,7 @@ import ProfileUpdateView from '../views/ProfileUpdateView.vue'
 import UpdateView from '../views/UpdateView.vue'
 import Withdrawl from '../views/Withdrawl'
 import loginView from '../views/loginView.vue'
+import ChangePassword from '../views/ChangePassword.vue'
 
 Vue.use(VueRouter)
 
@@ -100,6 +101,11 @@ const routes = [
     path: '/withdrawl',
     name: 'Withdrawl',
     component: Withdrawl
+  },
+  {
+    path: '/changepassword',
+    name: 'ChangePassword',
+    component: ChangePassword
   },
 ]
 
