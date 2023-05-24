@@ -1,15 +1,14 @@
 <template class="template">
 
   <div class="appvue-container">
+    <div class="d-flex justify-content-center">
+      <img src='@/photo/png/mainlogo.png' alt="main_img" style="max-width:120px; height:auto; margin:20px 0px 0px 20px;">
+    </div>
+    
     
     <nav class="main_nav navbar navbar-expand-lg">
       <div class="container-fluid">
         
-        <!-- <spans class="navbar-brand">
-          <router-link to="/" class="link">
-            지금
-          </router-link>
-        </spans> -->
         
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -36,10 +35,22 @@
                   <router-link to="/article" class="link">커뮤니티</router-link>
                 </a>
               </li>
-              <li class="nav-item">
+              <li v-if="isLogin" class="nav-item">
                 <a class="nav-link" href="#">
                   <router-link to="/profile" class="link">마이페이지</router-link>
                 </a>
+              </li>
+              
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                HELP
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" @click="goToMapView">근처 은행 검색</a></li>
+                    <li><a class="dropdown-item" @click="goToWordSearch">금융 용어 검색</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">문의사항</a></li>
+                </ul>
               </li>
               <li v-if="!isLogin" class="nav-item">
                 <a class="nav-link" href="#">
@@ -55,20 +66,6 @@
                 <a class="nav-link" href="#">
                   <span class="link" @click="logOut">로그아웃</span>
                 </a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropdown
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled">Disabled</a>
               </li>
             </ul>
 
@@ -96,7 +93,14 @@ export default {
     methods : {
       logOut() {
       this.$store.dispatch('logOut')
-    }
+    },
+    goToMapView() {
+      console.log('go to mapview')
+      this.$router.push({ path: '/mapview' });
+    },
+    goToWordSearch() {
+      this.$router.push({ path: '/wordsearch' });
+    },
     },
     computed: {
     isLogin() {
@@ -110,17 +114,26 @@ export default {
 </script>
 
 <style scope>
+
+  .dropdown-item{
+    cursor: pointer;
+  }
     
   .appvue-cotainer {
+    padding: 0px;
     background-color: #ffd788;
     display: flex;
     flex-direction: column;
   }
 
   .main_nav {
-    color: #601986; /*왜적용안되는지모르겠음*/
     margin: 20px 0px 20px 60px;
   };
+
+  .a {
+    text-decoration: none;
+    color: inherit;
+  }
 
   .link {
     text-decoration: none;

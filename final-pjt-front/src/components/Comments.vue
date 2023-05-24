@@ -1,29 +1,40 @@
 <template>
   <div>
-    <h3>댓글 작성</h3>
-    <!-- <input type="textarea" id="content" v-model="content" @keyup.enter="createComment"> -->
-    <textarea id="content" placeholder="댓글을 입력하세요" style="width: 600px;" rows="5" v-model="content" @keyup.enter="createComment"></textarea>
-    <br>
-    <button type="submit" id="content" @click="createComment">작성</button>
+    <p v-if="isLogin">
+      <h3>댓글 작성</h3>
+      <!-- <input type="textarea" id="content" v-model="content" @keyup.enter="createComment"> -->
+      <textarea id="content" placeholder="댓글을 입력하세요" style="width: 600px;" rows="5" v-model="content" @keyup.enter="createComment"></textarea>
+      <br>
+      <button type="button" id="content" @click="createComment" class="btn btn-outline-success">작성</button>
+    </p>
     <br>
     <br>
     <template v-if="comments.filter(comment => comment.article === article.id).length === 0">
       <p>댓글이 없습니다.</p>
     </template>
-    <template v-else>
-      <p v-for="(comment, idx) in comments" :key="idx" v-if="comment.article === article?.id">
-        <span v-if="!editingCommentId || editingCommentId !== comment.id">
-          댓글 - {{comment?.username}} : {{ comment?.content }}
-          
-          <button @click="deleteComment(comment)">삭제</button>
-          <button @click="editComment(comment)" v-if="comment.username===userInfo.username">수정</button>
-        </span>
-        <span v-else>
-          <input type="text" v-model="editedContent">
-          <button @click="updateComment(comment)">확인</button>
-          <button @click="cancelEdit">취소</button>
-        </span>
-      </p>
+    <template v-else="v-else">
+      <div v-for="(comment, idx) in comments" :key="idx" v-if="comment.article === article.id">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+          <div>
+            {{comment?.username}} : {{ comment?.content }}
+            <hr>
+          </div>
+          <div>
+            
+            <p v-if="comment.username===userInfo.username">
+              <template v-if="editingCommentId !== comment.id">
+                <span @click="editComment(comment)">수정</span> |
+                <span @click="deleteComment(comment)">삭제</span>
+              </template>
+              <template v-else>
+                <input type="text" v-model="editedContent" @keyup.enter="updateComment(comment)">
+                <button @click="updateComment(comment)">저장</button>
+                <button @click="cancelEdit">취소</button>
+              </template>
+            </p>
+          </div>
+        </div>
+      </div>
     </template>
     
   </div>

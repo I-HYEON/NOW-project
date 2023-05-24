@@ -39,7 +39,7 @@
       </div>
     </div>
     <div>
-    로고+번호+제작자
+    <hr>
     </div>
     <br>
     <DepositComments :deposit_detail="deposit_detail" />

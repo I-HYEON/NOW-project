@@ -1,12 +1,18 @@
 <template>
   <div class="quick-bar" :class="{ show: isQuickBarVisible }" @mouseover="showQuickBar" @mouseleave="hideQuickBar">
     <div class="row">
-      <div class="col-12 link" @click="goToHome">홈으로</div>
-      <div class="col-12 link" @click="goToDepositProducts">상품조회</div>
-      <div class="col-12 link" @click="goToRecommend">추천받기</div>
-      <div class="col-12 link" @click="goToMapView">근처은행찾기</div>
-      <div class="col-12 link" @click="goToWordSearch">백과사전</div>
-      <div class="col-12 link" @click="goToProfile">마이페이지</div>
+      <div class="col-12 link icon" @click="goToHome"><span class="material-symbols-outlined">home</span></div>
+      <div class="col-12 link desc" @click="goToHome">홈</div>
+      <div class="col-12 link icon" @click="goToDepositProducts"><span class="material-symbols-outlined">money</span></div>
+      <div class="col-12 link desc" @click="goToDepositProducts">상품조회</div>
+      <div class="col-12 link icon" @click="goToRecommend"><span class="material-symbols-outlined">recommend</span></div>
+      <div class="col-12 link desc" @click="goToRecommend">상품추천</div>
+      <div class="col-12 link icon" @click="goToMapView"><span class="material-symbols-outlined">map</span></div>
+      <div class="col-12 link desc" @click="goToMapView">근처은행</div>
+      <div class="col-12 link icon" @click="goToWordSearch"><span class="material-symbols-outlined">search</span></div>
+      <div class="col-12 link desc" @click="goToWordSearch">단어검색</div>
+      <div class="col-12 link icon" @click="goToProfile"><span class="material-symbols-outlined">person</span></div>
+      <div class="col-12 link desc" @click="goToProfile">마이페이지</div>
     </div>
   </div>
 </template>
@@ -70,7 +76,7 @@ export default {
 <style scoped>
 .quick-bar {
   text-align: center;
-  width: 8rem;
+  width: 6rem;
   position: fixed;
   right: -5rem;
   bottom: 30%;
@@ -90,7 +96,13 @@ export default {
     display: none;
   }
 }
+  .desc{
+    font-size: 13px;
+  }
 
+  .icon {
+    cursor: pointer;
+  }
 .quick-bar-item {
   margin-bottom: 10px;
 }

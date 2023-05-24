@@ -8,7 +8,7 @@
       <label for="title">제목</label>
       <br>
       
-      <input type="text" id="title" v-model.trim="title"><br>
+      <input type="text" id="title" style="width: 600px;" v-model.trim="title"><br>
       <br>
       <label for="content">내용 </label>
       <br>

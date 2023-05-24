@@ -13,9 +13,9 @@
         <tr>
             <td>나이</td>
             <td>
-                <input type="checkbox" name="tendency" v-model="info.age_one">20세 이하       
+                <input type="checkbox" name="tendency" v-model="info.age_one">20세 미만       
                 <input type="checkbox" name="tendency" v-model="info.age_two">20세 ~ 29세
-                <input type="checkbox" name="tendency" v-model="info.age_thr">30세 ~ 40세
+                <input type="checkbox" name="tendency" v-model="info.age_thr">30세 ~ 39세
                 <input type="checkbox" name="tendency" v-model="info.age_fou">40세 ~ 49세
                 <input type="checkbox" name="tendency" v-model="info.age_fiv">50세 ~ 59세
                 <input type="checkbox" name="tendency" v-model="info.age_six">60세 이상
@@ -24,7 +24,7 @@
         <tr>
             <td>연봉</td>
             <td>
-                <input type="checkbox" name="tendency" v-model="info.sal_one">2000만원 이하
+                <input type="checkbox" name="tendency" v-model="info.sal_one">2000만원 미만
                 <input type="checkbox" name="tendency" v-model="info.sal_two">2000만원 ~ 4000만원
                 <input type="checkbox" name="tendency" v-model="info.sal_thr">4000만원 ~ 6000만원
                 <input type="checkbox" name="tendency" v-model="info.sal_fou">6000만원 ~ 8000만원
@@ -35,11 +35,11 @@
         <tr>
             <td>자산</td>
             <td>
-                <input type="checkbox" name="tendency" v-model="info.whl_one">2000만원 이하
+                <input type="checkbox" name="tendency" v-model="info.whl_one">2000만원 미만
                 <input type="checkbox" name="tendency" v-model="info.whl_two">2000만원 ~ 6000만원
                 <input type="checkbox" name="tendency" v-model="info.whl_thr">6000만원 ~ 10000만원
                 <input type="checkbox" name="tendency" v-model="info.whl_fou">10000만원 ~ 20000만원
-                <input type="checkbox" name="tendency" v-model="info.whl_fiv">20000만원 ~ 40000만원
+                <input type="checkbox" name="tendency" v-model="info.whl_five">20000만원 ~ 40000만원
                 <input type="checkbox" name="tendency" v-model="info.whl_six">40000만원 이상
             </td>
         </tr>
@@ -54,6 +54,7 @@
     </table>
     <div class="container">
         <div v-if=show class="row">
+            <div>선택하신 조건과 일치하는 회원들이 가장 선호하는 상품 {{ dataLength }}건을 둘러보세요!</div>
             <DepositCard
             class = "mx-auto my-1 col-12 col-md-6 col-lg-4 col-xl-3"
             v-for="deposit in this.sorted_depositData"
@@ -62,10 +63,11 @@
             />
         </div>
         <div v-else>
-            <div class="loading">
-                <img src="@/photo/loading.gif" alt="로딩중...">
+            <div class="loading-container">
+              <div class="loader"></div>
             </div>
         </div>
+    </div>
     </div>
   </template>
 
@@ -102,6 +104,7 @@ export default {
             })
             .then((response) => {
                 this.sorted_depositData = response.data
+                console.log(this.sorted_depositData.length)
                 this.show = true
             })
             .catch((err) => {
@@ -120,6 +123,12 @@ export default {
     },
     created() {
         this.get_deposit_sorted()
+    },
+    computed: {
+    dataLength() {
+        const length = Object.keys(this.sorted_depositData).length
+        return length
+        }
     }
 }
 
@@ -145,4 +154,30 @@ th,
 td {
     text-align: center;
 }
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.loader {
+  width: 100px;
+  height: 100px;
+  border: 10px solid rgba(0, 0, 0, 0.2);
+  border-top-color: #000;
+  border-radius: 50%;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 </style>

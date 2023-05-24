@@ -4,18 +4,18 @@
       <h1>비밀번호 변경</h1>
       <div class="change-pw-form">
         <div>
-        <label for="old_password">전 비밀번호 : </label>
-        <input type="text" id="old_password" v-model="old_password" >
-        </div>
+        <label for="old_password">전 비밀번호  </label>
+        <input type="password" id="old_password" v-model="old_password" >
+        </div><br>
         <div>
-        <label for="new_password1">새 비밀번호 : </label>
-        <input type="text" id="new_password1" v-model="new_password1" >
-        </div>
+        <label for="new_password1">새 비밀번호  </label>
+        <input type="password" id="new_password1" v-model="new_password1" >
+        </div><br>
         <div>
-        <label for="new_password2">새 비밀번호 확인 : </label>
-        <input type="text" id="new_password2" v-model="new_password2" >
-        </div>
-        <button type='submit' @click='changePassword'>진짜로 할거야?</button>
+        <label for="new_password2">새 비밀번호 확인  </label>
+        <input type="password" id="new_password2" v-model="new_password2" >
+        </div><br>
+        <button type="button" @click="changePassword" style="width: 200px;" class="btn btn-success">확인</button>
       </div>
     </div>
   </div>
@@ -101,7 +101,7 @@ label{
   display: inline-block;
   padding: 20px;
   width: 300px;
-  height: 300px;
+  height: 320px;
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #f9f9f9;

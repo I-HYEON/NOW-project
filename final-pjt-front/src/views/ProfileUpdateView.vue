@@ -4,7 +4,7 @@
     <div class="profile-change-container">
       <h1>프로필 변경</h1>
       <div class="profile-change-form">
-        <form  @submit.prevent="signUp">
+        <form  >
             <label for="username">아이디</label><br>
             <input type="text" id="username" v-model="updatedFormData.username" disabled><br>
             <br>
@@ -29,7 +29,7 @@
             <!-- <label for="email">email:</label>
             <input type="text" v-model="email">
             <br> -->
-            <input type="submit">
+            <button type="button" @click="updateProfile" style="width: 200px;" class="btn btn-success">확인</button>
         </form>
       </div>
     </div>
@@ -92,7 +92,7 @@ label{
   display: inline-block;
   padding: 20px;
   width: 300px;
-  height: 600px;
+  height: 520px;
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #f9f9f9;
