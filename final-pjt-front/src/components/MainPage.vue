@@ -4,50 +4,22 @@
     <br>
     <br>
     <div class="info-container">
-      
-      <img class="odd-info" ref="firstInfo" src='@/photo/base_img/first_info.jpg' alt="first_img" style="max-width:100%; height:auto;">
-
-      <!-- <div class="even-info" ref="secondInfo">
-        <div class="container">
-          <div class="col-12">
-            <div class="row">
-              <div class="col-4">
-                <div class="card h-100">
-                  <div class="card-body">
-                    <h5 class="card-title">Articles</h5>
-                    <div v-for="(article, index) in articles" :key="index">
-                      <h6>{{ article.title }} 작성자 :{{ article.username }} </h6>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-4">
-                <div class="card h-100">
-                  <div class="card-body">
-            </div>
-          </div>
-        </div>
-        <div class="col-4">
-          <div class="card h-100">
-            <div class="card-body">
-              여기에 내용을 추가해
-            </div>
-          </div>
-        </div>
-          </div>
-        </div>
-        </div>
-      </div> -->
-
-      <img class="odd-info" ref="thirdInfo" src='@/photo/base_img/third_info.jpg' alt="third_img" style="max-width:100%; height:auto;">
-      <img class="even-info" ref="forthInfo" src='@/photo/base_img/forth_info.jpg' alt="forth_img" style="max-width:100%; height:auto;">
+      <img class="odd-info main_image" ref="firstInfo" src='@/photo/base_img/first_info.jpg' alt="first_img" style="max-width:100%; height:auto;">
+      <img class="odd-info main_image" ref="thirdInfo" src='@/photo/base_img/third_info.jpg' alt="third_img" style="max-width:100%; height:auto;">
+      <img class="even-info main_image" ref="forthInfo" src='@/photo/base_img/forth_info.jpg' alt="forth_img" style="max-width:100%; height:auto;">
+      <Footer/>
     </div>
   </div>
 </template>
 
 <script>
+import Footer from '@/components/Footer.vue'
+
 export default {
   name: 'MainPage',
+  components: {
+    Footer,
+  },
   mounted() {
     this.createIntersectionObserver();
   },
@@ -86,6 +58,10 @@ export default {
 </script>
 
 <style>
+.main_image{
+  width: 100vw;
+  height: auto;
+}
 
 .back-ground {
   max-width: 100%;
