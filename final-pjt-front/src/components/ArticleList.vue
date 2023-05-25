@@ -4,7 +4,7 @@
     <h3>글목록</h3>
     
     <br>
-    <button type="button" v-if="isLogin" @click='createArticle' class="btn btn-outline-success toright">글쓰기</button>
+    
 
 
     <br>
@@ -14,7 +14,6 @@
         <tr>
           <!-- <th scope="col">#</th> -->
           <th scope="col">제목</th>
-          <th scope="col">내용</th>
           <th scope="col">작성자</th>
           <th scope="col">작성일</th>
         </tr>
@@ -22,14 +21,14 @@
       <tbody>
         <tr v-for="article in articles" :key="article.id" @click="check(article)">
           <th scope="row">{{ article.title }}</th>
-          <!-- <td></td> -->
-          <td>{{ article.content }}</td>
           <td>{{article.username}}</td>
           <td>{{article.created_at.substring(0, 10)}}</td>
         </tr>
       </tbody>
     </table>
   </div>
+  <button type="button" @click='createArticle' class="btn btn-outline-success my-3">글쓰기</button>
+  
   </div>
 </template>
 
@@ -40,7 +39,8 @@ export default {
   name: 'ArticleList',
   data() {
     return {
-      articles: null
+      articles: null,
+      alert: false,
     }
   },
   computed:{
@@ -73,7 +73,8 @@ export default {
       });
     },
     createArticle(){
-      this.$router.push({name: 'CreateView'})
+      if (this.isLogin) {this.$router.push({name: 'CreateView'})}
+      else { alert('로그인을해야죠') }
     }
   },
   created() {
