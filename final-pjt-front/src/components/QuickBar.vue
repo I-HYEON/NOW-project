@@ -11,8 +11,10 @@
       <div class="col-12 link desc" @click="goToMapView">근처은행</div>
       <div class="col-12 link icon" @click="goToWordSearch"><span class="material-symbols-outlined">search</span></div>
       <div class="col-12 link desc" @click="goToWordSearch">단어검색</div>
-      <div class="col-12 link icon" @click="goToProfile"><span class="material-symbols-outlined">person</span></div>
-      <div class="col-12 link desc" @click="goToProfile">마이페이지</div>
+      <div v-if="isLogin">
+        <div class="col-12 link icon" @click="goToProfile"><span class="material-symbols-outlined">person</span></div>
+        <div class="col-12 link desc" @click="goToProfile">마이페이지</div>
+      </div>
     </div>
   </div>
 </template>
@@ -61,15 +63,25 @@ export default {
       this.$router.push({ path: '/recommend' });
     },
     goToMapView() {
-      this.$router.push({ path: '/mapview' });
+      console.log('왜지?')
+      if (this.$route.path !== '/mapview') {
+        this.$router.push({ path: '/mapview' });
+      }
     },
     goToWordSearch() {
-      this.$router.push({ path: '/wordsearch' });
+      if (this.$route.path !== '/wordsearch') {
+      this.$router.push({ path: '/wordsearch' });}
     },
     goToProfile() {
-      this.$router.push({ path: '/profile' });
+      if (this.$route.path !== '/profile') {
+      this.$router.push({ path: '/profile' });}
     },
   },
+  computed: {
+    isLogin() {
+      return this.$store.getters.isLogin
+    }
+  }
 };
 </script>
 

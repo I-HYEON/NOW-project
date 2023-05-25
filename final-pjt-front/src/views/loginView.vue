@@ -10,6 +10,7 @@
         <button @click="logOut">로그아웃</button>
       </div>
     </div> -->
+    <h1>Log In</h1>
     <div class="login-form">
       <div >
         <form>
@@ -19,7 +20,7 @@
             <label for="exampleInputPassword1" class="form-label">비밀번호</label><br>
             <input type="password" style="width: 200px;" id="exampleInputPassword1" v-model="password">
             <br><br>
-          <button type="button" @click="login" style="width: 200px;" class="btn btn-success">로그인</button>
+          <button type="button" @click="login" style="width: 200px; background-color: #601986; color:white;" class="btn">로그인</button>
 
         </form>
       </div>
