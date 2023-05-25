@@ -35,11 +35,6 @@
                   <router-link to="/article" class="link">커뮤니티</router-link>
                 </a>
               </li>
-              <li v-if="isLogin" class="nav-item">
-                <a class="nav-link" href="#">
-                  <router-link to="/profile" class="link">마이페이지</router-link>
-                </a>
-              </li>
               
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -53,6 +48,19 @@
                     <li @click="goToFooter"><a class="dropdown-item" href="#">문의사항</a></li>
                 </ul>
               </li>
+
+              <li v-if="isLogin" class="nav-item">
+                <div class="nav-link">
+                {{userInfo.username}}님
+                </div>
+              </li>
+
+              <li v-if="isLogin" class="nav-item">
+                <a class="nav-link" href="#">
+                  <router-link to="/profile" class="link">마이페이지</router-link>
+                </a>
+              </li>
+
               <li v-if="!isLogin" class="nav-item">
                 <a class="nav-link" href="#">
                   <router-link to="/signup" class="link">회원가입</router-link>
@@ -68,6 +76,7 @@
                   <span class="link" @click="logOut">로그아웃</span>
                 </a>
               </li>
+              
             </ul>
 
         </div>
@@ -111,7 +120,8 @@ export default {
       }
     },
     goToMoneyChange() {
-      this.$router.push({ path: '/moneychange' });
+      if (this.$route.path !== '/moneychange') {
+      this.$router.push({ path: '/moneychange' });}
     },
     goToFooter() {
       window.scrollTo({

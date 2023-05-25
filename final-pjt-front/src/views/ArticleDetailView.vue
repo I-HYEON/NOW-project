@@ -12,9 +12,9 @@
         <p>작성시간: {{ formatDate(article.created_at) }}</p>
         <!-- <p>수정시간: {{ article.updated_at }}</p> -->
         <div v-if="article.username === userInfo.username" class="button-wrapper">
-          <button type="button" @click="deleteArticle" class="btn btn-outline-danger">삭제하기</button>
+          <button type="button" @click="deleteArticle" class="btn btn-outline-danger mx-1">삭제하기</button>
           <router-link  :to="{ name: 'UpdateView', params: { id: article.id } }">
-            <button type="button" class="btn btn-outline-primary">수정하기</button>
+            <button type="button" class="btn btn-outline-primary mx-1">수정하기</button>
           
           </router-link>
         </div>

@@ -19,7 +19,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="article in articles" :key="article.id" @click="check(article)">
+        <tr class="clickable" v-for="article in articles" :key="article.id" @click="check(article)">
           <th scope="row">{{ article.title }}</th>
           <td>{{article.username}}</td>
           <td>{{article.created_at.substring(0, 10)}}</td>
@@ -74,7 +74,7 @@ export default {
     },
     createArticle(){
       if (this.isLogin) {this.$router.push({name: 'CreateView'})}
-      else { alert('로그인을해야죠') }
+      else { alert('로그인을 해주세요') }
     }
   },
   created() {
@@ -105,4 +105,7 @@ export default {
 .toright{
   margin-left: 50%;
 }
+.clickable {
+      cursor: pointer;
+    }
 </style>

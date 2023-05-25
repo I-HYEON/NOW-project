@@ -1,8 +1,10 @@
 <template>
   <div>
-    <h3>댓글 작성</h3>
-    <textarea id="content" placeholder="댓글을 입력하세요" style="width: 600px;" rows="5" v-model="content" @keyup.enter="createComment"></textarea><br>
-    <button type="button" id="content" @click="createComment" class="btn btn-outline-success">작성</button>
+    <div v-show="isLogin">
+      <h3>댓글 작성</h3>
+      <textarea id="content" placeholder="댓글을 입력하세요" style="width: 600px;" rows="5" v-model="content" @keyup.enter="createComment"></textarea><br>
+      <button type="button" id="content" @click="createComment" class="btn btn-outline-success">작성</button>
+    </div>
     <br>
 
     <br>
@@ -53,6 +55,14 @@ export default {
   created() {
     this.getComments()
   },
+  computed: {
+    isLogin() {
+      return this.$store.getters.isLogin
+    },
+    userInfo() {
+      return this.$store.state.userInfo
+    }
+},
   methods: {
     deleteComment(comment) {
       axios({
