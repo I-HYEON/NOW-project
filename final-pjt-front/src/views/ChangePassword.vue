@@ -15,10 +15,14 @@
         <label for="new_password2">새 비밀번호 확인  </label>
         <input type="password" id="new_password2" v-model="new_password2" >
         </div><br>
-        <button type="button" @click="changePassword" style="width: 200px;" class="btn btn-success">확인</button>
-      </div>
-    </div>
+        <button type="button"  @click="changePassword" style="margin-bottom:5px; width: 200px;" class="btn btn-success">확인</button>
+        <p style="margin-bottom:50px; color:red ;text-align:center"><span v-if='check'>비밀번호가 유효하지 않습니다.</span></p>
+        </div>
+    
   </div>
+      </div>
+      
+    
 </template>
 
 <script>
@@ -39,6 +43,7 @@ export default {
             old_password:null,
             new_password1:null,
             new_password2:null,
+            check:false,
         }
     },
     methods:{
@@ -47,7 +52,7 @@ export default {
       const new_password1 = this.new_password1
       const new_password2 = this.new_password2
     //   console.log((new_password1 && new_password2 && old_password))
-      if (new_password1===new_password2 && old_password!==new_password1 && (new_password1 && new_password2 && old_password)){
+      
       
       axios({
         method: 'post',
@@ -68,23 +73,13 @@ export default {
         .catch((error) => {
           // Account deletion failed
           // Handle the error accordingly
+          console.log('gjgjgj')
           console.error('Account deletion failed:', error)
-        })}
-    else if(!(new_password1 && new_password2 && old_password)){
-        alert('빈칸은 안되요')
-      }  
-      else if(new_password1!==new_password2){
-        alert('비밀번호가 일치하지 않습니다')
-      }
-
-      else{
-        alert('전과 다른 비밀번호로 변경해주세요')
-      }
+          this.check = true
+        })
 
     },
-    check(){
-        console.log(this.old_password,this.new_password1,this.new_password2,)
-    }
+
     }
 }
 </script>

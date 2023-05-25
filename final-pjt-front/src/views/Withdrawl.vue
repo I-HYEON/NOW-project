@@ -6,15 +6,14 @@
       <div class="withdrawl-form">
         <div>
         <label for="password1">현재 비밀번호  </label>
-        <input type="text" id="password1" v-model="password1" >
+        <input type="password" id="password1" v-model="password1" >
         </div>
         <br>
         <div>
         <label for="password2">현재 비밀번호 확인 </label>
-        <input type="text" id="password2" v-model="password2" >
+        <input type="password" id="password2" v-model="password2" >
         </div>
         <br>
-        <!-- <button type='submit' '>진짜로 할거야?</button> -->
         <button type="button" style="width: 200px;" @click='deleteAccount' class="btn btn-warning">확인</button>
       </div>
     </div>

@@ -23,9 +23,15 @@
           <button type="button" @click="login" style="width: 200px; background-color: #601986; color:white;" class="btn">로그인</button>
 
         </form>
+          
+
       </div>
       <div>
-        <br><br>
+        <br>
+      <span style="color:red" v-if='check'>아이디와 비밀번호를 확인해주세요</span>
+        
+        <br>
+        
         <span>아직 회원이 아니신가요? </span>
         <router-link to="/signup">회원가입</router-link>
       </div>
@@ -48,7 +54,8 @@ export default {
   data() {
     return {
       username: '',
-      password: ''
+      password: '',
+      check: false
     }
   },
   methods: {
@@ -68,6 +75,7 @@ export default {
       })
       .catch((err)=>{
         console.error('로그인이실패',err)
+        this.check=true
       })
     },
     logOut() {
