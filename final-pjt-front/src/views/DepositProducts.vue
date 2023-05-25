@@ -2,21 +2,19 @@
   <div class="container">
     <div class="row justify-content-center">
       <h1 class="text-center">모든 예적금 상품 조회</h1>
-      <div class="col-12">
-        <div class="d-flex justify-content-center flex-wrap">
-          <div v-if="show" class="row mx-0">
-          <img src='@/photo/png/pig_and_dog.png' alt="main_img" style="max-width:100%; height:auto;">
-            <DepositCard
-              class="mx-auto my-1 col-12 col-md-6 col-lg-4 col-xl-3"
-              v-for="deposit in $store.state.depositData"
-              :deposit="deposit"
-              :key="deposit.id"
-            />
-          </div>
-          <div v-else>
-            <div class="loading-container">
-              <div class="loader"></div>
-            </div>
+      <div class="container">
+        <div v-if="show" class="row d-flex align-items-center justify-content-center">
+        <img src='@/photo/png/pig_and_dog.png' alt="main_img" style="max-width:100%; height:auto;">
+          <DepositCard
+            class="mx-auto my-1 col-12 depositcard"
+            v-for="deposit in $store.state.depositData"
+            :deposit="deposit"
+            :key="deposit.id"
+          />
+        </div>
+        <div v-else>
+          <div class="loading-container">
+            <div class="loader"></div>
           </div>
         </div>
       </div>
@@ -58,7 +56,9 @@ export default {
   justify-content: center;
   min-height: 100vh;
 }
-
+.depositcard {
+  min-width: 200px;
+}
 /* .d-flex {} */
 
 /* .row.mx-0 {
