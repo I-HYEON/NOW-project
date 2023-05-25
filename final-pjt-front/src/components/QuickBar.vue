@@ -54,16 +54,19 @@ export default {
     goToHome() {
       if (this.$route.path !== '/') {
         this.$router.push({ path: '/' });
+      } else {
+        this.scrollToTop();
       }
     },
     goToDepositProducts() {
-      this.$router.push({ path: '/depositproducts' });
+      if (this.$route.path !== '/depositproducts') {
+      this.$router.push({ path: '/depositproducts' });}
     },
     goToRecommend() {
-      this.$router.push({ path: '/recommend' });
+      if (this.$route.path !== '/recommend') {
+      this.$router.push({ path: '/recommend' });}
     },
     goToMapView() {
-      console.log('왜지?')
       if (this.$route.path !== '/mapview') {
         this.$router.push({ path: '/mapview' });
       }
@@ -75,6 +78,12 @@ export default {
     goToProfile() {
       if (this.$route.path !== '/profile') {
       this.$router.push({ path: '/profile' });}
+    },
+    scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
     },
   },
   computed: {

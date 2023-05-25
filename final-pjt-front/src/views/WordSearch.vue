@@ -19,9 +19,9 @@
               <div class="card" style="width: 100%;">
                 <div class="row no-gutters">
                   <div class="col-md-4">
-                    <img v-if="result.thumbnail" :src="result.thumbnail" class="card-img" alt="Thumbnail">
+                    <img v-if="result.thumbnail" :src="result.thumbnail" class="card-img" alt="">
                     <div v-else class="no-thumbnail">
-                      <img src="#" alt="빈화면">
+                      <img src="#" alt="">
                     </div>
                   </div>
                   <div class="col-md-8">

@@ -45,7 +45,7 @@
                     <li><a class="dropdown-item" @click="goToWordSearch">금융 용어 검색</a></li>
                     <li><a class="dropdown-item" @click="goToMoneyChange">환율 환전 정보</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">문의사항</a></li>
+                    <li @click="goToFooter"><a class="dropdown-item" href="#">문의사항</a></li>
                 </ul>
               </li>
 
@@ -121,6 +121,12 @@ export default {
     },
     goToMoneyChange() {
       this.$router.push({ path: '/moneychange' });
+    },
+    goToFooter() {
+      window.scrollTo({
+        top: document.documentElement.scrollHeight,
+        behavior: 'smooth'
+      })
     },
     },
     computed: {

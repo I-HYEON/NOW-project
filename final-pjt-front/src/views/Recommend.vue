@@ -38,10 +38,10 @@
             <td>
                 <input type="checkbox" name="tendency" v-model="info.whl_one">2000만원 미만
                 <input type="checkbox" name="tendency" v-model="info.whl_two">2000만원 ~ 6000만원
-                <input type="checkbox" name="tendency" v-model="info.whl_thr">6000만원 ~ 10000만원
+                <input type="checkbox" name="tendency" v-model="info.whl_thr">6000만원 ~ 1억원
                 <input type="checkbox" name="tendency" v-model="info.whl_fou">1억원 ~ 2억원
                 <input type="checkbox" name="tendency" v-model="info.whl_five">2억원 ~ 4억원
-                <input type="checkbox" name="tendency" v-model="info.whl_six">4원 이상
+                <input type="checkbox" name="tendency" v-model="info.whl_six">4억원 이상
             </td>
         </tr>
         <tr>

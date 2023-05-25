@@ -41,7 +41,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="article in $store.state.articles" v-if='article.username===userInfo.username' :key="article.id" @click="check(article)">
+          <tr class="clickable" v-for="article in $store.state.articles" v-if='article.username===userInfo.username' :key="article.id" @click="check(article)">
             <th scope="row">{{ article.title }}</th>
             <th scope="row">{{ article.content }}</th>
             <th scope="row">{{article.created_at.substring(0, 10)}}</th>
@@ -72,7 +72,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="article in $store.state.articles" v-if='article.like_users.includes(userInfo.pk)' :key="article.id" @click="check(article)">
+          <tr class="clickable" v-for="article in $store.state.articles" v-if='article.like_users.includes(userInfo.pk)' :key="article.id" @click="check(article)">
             <th scope="row">{{ article.title }}</th>
             <th scope="row">{{ article.content }}</th>
             <th scope="row">{{article.created_at.substring(0, 10)}}</th>
@@ -210,6 +210,9 @@ export default {
   text-align:center;
 
 }
+.clickable {
+      cursor: pointer;
+    }
 .DepositCard {
   background-color: white;
   color:black;
