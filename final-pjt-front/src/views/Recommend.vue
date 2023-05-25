@@ -54,7 +54,18 @@
     </table>
     <div class="container">
         <div v-if=show class="row">
-            <div>선택하신 조건과 일치하는 회원들이 가장 선호하는 상품 {{ dataLength }}건을 둘러보세요!</div>
+            <div v-if="dataLength">
+                <p>선택하신 조건과 일치하는 회원들이 가장 선호하는 상품 {{ dataLength }}건을 둘러보세요!</p>
+            </div>
+            <div class="row" v-else>
+                <p>선택하신 조건과 일치하는 상품이 존재하지 않습니다. 대신 이런상품은 어떤가요?</p>
+                <DepositCard
+                class = "mx-auto my-1 col-12 col-md-6 col-lg-4 col-xl-3"
+                v-for="deposit in this.high_income_depositData"
+                :deposit="deposit"
+                :key="deposit.id"
+                />
+            </div>
             <DepositCard
             class = "mx-auto my-1 col-12 col-md-6 col-lg-4 col-xl-3"
             v-for="deposit in this.sorted_depositData"
@@ -69,9 +80,9 @@
         </div>
     </div>
     </div>
-  </template>
+</template>
 
-  <script>
+<script>
 import axios from 'axios'
 import DepositCard from '@/components/DepositCard.vue'
 const API_URL = 'http://127.0.0.1:8000'
@@ -85,6 +96,7 @@ export default {
         return {
             show : false,
             sorted_depositData : [],
+            high_income_depositData : [],
             info : {
             gen_one : false, gen_two : false,
             age_one : false, age_two : false, age_thr : false, age_fou : false, age_five : false, age_six : false,
@@ -103,8 +115,10 @@ export default {
                 data: info,
             })
             .then((response) => {
-                this.sorted_depositData = response.data
-                console.log(this.sorted_depositData.length)
+                this.sorted_depositData = response.data[1]
+                this.high_income_depositData = response.data[0]
+                console.log(this.sorted_depositData)
+                console.log(this.high_income_depositData)
                 this.show = true
             })
             .catch((err) => {
@@ -131,7 +145,6 @@ export default {
         }
     }
 }
-
 </script>
 
 <style>

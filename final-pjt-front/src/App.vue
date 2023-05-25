@@ -48,6 +48,7 @@
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" @click="goToMapView">근처 은행 검색</a></li>
                     <li><a class="dropdown-item" @click="goToWordSearch">금융 용어 검색</a></li>
+                    <li><a class="dropdown-item" @click="goToMoneyChange">환율 환전 정보</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="#">문의사항</a></li>
                 </ul>
@@ -100,6 +101,9 @@ export default {
     },
     goToWordSearch() {
       this.$router.push({ path: '/wordsearch' });
+    },
+    goToMoneyChange() {
+      this.$router.push({ path: '/moneychange' });
     },
     },
     computed: {
