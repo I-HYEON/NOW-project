@@ -13,8 +13,7 @@
 
 
 ## 📺서비스 화면
-![리드미첨부1](https://github.com/I-HYEON/1-Project/assets/122415843/1fdfaae6-7d47-4fe2-a716-380b246b24e8)
-![리드미첨부2](https://github.com/I-HYEON/1-Project/assets/122415843/0422e09e-7c0a-4d11-87b6-a58ebc255ee4)
+![리드미첨부1](https://github.com/I-HYEON/1-Project/assets/122415843/1fdfaae6-7d47-4fe2-a716-380b246b24e8) ![리드미첨부2](https://github.com/I-HYEON/1-Project/assets/122415843/0422e09e-7c0a-4d11-87b6-a58ebc255ee4)
 
 
 ## 🦾주요 기능
