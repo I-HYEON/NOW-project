@@ -127,28 +127,28 @@ def recomend_deposit(request):
                         q_age |= Q(age__gt=60)
                 elif data_key =='salary':
                     if data_val == '1':
-                        q_sal |= Q(salary__lte=20000000)
+                        q_sal |= Q(salary__lte=2000)
                     elif data_val == '2':
-                        q_sal |= Q(salary__gt=20000000,salary__lte=40000000)
+                        q_sal |= Q(salary__gt=2000,salary__lte=4000)
                     elif data_val == '3':
-                        q_sal |= Q(salary__gt=40000000,salary__lte=60000000)
+                        q_sal |= Q(salary__gt=4000,salary__lte=6000)
                     elif data_val == '4':
-                        q_sal |= Q(salary__gt=60000000,salary__lte=100000000)
+                        q_sal |= Q(salary__gt=6000,salary__lte=10000)
                     elif data_val == '5':
-                        q_sal |= Q(salary__gt=100000000)
+                        q_sal |= Q(salary__gt=10000)
                 elif data_key == 'wealth':
                     if data_val == '1':
-                        q_whl |= Q(wealth__lte=20000000)
+                        q_whl |= Q(wealth__lte=2000)
                     elif data_val == '2':
-                        q_whl |= Q(wealth__gt=20000000,wealth__lte=60000000)
+                        q_whl |= Q(wealth__gt=2000,wealth__lte=6000)
                     elif data_val == '3':
-                        q_whl |= Q(wealth__gt=60000000,wealth__lte=100000000)
+                        q_whl |= Q(wealth__gt=6000,wealth__lte=10000)
                     elif data_val == '4':
-                        q_whl |= Q(wealth__gt=100000000,wealth__lte=200000000)
+                        q_whl |= Q(wealth__gt=10000,wealth__lte=20000)
                     elif data_val == '5':
-                        q_whl |= Q(wealth__gt=200000000,wealth__lte=400000000)
+                        q_whl |= Q(wealth__gt=20000,wealth__lte=40000)
                     elif data_val == '6':
-                        q_whl |= Q(wealth__gt=400000000)
+                        q_whl |= Q(wealth__gt=40000)
         q = q_gen & q_age & q_sal & q_whl & q_ten
         # 조건에 해당되는 User 쿼리
         user_filtered = User.objects.filter(q)
@@ -170,7 +170,12 @@ def recomend_deposit(request):
             temp_data = DepositProductsSerializerD(temp[0])
             result_data[i]=(temp_data.data)
             i+=1
-        return Response(result_data, status=status.HTTP_200_OK)
+        if i == 1:
+            temp = DepositProducts.objects.all()
+            result_data = DepositProductsSerializerD(temp, many=True)
+            sorted_data = sorted(result_data.data, key=lambda x: x['max_intr'], reverse=True)
+            return Response({0:sorted_data,1:[]}, status=status.HTTP_200_OK)
+        return Response({0:[],1:result_data}, status=status.HTTP_200_OK)
     
 @api_view(['POST'])
 def deposit_sign(request, fin_prdt_cd, user_pk):

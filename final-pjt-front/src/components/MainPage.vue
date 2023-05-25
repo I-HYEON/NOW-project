@@ -7,7 +7,7 @@
       
       <img class="odd-info" ref="firstInfo" src='@/photo/base_img/first_info.jpg' alt="first_img" style="max-width:100%; height:auto;">
 
-      <div class="even-info" ref="secondInfo">
+      <!-- <div class="even-info" ref="secondInfo">
         <div class="container">
           <div class="col-12">
             <div class="row">
@@ -24,9 +24,6 @@
               <div class="col-4">
                 <div class="card h-100">
                   <div class="card-body">
-
-              <!-- Customize the content for the second and third cards here -->
-              <!-- You can add any HTML elements or Vue directives -->
             </div>
           </div>
         </div>
@@ -34,16 +31,13 @@
           <div class="card h-100">
             <div class="card-body">
               여기에 내용을 추가해
-
-              <!-- Customize the content for the second and third cards here -->
-              <!-- You can add any HTML elements or Vue directives -->
             </div>
           </div>
         </div>
           </div>
         </div>
         </div>
-      </div>
+      </div> -->
 
       <img class="odd-info" ref="thirdInfo" src='@/photo/base_img/third_info.jpg' alt="third_img" style="max-width:100%; height:auto;">
       <img class="even-info" ref="forthInfo" src='@/photo/base_img/forth_info.jpg' alt="forth_img" style="max-width:100%; height:auto;">

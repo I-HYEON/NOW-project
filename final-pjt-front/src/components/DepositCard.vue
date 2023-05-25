@@ -7,6 +7,7 @@
     <ul class="list-group list-group-flush">
       <li class="list-group-item explain">{{ deposit.kor_co_nm }}</li>
       <li class="list-group-item explain">현재 가입자 수: {{ deposit.user_count }}</li>
+      <li class="list-group-item explain">최대 금리 {{ deposit.max_intr }}%</li>
     </ul>
     <div class="card-body"></div>
   </div>

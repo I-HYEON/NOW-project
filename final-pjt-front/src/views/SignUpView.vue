@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="signup-container">
-      <h1>회원가입</h1>
+      <h1>Sign Up</h1>
       <br>
-      <div class="signup-form">
+      <div class="signup-form ">
         <form >
             <label for="username">아이디</label><br>
             <input type="text" id="username" v-model="username"><br>
@@ -35,7 +35,7 @@
             <!-- <label for="email">email:</label>
             <input type="text" v-model="email">
             <br> -->
-            <button type="button" @click="signUp" style="width: 200px;" class="btn btn-success">확인</button>
+            <button type="button" @click="signUp" style="width: 200px; background-color: #601986; color:white;" class="btn">확인</button>
         </form>
       </div>
     </div>
