@@ -7,7 +7,7 @@
             <div class="col-auto">
               <select class="form-select" aria-label="Default select example" v-model="Change">
                 <option selected>나라를 선택해 주세요</option>
-                <option v-for="(country, index) in Countrys" :value="ChangeInfo[index].basePrice" :key="index">{{ country }} {{ ChangeInfo[index].basePrice }}</option>
+                <option v-for="(country, index) in Countrys" :value="ChangeInfo[index]" :key="index">{{ country }} {{ ChangeInfo[index].basePrice }}</option>
               </select>
             </div>
             <div class="col-auto"><input class="form-control" :value="Exchange.toFixed(2)"></div>
@@ -41,13 +41,15 @@ data() {
         'PLN'
     ],
     ChangeInfo: [],
-    Change : null,
+    Change : 0,
     BeforeChange : 0,
     }
 },
 computed : {
     Exchange(){
-        return this.BeforeChange*(this.Change/1000)
+        let rlt = this.BeforeChange/this.Change.basePrice*this.Change.currencyUnit
+        if (isNaN(rlt)) return 0
+        return rlt
     }
 },
 methods: {

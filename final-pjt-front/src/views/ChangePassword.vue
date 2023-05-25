@@ -71,7 +71,7 @@ export default {
           console.error('Account deletion failed:', error)
         })}
     else if(!(new_password1 && new_password2 && old_password)){
-        alert('빈칸은 안되요')
+        alert('빈칸은 안 돼요')
       }  
       else if(new_password1!==new_password2){
         alert('비밀번호가 일치하지 않습니다')
