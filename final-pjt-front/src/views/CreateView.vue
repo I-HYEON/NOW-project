@@ -2,19 +2,21 @@
 
 <template>
   <div class="create-container">
-    <h1>게시글 작성</h1>
-    <br>
-    <form @submit.prevent="createArticle">
-      <label for="title">제목</label>
+    <div class="create-form">
+      <h1>게시글 작성</h1>
       <br>
+      <form>
+        <label for="title">제목</label>
+        <br>
       
-      <input type="text" placeholder="제목을 입력하세요" style="width: 600px;" id="title" v-model.trim="title"><br>
-      <br>
-      <label for="content">내용 </label>
-      <br>
-      <textarea id="content" placeholder="내용을 입력하세요" style="width: 600px;" rows="10" v-model="content"></textarea><br>
-      <input type="submit"  style="width: 100px;" id="submit">
-    </form>
+        <input type="text" placeholder="제목을 입력하세요" style="width: 600px;" id="title" v-model.trim="title"><br>
+        <br>
+        <label for="content">내용 </label>
+        <br>
+        <textarea id="content" placeholder="내용을 입력하세요" style="width: 600px;" rows="10" v-model="content"></textarea><br>
+        <button type="button" @click="createArticle" style="width: 600px;" class="btn btn-success">글쓰기</button>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -74,5 +76,14 @@ export default {
 }
 .half-width-form {
   width: 50%;
+}
+.create-form {
+  display: inline-block;
+  padding: 20px;
+  width: 700px;
+  height: 520px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
 }
 </style>

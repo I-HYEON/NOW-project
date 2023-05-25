@@ -25,37 +25,76 @@
 <p v-else-if="userInfo.tendency === 3">투자성향 : 장기형</p>
 
 <p> 재산 : {{userInfo.wealth}}만원</p>
-
-<p>내가 쓴 글</p>
+<br>
+<hr>
+<p><h5>내가 쓴 게시글</h5></p>
 <div>
-  <div class="table-container">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <!-- <th scope="col">#</th> -->
-          <th scope="col">제목</th>
-          <th scope="col">내용</th>
-          <th scope="col">작성일</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="article in $store.state.articles" v-if='article.username===userInfo.username' :key="article.id" @click="check(article)">
-          <th scope="row">{{ article.title }}</th>
-          <th scope="row">{{ article.content }}</th>
-          <th scope="row">{{article.created_at.substring(0, 10)}}</th>
-          
-        </tr>
-      </tbody>
-    </table>
+  <div v-if="$store.state.articles.some(article => article.username===userInfo.username)">
+    <div class="table-container">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <!-- <th scope="col">#</th> -->
+            <th scope="col">제목</th>
+            <th scope="col">내용</th>
+            <th scope="col">작성일</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="article in $store.state.articles" v-if='article.username===userInfo.username' :key="article.id" @click="check(article)">
+            <th scope="row">{{ article.title }}</th>
+            <th scope="row">{{ article.content }}</th>
+            <th scope="row">{{article.created_at.substring(0, 10)}}</th>
+    
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div v-else style="color:red;">
+    쓴 글이 없습니다.
+  </div>
+</div>
+<br>
+<br>
+<hr>
+<p><h5>내가 좋아요한 게시글</h5></p>
+<div>
+  <div v-if="$store.state.articles.some(article => article.like_users.includes(userInfo.pk))">
+    <div class="table-container">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <!-- <th scope="col">#</th> -->
+            <th scope="col">제목</th>
+            <th scope="col">내용</th>
+            <th scope="col">작성일</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="article in $store.state.articles" v-if='article.like_users.includes(userInfo.pk)' :key="article.id" @click="check(article)">
+            <th scope="row">{{ article.title }}</th>
+            <th scope="row">{{ article.content }}</th>
+            <th scope="row">{{article.created_at.substring(0, 10)}}</th>
+    
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div v-else style="color:red;">
+    좋아요한 게시글이 없습니다.
   </div>
 </div>
 
 <br>
 <br>
-
-<p>가입 상품 목록</p>
-<div class="d-flex justify-content-center flex-wrap">
-  <!-- <div v-for="(deposit,idx) in deposits" :key='idx' style="width: 14rem;" v-if="userInfo.deposit.includes(idx+1)"> -->
+<hr>
+<p><h5>가입 상품 목록</h5></p>
+  <div v-if="userInfo.deposit.length === 0" style="color: red;">
+    가입한 상품이 없습니다.
+  </div>
+  <div v-else class="d-flex justify-content-center flex-wrap">
     <div class="DepositCard" :class="{ 'hovered': isHovered }" @click="navigateToDetail(deposit)" v-for="(deposit,idx) in deposits" :key='idx' style="width: 14rem;" v-if="userInfo.deposit.includes(idx+1)">
       <img :src="getBankImage(deposit.kor_co_nm)" class="card-img-top" :alt="`Image not found: ${deposit.kor_co_nm}`">
       <div class="card-body">
@@ -67,9 +106,8 @@
       </ul>
       <div class="card-body"></div>
     </div>
-  <!-- </div> -->
-</div>
-</div>
+  </div>
+  </div>
 <div class="col-3">
   <br>
   <p><button type="button" @click="changePassword" class="btn btn-outline-info">비밀번호 변경</button></p>
@@ -109,12 +147,12 @@ export default {
       this.$store.commit('GET_DEPOSIT_DATA', response.data)
       this.deposits = response.data
       // console.log(response.data)
-      console.log(this.deposits)
     },
 
   
       getArticles() {
         this.$store.dispatch('getArticles')
+        console.log(this.$store.state.articles)
       },
       getBankImage(korCoNm) {
       try {
