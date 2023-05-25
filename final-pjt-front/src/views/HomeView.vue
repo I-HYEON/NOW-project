@@ -1,5 +1,5 @@
 <template>
-  <div class="background-style">
+  <div class="container-fluid">
     <img src='@/photo/base_img/withdog.jpg' alt="main_img" style="max-width:100%; height:auto;">
 
     <div class="info-container">
@@ -39,12 +39,14 @@ export default {
 }
 </script>
 
-<style scope>
+<style>
 
-    .background-style {
+    .container-fluid {
       padding: 0;
       display: flex;
       flex-direction: column;
+      margin-right: 0;
+      margin-left: 0;
     }
 
     .purple {

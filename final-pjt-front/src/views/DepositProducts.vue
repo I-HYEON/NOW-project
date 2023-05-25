@@ -1,7 +1,6 @@
 <template>
-  <div class="container">
+  <div class="container-fluid">
     <div class="row justify-content-center">
-      <h1 class="text-center">모든 예적금 상품 조회</h1>
       <div class="col-12">
         <div class="d-flex justify-content-center flex-wrap">
           <div v-if="show" class="row mx-0">
@@ -52,7 +51,7 @@ export default {
 </script>
 
 <style scoped>
-.container {
+.container-fluid {
   display: flex;
   align-items: center;
   justify-content: center;

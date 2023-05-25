@@ -2,7 +2,7 @@
 
   <div class="appvue-container">
     <div class="d-flex justify-content-center">
-      <img src='@/photo/png/mainlogo.png' alt="main_img" style="max-width:120px; height:auto; margin:20px 0px 0px 20px; cursor:pointer;" @click="goToHome">
+      <img src='@/photo/png/mainlogo.png' alt="main_img" style="max-width:120px; height:auto; margin:20px 0px 0px 20px;">
     </div>
     
     
@@ -94,20 +94,12 @@ export default {
       logOut() {
       this.$store.dispatch('logOut')
     },
-    goToHome() {
-      if (this.$route.path !== '/') {
-        this.$router.push({ path: '/' });
-      }
-    },
     goToMapView() {
-      if (this.$route.path !== '/mapview') {
-        this.$router.push({ path: '/mapview' });
-      }
+      console.log('go to mapview')
+      this.$router.push({ path: '/mapview' });
     },
     goToWordSearch() {
-      if (this.$route.path !== '/wordsearch') {
-        this.$router.push({ path: '/wordsearch' });
-      }
+      this.$router.push({ path: '/wordsearch' });
     },
     },
     computed: {
@@ -126,11 +118,14 @@ export default {
   .dropdown-item{
     cursor: pointer;
   }
-  
-  .container-fluid{
+    
+  .appvue-cotainer {
+    padding: 0px;
+    background-color: #ffd788;
     display: flex;
     flex-direction: column;
   }
+
   .main_nav {
     margin: 20px 0px 20px 60px;
   };
@@ -145,12 +140,8 @@ export default {
     color: inherit;
   }
 
-  .navbar-collapse {
-    margin: 0px auto;
-  }
-
   #navbarSupportedContent {
-    color: white;
+    color: white
   }
 
   .fade-enter-active,
