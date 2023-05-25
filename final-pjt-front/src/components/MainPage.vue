@@ -5,7 +5,7 @@
     <br>
     <div class="info-container">
       <img class="odd-info main_image" ref="firstInfo" src='@/photo/base_img/first_info.jpg' alt="first_img" style="max-width:100%; height:auto;">
-      <img class="odd-info main_image" ref="thirdInfo" src='@/photo/base_img/third_info.jpg' alt="third_img" style="max-width:100%; height:auto;">
+      <img class="odd-info main_image" ref="thirdInfo" src='@/photo/base_img/third_info.jpg' alt="third_img" style="max-width:100%; height:auto;" @click="goToRecommend">
       <img class="even-info main_image" ref="forthInfo" src='@/photo/base_img/forth_info.jpg' alt="forth_img" style="max-width:100%; height:auto;">
       <Footer/>
     </div>
@@ -29,6 +29,9 @@ export default {
     }
   },
   methods: {
+    goToRecommend() {
+      return this.$router.push({ path: '/recommend' })
+    },
     createIntersectionObserver() {
       const options = {
         root: null, // 스크롤 기준 요소 (기본값은 viewport)

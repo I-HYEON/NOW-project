@@ -56,7 +56,7 @@
     <div class="container">
         <div v-if=show class="row justify-content-center">
             <div v-if="dataLength">
-                <p>선택하신 조건과 일치하는 회원들이 선호하는 상품들을 둘러보세요!</p>
+                <p class="text-center">선택하신 조건과 일치하는 회원들이 선호하는 상품들을 둘러보세요!</p>
             </div>
             <div class="row" v-else>
                 <p>선택하신 조건과 일치하는 상품이 존재하지 않습니다. 대신 이런상품은 어떤가요?</p>
