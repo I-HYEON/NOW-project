@@ -2,13 +2,12 @@
   <div class="container">
     
     <div class="row justify-content-center">
-      <div class="col-md-7">
+      <div class="col-md-8">
         <br>
         
-        <h4>가까운 은행을 검색해보세요</h4>
+        <h4 class="text-center">가까운 은행을 검색해보세요</h4>
         <div>
-          
-          <input type="text" @keyup.enter="search" placeholder="찾고싶은 은행을 입력하세요" v-model="searchKeyword">
+          <input type="text" @keyup.enter="search" placeholder="찾으시는 은행명 혹은 지역명을 입력하세요" v-model="searchKeyword" style="width:90%;">
           <button type="button" @click="search"  style="margin-top:1px; margin-left:7px" class="btn btn-outline-success btn-sm">검색</button>
 
         </div>
@@ -166,7 +165,6 @@ export default {
 
     },
     displayMarker(place) {
-      // console.log('왜 일로 안오지?')
       const compo = this
       this.infowindow = new kakao.maps.InfoWindow({zIndex:1});
       const marker = new kakao.maps.Marker({
