@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex flex-column align-items-center">
+  <div class="d-flex flex-column align-items-center justify-content-center">
     <img src='@/photo/png/pig_and_dog.png' alt="main_img" style="max-width:100%; height:auto;">
     <table class="table" border="1">
         <th></th>
@@ -54,21 +54,21 @@
         </tr>
     </table>
     <div class="container">
-        <div v-if=show class="row">
+        <div v-if=show class="row justify-content-center">
             <div v-if="dataLength">
                 <p>선택하신 조건과 일치하는 회원들이 가장 선호하는 상품 {{ dataLength }}건을 둘러보세요!</p>
             </div>
             <div class="row" v-else>
                 <p>선택하신 조건과 일치하는 상품이 존재하지 않습니다. 대신 이런상품은 어떤가요?</p>
                 <DepositCard
-                class = "mx-auto my-1 col-12 col-md-6 col-lg-4 col-xl-3"
+                class = "mx-auto my-1 col-12 depositcard"
                 v-for="deposit in this.high_income_depositData"
                 :deposit="deposit"
                 :key="deposit.id"
                 />
             </div>
             <DepositCard
-            class = "mx-auto my-1 col-12 col-md-6 col-lg-4 col-xl-3"
+            class = "mx-auto my-1 col-12 depositcard"
             v-for="deposit in this.sorted_depositData"
             :deposit="deposit"
             :key="deposit.id"
@@ -151,6 +151,7 @@ export default {
 <style>
 
 .table {
+  max-width: 1270px;
   width: 90% !important;
   margin-left: 20px;
   margin-right: 20px;
@@ -183,6 +184,10 @@ td {
   border-top-color: #000;
   border-radius: 50%;
   animation: spin 2s linear infinite;
+}
+
+.depositcard {
+  min-width: 200px;
 }
 
 @keyframes spin {
