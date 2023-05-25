@@ -17,6 +17,7 @@ import UpdateView from '../views/UpdateView.vue'
 import Withdrawl from '../views/Withdrawl'
 import loginView from '../views/loginView.vue'
 import ChangePassword from '../views/ChangePassword.vue'
+import MoneyChange from '../views/MoneyChange.vue'
 
 Vue.use(VueRouter)
 
@@ -81,6 +82,11 @@ const routes = [
     path: '/wordsearch',
     name: 'WordSearch',
     component: WordSearch
+  },
+  {
+    path: '/moneychange',
+    name: 'MoneyChange',
+    component: MoneyChange
   },
   {
     path: '/profile',
