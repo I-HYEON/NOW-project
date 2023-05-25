@@ -71,6 +71,7 @@ export default {
       })
       .then((res)=>{
         console.log(res)
+        this.$store.dispatch('getUserInfo')
         this.$router.push({name: 'ProfileView'})
       })
       .catch((err)=>{
