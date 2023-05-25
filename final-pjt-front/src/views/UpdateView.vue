@@ -2,19 +2,21 @@
 
 <template>
 <div class="update-container">
-    <h1>게시글 작성</h1>
-    <br>
-    <form @submit.prevent="updateArticle">
-      <label for="title">제목</label>
+    <div class="update-form">
+      <h1>게시글 수정</h1>
       <br>
+      <form @submit.prevent="updateArticle">
+        <label for="title">제목</label>
+        <br>
       
-      <input type="text" id="title" style="width: 600px;" v-model.trim="title"><br>
-      <br>
-      <label for="content">내용 </label>
-      <br>
-      <textarea id="content"  style="width: 600px;" rows="10" v-model="content"></textarea><br>
-      <input type="submit" style="width: 100px;" id="submit">
-    </form>
+        <input type="text" id="title" style="width: 600px;" v-model.trim="title"><br>
+        <br>
+        <label for="content">내용 </label>
+        <br>
+        <textarea id="content"  style="width: 600px;" rows="10" v-model="content"></textarea><br>
+        <button type="button" @click="updateArticle" style="width: 600px;" class="btn btn-success">글수정</button>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -80,6 +82,15 @@ export default {
 .update-container {
   text-align:center;
 
+}
+.update-form {
+  display: inline-block;
+  padding: 20px;
+  width: 700px;
+  height: 520px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
 }
 /* 스타일을 필요에 따라 추가 */
 </style>

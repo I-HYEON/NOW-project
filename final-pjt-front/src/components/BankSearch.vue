@@ -1,21 +1,26 @@
 <template>
   <div class="container">
+    
     <div class="row justify-content-center">
-      <div class="col-md-6">
+      <div class="col-md-7">
+        <br>
+        
         <h4>가까운 은행을 검색해보세요</h4>
-        <form @submit.prevent="search">
-          <input type="text" placeholder="찾고싶은 은행을 입력하세요" v-model="searchKeyword">
-          <input type="submit" value="검색">
-        </form>
+        <div>
+          
+          <input type="text" @keyup.enter="search" placeholder="찾고싶은 은행을 입력하세요" v-model="searchKeyword">
+          <button type="button" @click="search"  style="margin-top:1px; margin-left:7px" class="btn btn-outline-success btn-sm">검색</button>
+
+        </div>
       </div>
     </div>
     <div class="row justify-content-center mt-4">
-      <div class="col-md-6">
-        <div id="map"></div>
+      <div >
+        <div id="map" class="map-container"></div>
       </div>
     </div>
     <div class="row justify-content-center mt-4" v-if="bankList.length">
-      <div class="col-md-6">
+      <div>
         <p>근처에 총 {{ bankList.length }} 개의 은행이 있습니다.</p>
         <hr>
         <div v-for="(bank, index) in bankList" :key="bank.id">
@@ -23,9 +28,9 @@
             <li style="list-style-type: none;">{{ index + 1 }}번째 은행</li>
             <li>{{ bank.place_name }}</li>
             <li>{{ bank.category_name }}</li>
-            <li>{{ bank.phone }}</li>
-            <li>{{ bank.road_address_name }}</li>
-            <li>{{ bank.place_url }}</li>
+            <li v-if="bank.phone">{{ bank.phone }}</li>
+            <li v-if="bank.road_address_name">{{ bank.road_address_name }}</li>
+            <li><a :href="bank.place_url">{{ bank.place_url }}</a></li>
           </ul>
           <hr>
         </div>
@@ -134,6 +139,8 @@ export default {
       
       const compo = this
       const kakaoo = kakao.maps
+      console.log(compo.bankList,this.bankList)
+      
 
       function placeSearchCB(data, status, pagination) {
         if (status == kakaoo.services.Status.OK) {
@@ -150,10 +157,12 @@ export default {
             bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
           }
         compo.map.setBounds(bounds);
+        
         }
       }
 
       this.ps.keywordSearch(this.searchKeyword,placeSearchCB)
+      this.bankList=[]
 
     },
     displayMarker(place) {
@@ -175,9 +184,75 @@ export default {
 }
 </script>
 
-<style>
-#map {
+<style scoped>
+/* @import "@/assets/css/search.css"; */
+/* #map {
   width: 600px;
   height: 500px;
+} */
+#map {
+  width: 100%; 
+  height: 500px;
+  margin-right: 30px;
 }
+
+.map-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body{
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+}
+.search-box{
+  padding: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  height: 30px;
+  background-color: #fff;
+  border: 1px solid #51e3d4;
+  border-radius: 30px;
+  transition: 0.4s;
+  width:30px;
+}
+.search-box:hover{
+  box-shadow: 0px 0px .5px 1px #51e3d4;
+  width: 282px;
+}
+.search-btn{
+  text-decoration: none;
+  float: right;
+  width: 30px;
+  height: 30px;
+  background-color: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #51e3d4;
+}
+.search-box:hover > .search-btn{
+  background-color: #fff;
+}
+.search-txt{
+  display: flex;
+  padding: 0;
+  width: 0px;
+  border:none;
+  background: none;
+  outline: none;
+  float: left;
+  font-size: 1rem;
+  line-height: 30px;
+  transition: .4s;
+}
+.search-box:hover > .search-txt{
+  width: 240px;
+  padding: 0 6px;
+}
+
 </style>

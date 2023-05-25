@@ -9,6 +9,7 @@
                 <input type="checkbox" name="tendency" v-model="info.gen_two">여자        
                 <input type="checkbox" name="tendency" v-model="info.gen_one">남자
             </td>
+            
         </tr>
         <tr>
             <td>나이</td>
@@ -28,8 +29,8 @@
                 <input type="checkbox" name="tendency" v-model="info.sal_two">2000만원 ~ 4000만원
                 <input type="checkbox" name="tendency" v-model="info.sal_thr">4000만원 ~ 6000만원
                 <input type="checkbox" name="tendency" v-model="info.sal_fou">6000만원 ~ 8000만원
-                <input type="checkbox" name="tendency" v-model="info.sal_fiv">8000만원 ~ 10000만원
-                <input type="checkbox" name="tendency" v-model="info.sal_six">10000만원 이상
+                <input type="checkbox" name="tendency" v-model="info.sal_fiv">8000만원 ~ 1억원
+                <input type="checkbox" name="tendency" v-model="info.sal_six">1억원 이상
             </td>
         </tr>
         <tr>
@@ -38,9 +39,9 @@
                 <input type="checkbox" name="tendency" v-model="info.whl_one">2000만원 미만
                 <input type="checkbox" name="tendency" v-model="info.whl_two">2000만원 ~ 6000만원
                 <input type="checkbox" name="tendency" v-model="info.whl_thr">6000만원 ~ 10000만원
-                <input type="checkbox" name="tendency" v-model="info.whl_fou">10000만원 ~ 20000만원
-                <input type="checkbox" name="tendency" v-model="info.whl_five">20000만원 ~ 40000만원
-                <input type="checkbox" name="tendency" v-model="info.whl_six">40000만원 이상
+                <input type="checkbox" name="tendency" v-model="info.whl_fou">1억원 ~ 2억원
+                <input type="checkbox" name="tendency" v-model="info.whl_five">2억원 ~ 4억원
+                <input type="checkbox" name="tendency" v-model="info.whl_six">4원 이상
             </td>
         </tr>
         <tr>

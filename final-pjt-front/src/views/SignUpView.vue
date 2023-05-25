@@ -3,7 +3,7 @@
     <div class="signup-container">
       <h1>회원가입</h1>
       <br>
-      <div class="signup-form">
+      <div class="signup-form ">
         <form >
             <label for="username">아이디</label><br>
             <input type="text" id="username" v-model="username"><br>

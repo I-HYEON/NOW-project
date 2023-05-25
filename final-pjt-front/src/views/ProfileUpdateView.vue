@@ -4,7 +4,7 @@
     <div class="profile-change-container">
       <h1>프로필 변경</h1>
       <div class="profile-change-form">
-        <form  >
+        <form>
             <label for="username">아이디</label><br>
             <input type="text" id="username" v-model="updatedFormData.username" disabled><br>
             <br>
